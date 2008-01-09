@@ -23,6 +23,7 @@ BuildRequires: ruby-devel
 BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.1
 BuildRequires: python-qt4-devel
+BuildRequires: qscintilla-qt4-devel
 BuildRoot: %_tmppath/%name-%version-%release-root
 
 %description
