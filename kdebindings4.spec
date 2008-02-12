@@ -1,21 +1,13 @@
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-%define revision 745416
-
 Name: kdebindings4
 Summary: K Desktop Environment
-Version: 4.0.0
+Version: 4.0.1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
 %if %branch
-Release: %mkrel 0.%revision.1
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.%revision.tar.bz2
-%else
 Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-%endif
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -172,9 +164,8 @@ make
 
 %install
 rm -fr %buildroot
-cd build
 
-make DESTDIR=%buildroot install
+make -C build DESTDIR=%buildroot install
 
 %clean
 rm -fr %buildroot
