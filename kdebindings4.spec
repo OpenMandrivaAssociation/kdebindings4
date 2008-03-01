@@ -7,7 +7,6 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch0: kdebindings-4.0.1-install.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -156,7 +155,6 @@ A binding for Ruby language.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch0 -p1
 
 %build
 %cmake_kde4 
