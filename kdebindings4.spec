@@ -1,11 +1,11 @@
 Name: kdebindings4
 Summary: K Desktop Environment
-Version: 4.0.2
+Version: 4.0.3
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
