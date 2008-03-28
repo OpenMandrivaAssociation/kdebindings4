@@ -129,7 +129,7 @@ C# Mono KDE 4 bindings
 
 %define lib_ruby	%mklibname qtruby
 
-%package -n ruby-qt
+%package -n ruby-qt4
 Summary: Qt bindings for Ruby
 Group:		Development/KDE and Qt
 Provides: qtruby = %{epoch}:%{version}-%{release}
@@ -138,10 +138,10 @@ Obsoletes: %{lib_ruby}1 < 3.5.1
 Obsoletes: %{lib_ruby}1-devel < 3.5.1
 Obsoletes: qtruby < 3.5.5
 
-%description -n ruby-qt
+%description -n ruby-qt4
 A binding for Ruby language.
 
-%files -n ruby-qt
+%files -n ruby-qt4
 %defattr(-,root,root)
 %_kde_bindir/rbqtapi
 %_kde_bindir/rbqtsh
