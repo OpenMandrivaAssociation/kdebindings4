@@ -5,7 +5,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
@@ -92,17 +92,17 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%package -n smoke-devel
+%package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
-Provides: libsmoke-devel = %epoch:%version-%release
+Provides: libsmoke2-devel = %epoch:%version-%release
 
-%description -n smoke-devel
+%description -n smoke4-devel
 Smoke devel files.
 
-%files -n smoke-devel
+%files -n smoke4-devel
 %defattr(-,root,root)
 %_kde_includedir/smoke.h
 %_kde_libdir/libsmokekde.so
