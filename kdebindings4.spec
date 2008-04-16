@@ -1,6 +1,6 @@
 Name: kdebindings4
 Summary: K Desktop Environment
-Version: 4.0.3
+Version: 4.0.69
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -72,6 +72,24 @@ KDE generic bindings library.
 %defattr(-,root,root)
 %_kde_libdir/libsmokekde.so.*
 
+#-----------------------------------------------------------------------------
+
+%define libsmokeplasma %mklibname smokeplasma 2
+
+%package -n %{libsmokeplasma}
+Summary: KDE generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeplasma}
+KDE generic bindings library.
+
+%post -n %{libsmokeplasma} -p /sbin/ldconfig
+%postun -n %{libsmokeplasma} -p /sbin/ldconfig
+
+%files -n %{libsmokeplasma}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeplasma.so.*
+
 #------------------------------------------------------------
 
 %define lib_smoke_qt %mklibname smokeqt 2
@@ -107,6 +125,7 @@ Smoke devel files.
 %_kde_includedir/smoke.h
 %_kde_libdir/libsmokekde.so
 %_kde_libdir/libsmokeqt.so
+%_kde_libdir/libsmokeplasma.so
 
 #------------------------------------------------------------
 
@@ -144,12 +163,13 @@ A binding for Ruby language.
 %files -n ruby-qt4
 %defattr(-,root,root)
 %_kde_bindir/rbqtapi
-%_kde_bindir/rbqtsh
 %_kde_bindir/rbrcc
 %_kde_bindir/rbuic4
 %_kde_libdir/kde4/krossruby.so
 %_kde_libdir/kde4/krubypluginfactory.so
 %_prefix/lib/ruby/site_ruby/*/*
+%_kde_appsdir/plasma-ruby-webapplet/web_applet.rb
+%_kde_datadir/kde4/services/plasma-ruby-applet-web.desktop
 
 #------------------------------------------------------------
 
