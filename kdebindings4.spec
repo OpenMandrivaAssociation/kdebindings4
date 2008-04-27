@@ -165,11 +165,21 @@ A binding for Ruby language.
 %_kde_bindir/rbqtapi
 %_kde_bindir/rbrcc
 %_kde_bindir/rbuic4
+%_kde_bindir/krubyapplication
 %_kde_libdir/kde4/krossruby.so
 %_kde_libdir/kde4/krubypluginfactory.so
 %_prefix/lib/ruby/site_ruby/*/*
-%_kde_appsdir/plasma-ruby-webapplet/web_applet.rb
+%_kde_appsdir/plasma-ruby-webapplet
+%_kde_appsdir/plasma-ruby-analog-clock
+%_kde_appsdir/plasma-ruby-digital-clock
+%_kde_appsdir/plasma-ruby-engine-time
+%_kde_appsdir/dbpedia_references
 %_kde_datadir/kde4/services/plasma-ruby-applet-web.desktop
+%_kde_datadir/kde4/services/plasma-dataengine-dbpedia-albums.desktop
+%_kde_datadir/kde4/services/plasma-dataengine-ruby-time.desktop
+%_kde_datadir/kde4/services/plasma-ruby-clock-default.desktop
+%_kde_datadir/kde4/services/plasma-ruby-digital-clock-default.desktop
+%_kde_datadir/applications/kde4/dbpedia_references.desktop
 
 #------------------------------------------------------------
 
