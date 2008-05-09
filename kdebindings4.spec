@@ -1,12 +1,13 @@
-Name: kdebindings4
-Summary: K Desktop Environment
-Version: 4.0.72
-Epoch: 1
-Group: Graphical desktop/KDE
-License: GPL
-URL: http://www.kde.org
-Release: %mkrel 1
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Name:          kdebindings4
+Summary:       K Desktop Environment
+Version:       4.0.73
+Epoch:         1
+Group:         Graphical desktop/KDE
+License:       GPL
+URL:           http://www.kde.org
+Release:       %mkrel 1
+Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Patch0:        kdebindings-4.0.73-fix-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -16,7 +17,7 @@ BuildRequires: python-sip >= 4.7.1
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
 %py_requires -d
-BuildRoot: %_tmppath/%name-%version-%release-root
+BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
 Bindings for kde4
@@ -185,6 +186,7 @@ A binding for Ruby language.
 
 %prep
 %setup -q -n kdebindings-%version
+%patch0 -p0
 
 %build
 %cmake_kde4 
