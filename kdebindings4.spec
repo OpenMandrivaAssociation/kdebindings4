@@ -59,9 +59,10 @@ Python KDE 4 documentation
 
 %define lib_smoke_kde %mklibname smokekde 2
 
-%package -n %{lib_smoke_kde}
-Summary: KDE generic bindings library
-Group: Development/KDE and Qt
+%package -n   %{lib_smoke_kde}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 
 %description -n %{lib_smoke_kde}
 KDE generic bindings library.
@@ -73,24 +74,6 @@ KDE generic bindings library.
 %defattr(-,root,root)
 %_kde_libdir/libsmokekde.so.*
 
-#-----------------------------------------------------------------------------
-
-#%define libsmokeplasma %mklibname smokeplasma 2
-#
-#%package -n %{libsmokeplasma}
-#Summary: KDE generic bindings library
-#Group: Development/KDE and Qt
-#
-#%description -n %{libsmokeplasma}
-#KDE generic bindings library.
-#
-#%post -n %{libsmokeplasma} -p /sbin/ldconfig
-#%postun -n %{libsmokeplasma} -p /sbin/ldconfig
-#
-#%files -n %{libsmokeplasma}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokeplasma.so.*
-#
 #------------------------------------------------------------
 
 %define lib_smoke_qt %mklibname smokeqt 2
@@ -126,7 +109,6 @@ Smoke devel files.
 %_kde_includedir/smoke.h
 %_kde_libdir/libsmokekde.so
 %_kde_libdir/libsmokeqt.so
-#%_kde_libdir/libsmokeplasma.so
 
 #------------------------------------------------------------
 
@@ -170,16 +152,7 @@ A binding for Ruby language.
 %_kde_libdir/kde4/krossruby.so
 %_kde_libdir/kde4/krubypluginfactory.so
 %_prefix/lib/ruby/site_ruby/*/*
-#%_kde_appsdir/plasma-ruby-webapplet
-#%_kde_appsdir/plasma-ruby-analog-clock
-#%_kde_appsdir/plasma-ruby-digital-clock
-#%_kde_appsdir/plasma-ruby-engine-time
 %_kde_appsdir/dbpedia_references
-#%_kde_datadir/kde4/services/plasma-ruby-applet-web.desktop
-#%_kde_datadir/kde4/services/plasma-dataengine-dbpedia-albums.desktop
-#%_kde_datadir/kde4/services/plasma-dataengine-ruby-time.desktop
-#%_kde_datadir/kde4/services/plasma-ruby-clock-default.desktop
-#%_kde_datadir/kde4/services/plasma-ruby-digital-clock-default.desktop
 %_kde_datadir/applications/kde4/dbpedia_references.desktop
 
 #------------------------------------------------------------
