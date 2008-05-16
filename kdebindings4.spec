@@ -1,13 +1,12 @@
 Name:          kdebindings4
 Summary:       K Desktop Environment
-Version:       4.0.73
+Version:       4.0.74
 Epoch:         1
 Group:         Graphical desktop/KDE
 License:       GPL
 URL:           http://www.kde.org
 Release:       %mkrel 1
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch0:        kdebindings-4.0.73-fix-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -159,7 +158,6 @@ A binding for Ruby language.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch0 -p0
 
 %build
 %cmake_kde4 
