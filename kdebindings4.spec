@@ -163,9 +163,9 @@ A binding for Ruby language.
 %patch1 -p0
 
 %build
-%cmake_kde4  -DENABLE_QSCINTILLA_SHARP=ON -DENABLE_SMOKEQSCI=ON
+%cmake_kde4  
 
-make 
+%make 
 
 
 %install
