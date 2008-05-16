@@ -7,6 +7,7 @@ License:       GPL
 URL:           http://www.kde.org
 Release:       %mkrel 1
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Patch1:        kdebindings-4.0.74-fix-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -15,6 +16,7 @@ BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.1
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
+BuildRequires: automoc
 %py_requires -d
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
@@ -158,9 +160,10 @@ A binding for Ruby language.
 
 %prep
 %setup -q -n kdebindings-%version
+%patch1 -p0
 
 %build
-%cmake_kde4 
+%cmake_kde4  -DENABLE_QSCINTILLA_SHARP=ON -DENABLE_SMOKEQSCI=ON
 
 make 
 
