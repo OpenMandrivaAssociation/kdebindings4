@@ -7,8 +7,6 @@ License:       GPL
 URL:           http://www.kde.org
 Release: %mkrel 1
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch1:        kdebindings-4.0.74-fix-build.patch
-Patch2:        kdebindings-4.0.80-fix-php-cmake.patch
 Patch3:        kdebindings-4.0.80-fix-pykde4-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
@@ -20,6 +18,7 @@ BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 %py_requires -d
+
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -60,7 +59,8 @@ Python KDE 4 documentation
 
 #-----------------------------------------------------------------------------
 
-%define lib_smoke_kde %mklibname smokekde 2
+%define lib_smoke_kde_major 2
+%define lib_smoke_kde %mklibname smokekde %{lib_smoke_kde_major}
 
 %package -n   %{lib_smoke_kde}
 Summary:      KDE generic bindings library
@@ -75,11 +75,52 @@ KDE generic bindings library.
 
 %files -n %{lib_smoke_kde}
 %defattr(-,root,root)
-%_kde_libdir/libsmokekde.so.*
+%_kde_libdir/libsmokekde.so.%{lib_smoke_kde_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokesoprano_major 2
+%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
+
+%package -n   %{libsmokesoprano}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
+
+%description -n %{libsmokesoprano}
+KDE generic bindings library.
+
+%post -n %{libsmokesoprano} -p /sbin/ldconfig
+%postun -n %{libsmokesoprano} -p /sbin/ldconfig
+
+%files -n %{libsmokesoprano}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqsci_major 2
+%define libsmokeqsci %mklibname smokeqsci %{smokeqsci_major}
+
+%package -n   %{libsmokeqsci}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
+
+%description -n %{libsmokeqsci}
+KDE generic bindings library.
+
+%post -n %{libsmokeqsci} -p /sbin/ldconfig
+%postun -n %{libsmokeqsci} -p /sbin/ldconfig
+
+%files -n %{libsmokeqsci}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqsci.so.%{smokeqsci_major}*
 
 #------------------------------------------------------------
 
-%define lib_smoke_qt %mklibname smokeqt 2
+%define lib_smoke_qt_major 2
+%define lib_smoke_qt %mklibname smokeqt %{lib_smoke_qt_major}
 
 %package -n %{lib_smoke_qt}
 Summary: Qt generic bindings library
@@ -93,7 +134,7 @@ Qt generic bindings library.
 
 %files -n %{lib_smoke_qt}
 %defattr(-,root,root)
-%_kde_libdir/libsmokeqt.so.*
+%_kde_libdir/libsmokeqt.so.%{lib_smoke_qt_major}*
 
 #------------------------------------------------------------
 
@@ -102,6 +143,8 @@ Summary: Header files for libsmoke
 Group: Development/KDE and Qt
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
+Requires: %{libsmokeqsci} = %epoch:%version-%release
+Requires: %{libsmokesoprano} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 
 %description -n smoke4-devel
@@ -110,8 +153,11 @@ Smoke devel files.
 %files -n smoke4-devel
 %defattr(-,root,root)
 %_kde_includedir/smoke.h
+%_kde_includedir/smoke
 %_kde_libdir/libsmokekde.so
 %_kde_libdir/libsmokeqt.so
+%_kde_libdir/libsmokeqsci.so
+%_kde_libdir/libsmokesoprano.so
 
 #------------------------------------------------------------
 
@@ -128,7 +174,22 @@ C# Mono KDE 4 bindings
 %defattr(-,root,root)
 %_kde_bindir/csrcc
 %_kde_bindir/uics
+
+#------------------------------------------------------------
+
+%package -n qyoto-devel
+Summary: Header files for qyoto
+Group: Development/KDE and Qt
+Requires: qyoto = %epoch:%version-%release
+Conflicts: qyoto < 1:4.0.80-1
+%description -n qyoto-devel
+qyoto devel files.
+
+%files -n qyoto-devel
+%defattr(-,root,root)
 %_kde_libdir/libqyoto.so
+%_kde_libdir/libqyotoshared.so
+%_kde_includedir/qyoto
 
 #------------------------------------------------------------
 
@@ -160,10 +221,22 @@ A binding for Ruby language.
 
 #------------------------------------------------------------
 
+%package -n ruby-qt4-devel
+Summary: Header files for ruby-qt4
+Group: Development/KDE and Qt
+Requires: ruby-qt4
+%description -n ruby-qt4-devel
+ruby-qt4 devel files.
+
+%files -n ruby-qt4-devel
+%defattr(-,root,root)
+%_kde_includedir/qtruby
+%_kde_libdir/libqtruby4shared.so
+
+#------------------------------------------------------------
+
 %prep
 %setup -q -n kdebindings-%version
-%patch1 -p0
-%patch2 -p0
 %patch3 -p1
 
 %build
