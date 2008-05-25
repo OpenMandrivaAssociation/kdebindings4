@@ -240,9 +240,9 @@ ruby-qt4 devel files.
 %patch3 -p1
 
 %build
-%cmake_kde4  
+%cmake_kde4   -DENABLE_PHP-QT=ON -DENABLE_QSCINTILLA_SHARP=ON
 
-make
+%make
 
 
 %install
