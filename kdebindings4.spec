@@ -169,7 +169,7 @@ A binding for Ruby language.
 %build
 %cmake_kde4  
 
-%make
+make
 
 
 %install
