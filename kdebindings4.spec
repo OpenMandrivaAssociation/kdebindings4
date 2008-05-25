@@ -8,15 +8,17 @@ URL:           http://www.kde.org
 Release: %mkrel 1
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch1:        kdebindings-4.0.74-fix-build.patch
+Patch2:        kdebindings-4.0.80-fix-php-cmake.patch
+Patch3:        kdebindings-4.0.80-fix-pykde4-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
 BuildRequires: ruby-devel
 BuildRequires: mono-devel
-BuildRequires: python-sip >= 4.7.1
+BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
-BuildRequires: automoc
+BuildRequires: php-devel
 %py_requires -d
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
@@ -161,11 +163,13 @@ A binding for Ruby language.
 %prep
 %setup -q -n kdebindings-%version
 %patch1 -p0
+%patch2 -p0
+%patch3 -p1
 
 %build
 %cmake_kde4  
 
-%make 
+%make
 
 
 %install
