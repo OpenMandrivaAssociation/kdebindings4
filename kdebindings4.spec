@@ -5,7 +5,7 @@ Epoch:         1
 Group:         Graphical desktop/KDE
 License:       GPL
 URL:           http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch3:        kdebindings-4.0.80-fix-pykde4-build.patch
 Patch4:        kdebindings-4.0.80-fix-lib-install.patch
