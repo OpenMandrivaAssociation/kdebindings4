@@ -8,6 +8,7 @@ URL:           http://www.kde.org
 Release: %mkrel 1
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch3:        kdebindings-4.0.80-fix-pykde4-build.patch
+Patch4:        kdebindings-4.0.80-fix-lib-install.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -239,6 +240,7 @@ ruby-qt4 devel files.
 %prep
 %setup -q -n kdebindings-%version
 %patch3 -p1
+%patch4 -p0 
 
 %build
 %cmake_kde4   -DENABLE_PHP-QT=ON -DENABLE_QSCINTILLA_SHARP=ON
