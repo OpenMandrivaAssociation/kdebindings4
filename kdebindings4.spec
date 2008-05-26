@@ -189,6 +189,7 @@ qyoto devel files.
 %defattr(-,root,root)
 %_kde_libdir/libqyoto.so
 %_kde_libdir/libqyotoshared.so
+%_kde_libdir/libqscintilla-sharp.so
 %_kde_includedir/qyoto
 
 #------------------------------------------------------------
@@ -242,7 +243,7 @@ ruby-qt4 devel files.
 %build
 %cmake_kde4   -DENABLE_PHP-QT=ON -DENABLE_QSCINTILLA_SHARP=ON
 
-%make
+make
 
 
 %install
