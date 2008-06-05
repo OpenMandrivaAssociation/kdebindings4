@@ -1,18 +1,21 @@
-Name:          kdebindings4
-Summary:       K Desktop Environment
-Version: 4.0.80
-Epoch:         1
-Group:         Graphical desktop/KDE
-License:       GPL
-URL:           http://www.kde.org
+%define with_ruby 0
+%{?_with_ruby: %{expand: %%global with_ruby 1}}
+
+Name:kdebindings4
+Summary: K Desktop Environment
+Version: 4.0.81
+Epoch: 1
+Group: Graphical desktop/KDE
+License: GPL
+URL: http://www.kde.org
 Release: %mkrel 2
-Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch3:        kdebindings-4.0.80-fix-pykde4-build.patch
-Patch4:        kdebindings-4.0.80-fix-lib-install.patch
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
+%if %{with_ruby}
 BuildRequires: ruby-devel
+%endif # with_ruby
 BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
@@ -80,23 +83,98 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokesoprano_major 2
-%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
+%define smokekhtml_major 2
+%define libsmokekhtml %mklibname smokekhtml %{smokekhtml_major}
 
-%package -n   %{libsmokesoprano}
+%package -n   %{libsmokekhtml}
 Summary:      KDE generic bindings library
 Group:        Development/KDE and Qt
-Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 
-%description -n %{libsmokesoprano}
+%description -n %{libsmokekhtml}
 KDE generic bindings library.
 
-%post -n %{libsmokesoprano} -p /sbin/ldconfig
-%postun -n %{libsmokesoprano} -p /sbin/ldconfig
+%post -n %{libsmokekhtml} -p /sbin/ldconfig
+%postun -n %{libsmokekhtml} -p /sbin/ldconfig
 
-%files -n %{libsmokesoprano}
+%files -n %{libsmokekhtml}
 %defattr(-,root,root)
-%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
+%_kde_libdir/libsmokekhtml.so.%{smokekhtml_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokektexteditor_major 2
+%define libsmokektexteditor %mklibname smoketexteditor %{smoketexteditor_major}
+
+%package -n   %{libsmokektexteditor}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokektexteditor}
+KDE generic bindings library.
+
+%post -n %{libsmokektexteditor} -p /sbin/ldconfig
+%postun -n %{libsmokektexteditor} -p /sbin/ldconfig
+
+%files -n %{libsmokektexteditor}
+%defattr(-,root,root)
+%_kde_libdir/libsmokektexteditor.so.%{smokektexteditor_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtuitools_major 2
+%define libsmokeqtuitools %mklibname smokeqtuitools %{smokeqtuitools_major}
+
+%package -n   %{libsmokeqtuitools}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtuitools}
+KDE generic bindings library.
+
+%post -n %{libsmokeqtuitools} -p /sbin/ldconfig
+%postun -n %{libsmokeqtuitools} -p /sbin/ldconfig
+
+%files -n %{libsmokeqtuitools}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtuitools.so.%{smokeqtuitools_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtwebkit_major 2
+%define libsmokeqtwebkit %mklibname smokeqtwebkit %{smokeqtwebkit_major}
+
+%package -n   %{libsmokeqtwebkit}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtwebkit}
+KDE generic bindings library.
+
+%post -n %{libsmokeqtwebkit} -p /sbin/ldconfig
+%postun -n %{libsmokeqtwebkit} -p /sbin/ldconfig
+
+%files -n %{libsmokeqtwebkit}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtwebkit.so.%{smokeqtwebkit_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokesolid_major 2
+%define libsmokesolid %mklibname smokesolid %{smokesolid_major}
+
+%package -n   %{libsmokesolid}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokesolid}
+KDE generic bindings library.
+
+%post -n %{libsmokesolid} -p /sbin/ldconfig
+%postun -n %{libsmokesolid} -p /sbin/ldconfig
+
+%files -n %{libsmokesolid}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesolid.so.%{smokesolid_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -145,7 +223,11 @@ Group: Development/KDE and Qt
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
-Requires: %{libsmokesoprano} = %epoch:%version-%release
+Requires: %{libsmokesolid} = %epoch:%version-%release
+Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
+Requires: %{libsmokeqtuitools} = %epoch:%version-%release
+Requires: %{libsmokektexteditor} = %epoch:%version-%release
+Requires: %{libsmokekhtml} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 
 %description -n smoke4-devel
@@ -155,10 +237,7 @@ Smoke devel files.
 %defattr(-,root,root)
 %_kde_includedir/smoke.h
 %_kde_includedir/smoke
-%_kde_libdir/libsmokekde.so
-%_kde_libdir/libsmokeqt.so
-%_kde_libdir/libsmokeqsci.so
-%_kde_libdir/libsmokesoprano.so
+%_kde_libdir/libsmoke*.so
 
 #------------------------------------------------------------
 
@@ -194,6 +273,7 @@ qyoto devel files.
 %_kde_includedir/qyoto
 
 #------------------------------------------------------------
+%if %{with_ruby}
 
 %define lib_ruby	%mklibname qtruby
 
@@ -235,15 +315,21 @@ ruby-qt4 devel files.
 %_kde_includedir/qtruby
 %_kde_libdir/libqtruby4shared.so
 
+%endif # with_ruby
+
 #------------------------------------------------------------
 
 %prep
 %setup -q -n kdebindings-%version
-%patch3 -p1
-%patch4 -p0 
 
 %build
-%cmake_kde4   -DENABLE_PHP-QT=ON -DENABLE_QSCINTILLA_SHARP=ON
+%cmake_kde4 \
+	%if ! %{with_ruby}
+	-DBUILD_ruby=FALSE \
+	%endif
+	-DENABLE_PHP-QT=ON \
+	-DENABLE_QSCINTILLA_SHARP=ON \
+	-DENABLE_SMOKEQSCI=ON
 
 make
 
