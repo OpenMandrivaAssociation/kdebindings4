@@ -74,8 +74,12 @@ Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 %description -n %{lib_smoke_kde}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{lib_smoke_kde} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{lib_smoke_kde} -p /sbin/ldconfig
+%endif
 
 %files -n %{lib_smoke_kde}
 %defattr(-,root,root)
@@ -93,8 +97,12 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokekhtml}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokekhtml} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokekhtml} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokekhtml}
 %defattr(-,root,root)
@@ -112,8 +120,12 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokektexteditor}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokektexteditor} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokektexteditor} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokektexteditor}
 %defattr(-,root,root)
@@ -131,8 +143,12 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokeqtuitools}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokeqtuitools} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokeqtuitools} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokeqtuitools}
 %defattr(-,root,root)
@@ -150,8 +166,12 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokeqtwebkit}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokeqtwebkit} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokeqtwebkit} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokeqtwebkit}
 %defattr(-,root,root)
@@ -169,8 +189,12 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokesolid}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokesolid} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokesolid} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokesolid}
 %defattr(-,root,root)
@@ -189,8 +213,12 @@ Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 %description -n %{libsmokeqsci}
 KDE generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{libsmokeqsci} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libsmokeqsci} -p /sbin/ldconfig
+%endif
 
 %files -n %{libsmokeqsci}
 %defattr(-,root,root)
@@ -208,8 +236,12 @@ Group: Development/KDE and Qt
 %description -n %{lib_smoke_qt}
 Qt generic bindings library.
 
+%if %mdkversion < 200900
 %post -n %{lib_smoke_qt} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{lib_smoke_qt} -p /sbin/ldconfig
+%endif
 
 %files -n %{lib_smoke_qt}
 %defattr(-,root,root)
