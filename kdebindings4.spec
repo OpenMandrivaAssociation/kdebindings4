@@ -103,7 +103,7 @@ KDE generic bindings library.
 #-----------------------------------------------------------------------------
 
 %define smokektexteditor_major 2
-%define libsmokektexteditor %mklibname smoketexteditor %{smoketexteditor_major}
+%define libsmokektexteditor %mklibname smoketexteditor %{smokektexteditor_major}
 
 %package -n   %{libsmokektexteditor}
 Summary:      KDE generic bindings library
