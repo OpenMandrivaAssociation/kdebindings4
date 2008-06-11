@@ -2,7 +2,7 @@
 %{?_with_ruby: %{expand: %%global with_ruby 1}}
 
 Name:kdebindings4
-Summary: K Desktop Environment
+Summary: KDE bindings to non-C++ languages
 Version: 4.0.82
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -26,7 +26,7 @@ BuildRequires: php-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
-Bindings for kde4
+KDE4 bindings to non-C++ languages
 
 #-----------------------------------------------------------------------------
 
