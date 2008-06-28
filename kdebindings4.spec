@@ -13,6 +13,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.b
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
+BuildRequires: kdebase4-workspace-devel
 %if %{with_ruby}
 BuildRequires: ruby-devel
 %endif # with_ruby
