@@ -1,6 +1,9 @@
 %define with_ruby 0
 %{?_with_ruby: %{expand: %%global with_ruby 1}}
 
+%define with_java 0
+%{?_with_java: %{expand: %%global with_java 1}}
+
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.0.84
@@ -10,6 +13,7 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+patch0:        kdebindings-4.0.84-fix-php-detection.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -22,6 +26,7 @@ BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
+BuildRequires: php-cli
 %py_requires -d
 
 BuildRoot:     %_tmppath/%name-%version-%release-root
@@ -354,6 +359,7 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
+%patch0 -p0
 
 %build
 %cmake_kde4 \
