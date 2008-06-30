@@ -14,6 +14,7 @@ URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 patch0:        kdebindings-4.0.84-fix-php-detection.patch
+patch1:        kdebindings-4.0.84-fix-sip-phonon-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -360,8 +361,10 @@ ruby-qt4 devel files.
 %prep
 %setup -q -n kdebindings-%version
 %patch0 -p0
+%patch1 -p0
 
 %build
+%define _disable_ld_as_needed 1
 %cmake_kde4 \
 	%if ! %{with_ruby}
 	-DBUILD_ruby=FALSE \
@@ -369,7 +372,8 @@ ruby-qt4 devel files.
 	-DENABLE_PHP-QT=ON \
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_SMOKEQSCI=ON \
-	-DENABLE_SMOKEKDEVPLATFORM=OFF
+	-DENABLE_SMOKEKDEVPLATFORM=OFF \
+	-DENABLE_PHONON_SMOKE=OFF
 
 make
 
