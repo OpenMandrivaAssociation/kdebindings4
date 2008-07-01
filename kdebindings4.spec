@@ -1,8 +1,10 @@
-%define with_ruby 0
-%{?_with_ruby: %{expand: %%global with_ruby 1}}
+%define _disable_ld_as_needed 1
 
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
+
+%define with_php 0
+%{?_with_php: %{expand: %%global with_php 1}}
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
@@ -13,21 +15,25 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-patch0:        kdebindings-4.0.84-fix-php-detection.patch
-patch1:        kdebindings-4.0.84-fix-sip-phonon-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
+BuildRequires: phonon-devel
+BuildRequires: akonadi-devel
+BuildRequires: soprano-devel
 BuildRequires: kdebase4-workspace-devel
-%if %{with_ruby}
+%if %{with_java}
+BuildRequires: java-devel
+%endif # with_java
 BuildRequires: ruby-devel
-%endif # with_ruby
 BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
+%if %{with_php}
 BuildRequires: php-devel
 BuildRequires: php-cli
+%endif # with_php
 %py_requires -d
 
 BuildRoot:     %_tmppath/%name-%version-%release-root
@@ -66,7 +72,7 @@ Python KDE 4 documentation
 
 %files -n python-kde4-doc
 %defattr(-,root,root)
-%_kde_docdir/*/PyKDE4
+%_kde_docdir/*/*/pykde4
 
 #-----------------------------------------------------------------------------
 
@@ -91,6 +97,52 @@ KDE generic bindings library.
 %files -n %{lib_smoke_kde}
 %defattr(-,root,root)
 %_kde_libdir/libsmokekde.so.%{lib_smoke_kde_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokephonon_major 2
+%define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+
+%package -n   %{libsmokephonon}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokephonon}
+KDE generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokephonon} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokephonon} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokephonon}
+%defattr(-,root,root)
+%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokesoprano_major 2
+%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
+
+%package -n   %{libsmokesoprano}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokesoprano}
+KDE generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokesoprano} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokesoprano} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokesoprano}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -281,18 +333,41 @@ Smoke devel files.
 #------------------------------------------------------------
 
 %package -n qyoto
-Summary: C# Mono KDE 4 bindings
+Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
-Provides: mono-kde4 = %version-%release
+Provides: mono-qt4 = %version-%release
 Requires: mono
 
 %description -n qyoto
-C# Mono KDE 4 bindings
+C# Mono Qt 4 bindings
 
 %files -n qyoto
 %defattr(-,root,root)
-%_kde_bindir/csrcc
-%_kde_bindir/uics
+%_prefix/lib/mono/2.0/qt-dotnet.dll
+%_prefix/lib/mono/2.0/qscintilla.dll
+%_prefix/lib/mono/gac/qt-dotnet
+%_prefix/lib/mono/gac/qscintilla
+
+#------------------------------------------------------------
+
+%package -n kimono
+Summary: C# Mono KDE 4 bindings
+Group: Development/KDE and Qt
+Provides: mono-kde4 = %version-%release
+Requires: qyoto
+Requires: mono
+
+%description -n kimono
+C# Mono KDE 4 bindings
+
+%files -n kimono
+%defattr(-,root,root)
+%_prefix/lib/mono/2.0/kde-dotnet.dll
+%_prefix/lib/mono/2.0/khtml.dll
+%_prefix/lib/mono/2.0/soprano.dll
+%_prefix/lib/mono/gac/kde-dotnet
+%_prefix/lib/mono/gac/khtml
+%_prefix/lib/mono/gac/soprano
 
 #------------------------------------------------------------
 
@@ -306,13 +381,32 @@ qyoto devel files.
 
 %files -n qyoto-devel
 %defattr(-,root,root)
+%_kde_bindir/csrcc
+%_kde_bindir/uics
 %_kde_libdir/libqyoto.so
 %_kde_libdir/libqyotoshared.so
 %_kde_libdir/libqscintilla-sharp.so
 %_kde_includedir/qyoto
 
 #------------------------------------------------------------
-%if %{with_ruby}
+
+%package -n kimono-devel
+Summary: Devel files for kimono
+Group: Development/KDE and Qt
+Requires: qyoto-devel = %epoch:%version-%release
+Requires: kimono = %epoch:%version-%release
+Conflicts: qyoto < 1:4.0.80-1
+
+%description -n kimono-devel
+kimono devel files.
+
+%files -n kimono-devel
+%defattr(-,root,root)
+%_kde_libdir/libkhtml-sharp.so
+%_kde_libdir/libkimono.so
+%_kde_libdir/libsoprano-sharp.so
+
+#------------------------------------------------------------
 
 %define lib_ruby	%mklibname qtruby
 
@@ -351,29 +445,28 @@ ruby-qt4 devel files.
 
 %files -n ruby-qt4-devel
 %defattr(-,root,root)
+%_kde_bindir/rbkconfig_compiler4
 %_kde_includedir/qtruby
 %_kde_libdir/libqtruby4shared.so
-
-%endif # with_ruby
 
 #------------------------------------------------------------
 
 %prep
 %setup -q -n kdebindings-%version
-%patch0 -p0
-%patch1 -p0
 
 %build
 %define _disable_ld_as_needed 1
 %cmake_kde4 \
-	%if ! %{with_ruby}
-	-DBUILD_ruby=FALSE \
+	%if ! %{with_java}
+	-DBUILD_java=FALSE \
 	%endif
-	-DENABLE_PHP-QT=ON \
+	%if ! %{with_php}
+	-DBUILD_php=TRUE \
+	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
-	-DENABLE_SMOKEQSCI=ON \
-	-DENABLE_SMOKEKDEVPLATFORM=OFF \
-	-DENABLE_PHONON_SMOKE=OFF
+	-DENABLE_QSCINTILLA_RUBY=ON \
+	-DENABLE_SOPRANO_SMOKE=ON \
+	-DENABLE_SMOKEKDEVPLATFORM=OFF
 
 make
 
