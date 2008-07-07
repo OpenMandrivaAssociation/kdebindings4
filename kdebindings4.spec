@@ -368,6 +368,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml
 %_prefix/lib/mono/gac/soprano
+%{_kde_libdir}/kde4/kimonopluginfactory.so
 
 #------------------------------------------------------------
 
