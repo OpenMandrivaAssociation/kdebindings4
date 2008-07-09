@@ -8,7 +8,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.0.85
+Version: 4.0.98
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
