@@ -364,10 +364,8 @@ C# Mono KDE 4 bindings
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/kde-dotnet.dll
 %_prefix/lib/mono/2.0/khtml.dll
-%_prefix/lib/mono/2.0/soprano.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml
-%_prefix/lib/mono/gac/soprano
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 
 #------------------------------------------------------------
@@ -405,7 +403,6 @@ kimono devel files.
 %defattr(-,root,root)
 %_kde_libdir/libkhtml-sharp.so
 %_kde_libdir/libkimono.so
-%_kde_libdir/libsoprano-sharp.so
 
 #------------------------------------------------------------
 
@@ -466,7 +463,6 @@ ruby-qt4 devel files.
 	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
-	-DENABLE_SOPRANO_SMOKE=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF
 
 make
