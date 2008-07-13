@@ -123,8 +123,8 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-#%define #smokesoprano_major 2
-#%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
+#define #smokesoprano_major 2
+#define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
 #
 #%package -n   %{libsmokesoprano}
 #Summary:      KDE generic bindings library
