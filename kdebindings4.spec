@@ -458,8 +458,8 @@ ruby-qt4 devel files.
 	%if ! %{with_java}
 	-DBUILD_java=FALSE \
 	%endif
-	%if ! %{with_php}
-	-DBUILD_php=TRUE \
+	%if %{with_php}
+	-DENABLE_PHP-QT=TRUE \
 	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
