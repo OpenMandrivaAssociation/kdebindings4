@@ -3,7 +3,7 @@
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%define with_php 0
+%define with_php 1
 %{?_with_php: %{expand: %%global with_php 1}}
 
 Name:kdebindings4
@@ -123,27 +123,27 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokesoprano_major 2
-%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
-
-%package -n   %{libsmokesoprano}
-Summary:      KDE generic bindings library
-Group:        Development/KDE and Qt
-
-%description -n %{libsmokesoprano}
-KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokesoprano} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokesoprano} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokesoprano}
-%defattr(-,root,root)
-%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
-
+#%define #smokesoprano_major 2
+#%define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
+#
+#%package -n   %{libsmokesoprano}
+#Summary:      KDE generic bindings library
+#Group:        Development/KDE and Qt
+#
+#%description -n %{libsmokesoprano}
+#KDE generic bindings library.
+#
+#%if %mdkversion < 200900
+#%post -n %{libsmokesoprano} -p /sbin/ldconfig
+#%endif
+#%if %mdkversion < 200900
+#%postun -n %{libsmokesoprano} -p /sbin/ldconfig
+#%endif
+#
+#%files -n %{libsmokesoprano}
+#%defattr(-,root,root)
+#%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
+#
 #-----------------------------------------------------------------------------
 
 %define smokekhtml_major 2
