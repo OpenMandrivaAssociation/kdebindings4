@@ -455,8 +455,8 @@ ruby-qt4 devel files.
 %build
 %define _disable_ld_as_needed 1
 %cmake_kde4 \
-	%if ! %{with_java}
-	-DBUILD_java=FALSE \
+	%if %{with_java}
+	-DENABLE_KROSSJAVA=TRUE \
 	%endif
 	%if %{with_php}
 	-DENABLE_PHP-QT=TRUE \
