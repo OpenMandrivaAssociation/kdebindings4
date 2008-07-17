@@ -3,7 +3,7 @@
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%define with_php 1
+%define with_php 0
 %{?_with_php: %{expand: %%global with_php 1}}
 
 Name:kdebindings4
@@ -13,7 +13,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
@@ -337,6 +337,7 @@ Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-qt4 = %version-%release
 Requires: mono
+Conflicts: qyoto-devel < 1:4.0.98-2
 
 %description -n qyoto
 C# Mono Qt 4 bindings
@@ -347,6 +348,9 @@ C# Mono Qt 4 bindings
 %_prefix/lib/mono/2.0/qscintilla.dll
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
+%_kde_libdir/libqyoto.so
+%_kde_libdir/libqyotoshared.so
+%_kde_libdir/libqscintilla-sharp.so
 
 #------------------------------------------------------------
 
@@ -367,6 +371,8 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml
 %{_kde_libdir}/kde4/kimonopluginfactory.so
+%_kde_libdir/libkhtml-sharp.so
+%_kde_libdir/libkimono.so
 
 #------------------------------------------------------------
 
@@ -375,6 +381,7 @@ Summary: Header files for qyoto
 Group: Development/KDE and Qt
 Requires: qyoto = %epoch:%version-%release
 Conflicts: qyoto < 1:4.0.80-1
+
 %description -n qyoto-devel
 qyoto devel files.
 
@@ -382,9 +389,6 @@ qyoto devel files.
 %defattr(-,root,root)
 %_kde_bindir/csrcc
 %_kde_bindir/uics
-%_kde_libdir/libqyoto.so
-%_kde_libdir/libqyotoshared.so
-%_kde_libdir/libqscintilla-sharp.so
 %_kde_includedir/qyoto
 
 #------------------------------------------------------------
@@ -401,8 +405,6 @@ kimono devel files.
 
 %files -n kimono-devel
 %defattr(-,root,root)
-%_kde_libdir/libkhtml-sharp.so
-%_kde_libdir/libkimono.so
 
 #------------------------------------------------------------
 
@@ -410,7 +412,7 @@ kimono devel files.
 
 %package -n ruby-qt4
 Summary: Qt bindings for Ruby
-Group:		Development/KDE and Qt
+Group: Development/KDE and Qt
 Provides: qtruby = %{epoch}:%{version}-%{release}
 Obsoletes: %{lib_ruby} < 3.5.1
 Obsoletes: %{lib_ruby}1 < 3.5.1
@@ -418,19 +420,53 @@ Obsoletes: %{lib_ruby}1-devel < 3.5.1
 Obsoletes: qtruby < 3.5.5
 
 %description -n ruby-qt4
-A binding for Ruby language.
+A qt4 bindings for Ruby language.
 
 %files -n ruby-qt4
 %defattr(-,root,root)
 %_kde_bindir/rbqtapi
-%_kde_bindir/rbrcc
-%_kde_bindir/rbuic4
+%_kde_libdir/libqtruby4shared.so
+%_kde_datadir/applications/kde4/dbpedia_references.desktop
+%_kde_appsdir/dbpedia_references
+%_prefix/lib/ruby/site_ruby/*/*/qscintilla.so
+%_prefix/lib/ruby/site_ruby/*/*/qtruby4.so
+%_prefix/lib/ruby/site_ruby/*/*/qtuitools.so
+%_prefix/lib/ruby/site_ruby/*/*/qtwebkit.so
+%_prefix/lib/ruby/site_ruby/*/Qt.rb
+%_prefix/lib/ruby/site_ruby/*/Qt3.rb
+%_prefix/lib/ruby/site_ruby/*/Qt4.rb
+%_prefix/lib/ruby/site_ruby/*/Qt
+%_prefix/lib/ruby/site_ruby/*/qscintilla
+%_prefix/lib/ruby/site_ruby/*/qtuitools
+%_prefix/lib/ruby/site_ruby/*/qtwebkit
+
+#------------------------------------------------------------
+
+%package -n ruby-kde4
+Summary: KDE bindings for Ruby
+Group: Development/KDE and Qt
+Provides: kderuby = %{epoch}:%{version}-%{release}
+Obsoletes: qtruby < 3.5.5
+Conflicts: ruby-qt4 < 1:4.0.98-2
+
+%description -n ruby-kde4
+A kde4 bindings for Ruby language.
+
+%files -n ruby-kde4
+%defattr(-,root,root)
 %_kde_bindir/krubyapplication
 %_kde_libdir/kde4/krossruby.so
 %_kde_libdir/kde4/krubypluginfactory.so
-%_prefix/lib/ruby/site_ruby/*/*
-%_kde_appsdir/dbpedia_references
-%_kde_datadir/applications/kde4/dbpedia_references.desktop
+%_prefix/lib/ruby/site_ruby/*/*/khtml.so
+%_prefix/lib/ruby/site_ruby/*/*/korundum4.so
+%_prefix/lib/ruby/site_ruby/*/*/ktexteditor.so
+%_prefix/lib/ruby/site_ruby/*/*/phonon.so
+%_prefix/lib/ruby/site_ruby/*/*/solid.so
+%_prefix/lib/ruby/site_ruby/*/KDE
+%_prefix/lib/ruby/site_ruby/*/khtml
+%_prefix/lib/ruby/site_ruby/*/ktexteditor
+%_prefix/lib/ruby/site_ruby/*/phonon
+%_prefix/lib/ruby/site_ruby/*/solid
 
 #------------------------------------------------------------
 
@@ -438,14 +474,34 @@ A binding for Ruby language.
 Summary: Header files for ruby-qt4
 Group: Development/KDE and Qt
 Requires: ruby-qt4
+Conflicts: ruby-qt4 < 1:4.0.98-2
+
 %description -n ruby-qt4-devel
 ruby-qt4 devel files.
 
 %files -n ruby-qt4-devel
 %defattr(-,root,root)
+%_kde_bindir/rbrcc
+%_kde_bindir/rbuic4
 %_kde_bindir/rbkconfig_compiler4
 %_kde_includedir/qtruby
-%_kde_libdir/libqtruby4shared.so
+
+#------------------------------------------------------------
+
+%package -n ruby-kde4-devel
+Summary: Header files for ruby-qt4
+Group: Development/KDE and Qt
+Requires: ruby-qt4-devel
+
+%description -n ruby-kde4-devel
+ruby-qt4 devel files.
+
+%files -n ruby-kde4-devel
+%defattr(-,root,root)
+%_kde_bindir/rbrcc
+%_kde_bindir/rbuic4
+%_kde_bindir/rbkconfig_compiler4
+%_kde_includedir/qtruby
 
 #------------------------------------------------------------
 
