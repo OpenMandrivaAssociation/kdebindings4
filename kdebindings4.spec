@@ -285,6 +285,75 @@ KDE generic bindings library.
 
 #------------------------------------------------------------
 
+%define lib_smokesoprano_major 2
+%define lib_smokesoprano %mklibname smokesoprano %{lib_smokesoprano_major}
+
+%package -n %{lib_smokesoprano}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{lib_smokesoprano}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{lib_smokesoprano} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{lib_smokesoprano} -p /sbin/ldconfig
+%endif
+
+%files -n %{lib_smokesoprano}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesoprano.so.%{lib_smokesoprano_major}*
+
+#------------------------------------------------------------
+
+%define lib_smokeqtscript_major 2
+%define lib_smokeqtscript %mklibname smokeqtscript %{lib_smokeqtscript_major}
+
+%package -n %{lib_smokeqtscript}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{lib_smokeqtscript}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{lib_smokeqtscript} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{lib_smokeqtscript} -p /sbin/ldconfig
+%endif
+
+%files -n %{lib_smokeqtscript}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtscript.so.%{lib_smokeqtscript_major}*
+
+#------------------------------------------------------------
+
+%define lib_smokenepomuk_major 2
+%define lib_smokenepomuk %mklibname smokenepomuk %{lib_smokenepomuk_major}
+
+%package -n %{lib_smokenepomuk}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{lib_smokenepomuk}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{lib_smokenepomuk} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{lib_smokenepomuk} -p /sbin/ldconfig
+%endif
+
+%files -n %{lib_smokenepomuk}
+%defattr(-,root,root)
+%_kde_libdir/libsmokenepomuk.so.%{lib_smokenepomuk_major}*
+
+#------------------------------------------------------------
+
 %define lib_smoke_qt_major 2
 %define lib_smoke_qt %mklibname smokeqt %{lib_smoke_qt_major}
 
@@ -346,11 +415,20 @@ C# Mono Qt 4 bindings
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/qt-dotnet.dll
 %_prefix/lib/mono/2.0/qscintilla.dll
+%_prefix/lib/mono/2.0/qtscript.dll
+%_prefix/lib/mono/2.0/qtuitools.dll
+%_prefix/lib/mono/2.0/qtwebkit.dll
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
+%_prefix/lib/mono/gac/qtscript
+%_prefix/lib/mono/gac/qtwebkit
+%_prefix/lib/mono/gac/qtuitools
 %_kde_libdir/libqyoto.so
 %_kde_libdir/libqyotoshared.so
 %_kde_libdir/libqscintilla-sharp.so
+%_kde_libdir/libqtscript-sharp.so
+%_kde_libdir/libqtuitools-sharp.so
+%_kde_libdir/libqtwebkit-sharp.so
 
 #------------------------------------------------------------
 
@@ -368,10 +446,16 @@ C# Mono KDE 4 bindings
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/kde-dotnet.dll
 %_prefix/lib/mono/2.0/khtml.dll
+%_prefix/lib/mono/2.0/soprano.dll
+%_prefix/lib/mono/2.0/nepomuk.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml
+%_prefix/lib/mono/gac/soprano
+%_prefix/lib/mono/gac/nepomuk
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
+%_kde_libdir/libnepomuk-sharp.so
+%_kde_libdir/libsoprano-sharp.so
 %_kde_libdir/libkimono.so
 
 #------------------------------------------------------------
@@ -432,6 +516,7 @@ A qt4 bindings for Ruby language.
 %_prefix/lib/ruby/site_ruby/*/*/qtruby4.so
 %_prefix/lib/ruby/site_ruby/*/*/qtuitools.so
 %_prefix/lib/ruby/site_ruby/*/*/qtwebkit.so
+%_prefix/lib/ruby/site_ruby/*/*/qtscript.so
 %_prefix/lib/ruby/site_ruby/*/Qt.rb
 %_prefix/lib/ruby/site_ruby/*/Qt3.rb
 %_prefix/lib/ruby/site_ruby/*/Qt4.rb
@@ -439,6 +524,7 @@ A qt4 bindings for Ruby language.
 %_prefix/lib/ruby/site_ruby/*/qscintilla
 %_prefix/lib/ruby/site_ruby/*/qtuitools
 %_prefix/lib/ruby/site_ruby/*/qtwebkit
+%_prefix/lib/ruby/site_ruby/*/qtscript
 
 #------------------------------------------------------------
 
@@ -462,10 +548,14 @@ A kde4 bindings for Ruby language.
 %_prefix/lib/ruby/site_ruby/*/*/ktexteditor.so
 %_prefix/lib/ruby/site_ruby/*/*/phonon.so
 %_prefix/lib/ruby/site_ruby/*/*/solid.so
+%_prefix/lib/ruby/site_ruby/*/*/soprano.so
+%_prefix/lib/ruby/site_ruby/*/*/nepomuk.so
 %_prefix/lib/ruby/site_ruby/*/KDE
 %_prefix/lib/ruby/site_ruby/*/khtml
 %_prefix/lib/ruby/site_ruby/*/ktexteditor
 %_prefix/lib/ruby/site_ruby/*/phonon
+%_prefix/lib/ruby/site_ruby/*/soprano
+%_prefix/lib/ruby/site_ruby/*/nepomuk
 %_prefix/lib/ruby/site_ruby/*/solid
 
 #------------------------------------------------------------
