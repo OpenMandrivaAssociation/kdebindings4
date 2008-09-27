@@ -8,12 +8,12 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.1.0
+Version: 4.1.2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
