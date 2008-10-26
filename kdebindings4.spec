@@ -3,7 +3,7 @@
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%define with_php 0
+%define with_php 1
 %{?_with_php: %{expand: %%global with_php 1}}
 
 Name:kdebindings4
@@ -484,6 +484,19 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
 
+#------------------------------------------------------------
+
+%package -n phpqt
+Summary: PHP KDE 4 bindings
+Group: Development/KDE and Qt
+
+%description -n phpqt
+PHP KDE 4 bindings
+
+%files -n phpqt
+%defattr(-,root,root)
+%_kde_bindir/uicp
+%_kde_libdir/php/extensions/php_qt.so
 #------------------------------------------------------------
 
 %package -n kimono
