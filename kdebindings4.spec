@@ -31,6 +31,7 @@ BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
+BuildRequires: akonadi-devel
 %if %{with_php}
 BuildRequires: php-devel
 BuildRequires: php-cli
