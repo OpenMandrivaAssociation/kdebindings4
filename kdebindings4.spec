@@ -21,6 +21,7 @@ BuildRequires: cmake
 BuildRequires: kdelibs4-devel
 #BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
+BuildRequires: kdepimlibs4-devel
 BuildRequires: soprano-devel
 BuildRequires: kdebase4-workspace-devel
 %if %{with_java}
@@ -31,7 +32,6 @@ BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
-BuildRequires: akonadi-devel
 %if %{with_php}
 BuildRequires: php-devel
 BuildRequires: php-cli
