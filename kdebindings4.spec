@@ -13,7 +13,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-#Release: %mkrel 1
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0:        kdebindings-4.1.71-disable-nepomuk.patch
 BuildRequires: kde4-macros
@@ -489,6 +489,7 @@ C# Mono Qt 4 bindings
 %package -n phpqt
 Summary: PHP KDE 4 bindings
 Group: Development/KDE and Qt
+Requires: php-cli
 
 %description -n phpqt
 PHP KDE 4 bindings
@@ -745,6 +746,7 @@ ruby-qt4 devel files.
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF
 
+# Do not enale %make, this is broken for the moment
 make
 
 
