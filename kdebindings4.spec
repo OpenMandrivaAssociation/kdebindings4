@@ -8,17 +8,18 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.1.2
+Version: 4.1.71
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Patch0:        kdebindings-4.1.71-disable-nepomuk.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
-BuildRequires: phonon-devel
+#BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
 BuildRequires: soprano-devel
 BuildRequires: kdebase4-workspace-devel
@@ -60,6 +61,7 @@ Python KDE 4
 %_datadir/sip/PyKDE4/*
 %_kde_appsdir/pykde4
 %_kde_libdir/kde4/krosspython.so
+%_kde_libdir/kde4/kpythonpluginfactory.so
 
 #-----------------------------------------------------------------------------
 
@@ -100,27 +102,27 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokephonon_major 2
-%define libsmokephonon %mklibname smokephonon %{smokephonon_major}
-
-%package -n   %{libsmokephonon}
-Summary:      KDE generic bindings library
-Group:        Development/KDE and Qt
-
-%description -n %{libsmokephonon}
-KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokephonon} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokephonon} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokephonon}
-%defattr(-,root,root)
-%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
-
+#define smokephonon_major 2
+#define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+#
+#%package -n   %{libsmokephonon}
+#Summary:      KDE generic bindings library
+#Group:        Development/KDE and Qt
+#
+#%description -n %{libsmokephonon}
+#KDE generic bindings library.
+#
+#%if %mdkversion < 200900
+#%post -n %{libsmokephonon} -p /sbin/ldconfig
+#%endif
+#%if %mdkversion < 200900
+#%postun -n %{libsmokephonon} -p /sbin/ldconfig
+#%endif
+#
+#%files -n %{libsmokephonon}
+#%defattr(-,root,root)
+#%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+#
 #-----------------------------------------------------------------------------
 
 #define #smokesoprano_major 2
@@ -330,28 +332,28 @@ Qt generic bindings library.
 %_kde_libdir/libsmokeqtscript.so.%{lib_smokeqtscript_major}*
 
 #------------------------------------------------------------
-
-%define lib_smokenepomuk_major 2
-%define lib_smokenepomuk %mklibname smokenepomuk %{lib_smokenepomuk_major}
-
-%package -n %{lib_smokenepomuk}
-Summary: Qt generic bindings library
-Group: Development/KDE and Qt
-
-%description -n %{lib_smokenepomuk}
-Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{lib_smokenepomuk} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{lib_smokenepomuk} -p /sbin/ldconfig
-%endif
-
-%files -n %{lib_smokenepomuk}
-%defattr(-,root,root)
-%_kde_libdir/libsmokenepomuk.so.%{lib_smokenepomuk_major}*
-
+#
+#define lib_smokenepomuk_major 
+#define lib_smokenepomuk %mklibname smokenepomuk %{lib_smokenepomuk_major}
+#
+#%package -n %{lib_smokenepomuk}
+#Summary: Qt generic bindings library
+#Group: Development/KDE and Qt
+#
+#%description -n %{lib_smokenepomuk}
+#Qt generic bindings library.
+#
+#%if %mdkversion < 200900
+#%post -n %{lib_smokenepomuk} -p /sbin/ldconfig
+#%endif
+#%if %mdkversion < 200900
+#%postun -n %{lib_smokenepomuk} -p /sbin/ldconfig
+#%endif
+#
+#%files -n %{lib_smokenepomuk}
+#%defattr(-,root,root)
+#%_kde_libdir/libsmokenepomuk.so.%{lib_smokenepomuk_major}*
+#
 #------------------------------------------------------------
 
 %define lib_smoke_qt_major 2
@@ -377,9 +379,57 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
+%define libsmokeakonadi_major 2
+%define libsmokeakonadi %mklibname smokeakonadi %{libsmokeakonadi_major}
+
+%package -n %{libsmokeakonadi}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeakonadi}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokeakonadi} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokeakonadi} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokeakonadi}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeakonadi.so.%{libsmokeakonadi_major}*
+
+#------------------------------------------------------------
+
+%define libsmokeplasma_major 2
+%define libsmokeplasma %mklibname smokeplasma %{libsmokeplasma_major}
+
+%package -n %{libsmokeplasma}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeplasma}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokeplasma} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokeplasma} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokeplasma}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeplasma.so.%{libsmokeplasma_major}*
+
+#------------------------------------------------------------
+
 %package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
+Requires: %{libsmokeplasma} = %epoch:%version-%release
+Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
@@ -429,6 +479,9 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtscript-sharp.so
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
+%_kde_libdir/libakonadi-sharp.so
+%_kde_libdir/libktexteditor-sharp.so
+%_kde_libdir/libplasma-sharp.so
 
 #------------------------------------------------------------
 
@@ -436,7 +489,7 @@ C# Mono Qt 4 bindings
 Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-kde4 = %version-%release
-Requires: qyoto
+Requires: qyoto = %epoch:%version-%release
 Requires: mono
 
 %description -n kimono
@@ -447,16 +500,47 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/2.0/kde-dotnet.dll
 %_prefix/lib/mono/2.0/khtml.dll
 %_prefix/lib/mono/2.0/soprano.dll
-%_prefix/lib/mono/2.0/nepomuk.dll
+#%_prefix/lib/mono/2.0/nepomuk.dll
+%_prefix/lib/mono/2.0/akonadi.dll
+%_prefix/lib/mono/2.0/ktexteditor-dotnet.dll
+%_prefix/lib/mono/2.0/plasma.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml
 %_prefix/lib/mono/gac/soprano
-%_prefix/lib/mono/gac/nepomuk
+%_prefix/lib/mono/gac/akonadi
+%_prefix/lib/mono/gac/ktexteditor-dotnet
+%_prefix/lib/mono/gac/plasma
+#%_prefix/lib/mono/gac/nepomuk
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
-%_kde_libdir/libnepomuk-sharp.so
+#%_kde_libdir/libnepomuk-sharp.so
 %_kde_libdir/libsoprano-sharp.so
 %_kde_libdir/libkimono.so
+%_kde_appsdir/plasma_scriptengine_kimono
+
+
+#------------------------------------------------------------
+
+%define libqyotoshared_major 1
+%define libqyotoshared %mklibname qyotoshared %{libqyotoshared_major}
+
+%package -n %{libqyotoshared}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libqyotoshared}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libqyotoshared} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libqyotoshared} -p /sbin/ldconfig
+%endif
+
+%files -n %{libqyotoshared}
+%defattr(-,root,root)
+%_kde_libdir/libqyotoshared.so.%{libqyotoshared_major}*
 
 #------------------------------------------------------------
 
@@ -464,6 +548,7 @@ C# Mono KDE 4 bindings
 Summary: Header files for qyoto
 Group: Development/KDE and Qt
 Requires: qyoto = %epoch:%version-%release
+Requires:  %{libqyotoshared} = %epoch:%version-%release
 Conflicts: qyoto < 1:4.0.80-1
 
 %description -n qyoto-devel
@@ -525,6 +610,17 @@ A qt4 bindings for Ruby language.
 %_prefix/lib/ruby/site_ruby/*/qtuitools
 %_prefix/lib/ruby/site_ruby/*/qtwebkit
 %_prefix/lib/ruby/site_ruby/*/qtscript
+%_prefix/lib/ruby/site_ruby/*/akonadi
+%_prefix/lib/ruby/site_ruby/*/*/akonadi.so
+%_prefix/lib/ruby/site_ruby/*/*/plasma_applet.so
+%_kde_appsdir/plasma_ruby_web_applet/web_applet.rb
+%_kde_appsdir/plasma_scriptengine_ruby
+%_kde_datadir/kde4/services/plasma-ruby-applet-web.desktop
+%_kde_datadir/kde4/services/plasma-scriptengine-kimono-applet.desktop
+%_kde_datadir/kde4/services/plasma-scriptengine-kimono-dataengine.desktop
+%_kde_datadir/kde4/services/plasma-scriptengine-ruby-applet.desktop
+%_kde_datadir/kde4/services/plasma-scriptengine-ruby-dataengine.desktop
+%_kde_datadir/kde4/services/plasma-scriptengine-ruby-package.desktop
 
 #------------------------------------------------------------
 
@@ -546,24 +642,47 @@ A kde4 bindings for Ruby language.
 %_prefix/lib/ruby/site_ruby/*/*/khtml.so
 %_prefix/lib/ruby/site_ruby/*/*/korundum4.so
 %_prefix/lib/ruby/site_ruby/*/*/ktexteditor.so
-%_prefix/lib/ruby/site_ruby/*/*/phonon.so
 %_prefix/lib/ruby/site_ruby/*/*/solid.so
 %_prefix/lib/ruby/site_ruby/*/*/soprano.so
-%_prefix/lib/ruby/site_ruby/*/*/nepomuk.so
+#%_prefix/lib/ruby/site_ruby/*/*/nepomuk.so
 %_prefix/lib/ruby/site_ruby/*/KDE
 %_prefix/lib/ruby/site_ruby/*/khtml
 %_prefix/lib/ruby/site_ruby/*/ktexteditor
-%_prefix/lib/ruby/site_ruby/*/phonon
 %_prefix/lib/ruby/site_ruby/*/soprano
-%_prefix/lib/ruby/site_ruby/*/nepomuk
+#%_prefix/lib/ruby/site_ruby/*/nepomuk
 %_prefix/lib/ruby/site_ruby/*/solid
+
+
+#------------------------------------------------------------
+
+%define libqtruby4shared_major 2
+%define libqtruby4shared %mklibname qtruby4shared %{libqtruby4shared_major}
+
+%package -n %{libqtruby4shared}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libqtruby4shared}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libqtruby4shared} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libqtruby4shared} -p /sbin/ldconfig
+%endif
+
+%files -n %{libqtruby4shared}
+%defattr(-,root,root)
+%_kde_libdir/libqtruby4shared.so.%{libqtruby4shared_major}*
 
 #------------------------------------------------------------
 
 %package -n ruby-qt4-devel
 Summary: Header files for ruby-qt4
 Group: Development/KDE and Qt
-Requires: ruby-qt4
+Requires: ruby-qt4= %epoch:%version-%release
+Requires: %{libqtruby4shared}= %epoch:%version-%release
 Conflicts: ruby-qt4 < 1:4.0.98-2
 
 %description -n ruby-qt4-devel
@@ -581,7 +700,7 @@ ruby-qt4 devel files.
 %package -n ruby-kde4-devel
 Summary: Header files for ruby-qt4
 Group: Development/KDE and Qt
-Requires: ruby-qt4-devel
+Requires: ruby-qt4-devel= %epoch:%version-%release
 
 %description -n ruby-kde4-devel
 ruby-qt4 devel files.
@@ -597,6 +716,7 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
+%patch0 -p0
 
 %build
 %define _disable_ld_as_needed 1
