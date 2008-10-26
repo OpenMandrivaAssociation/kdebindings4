@@ -13,7 +13,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-#Release: %mkrel 1
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0:        kdebindings-4.1.71-disable-nepomuk.patch
 BuildRequires: kde4-macros
