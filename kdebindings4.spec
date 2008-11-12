@@ -696,8 +696,8 @@ Qt generic bindings library.
 %package -n ruby-qt4-devel
 Summary: Header files for ruby-qt4
 Group: Development/KDE and Qt
-Requires: ruby-qt4= %epoch:%version-%release
-Requires: %{libqtruby4shared}= %epoch:%version-%release
+Requires: ruby-qt4 = %epoch:%version-%release
+Requires: %{libqtruby4shared} = %epoch:%version-%release
 Conflicts: ruby-qt4 < 1:4.0.98-2
 
 %description -n ruby-qt4-devel
@@ -715,7 +715,7 @@ ruby-qt4 devel files.
 %package -n ruby-kde4-devel
 Summary: Header files for ruby-qt4
 Group: Development/KDE and Qt
-Requires: ruby-qt4-devel= %epoch:%version-%release
+Requires: ruby-qt4-devel = %epoch:%version-%release
 
 %description -n ruby-kde4-devel
 ruby-qt4 devel files.
