@@ -16,6 +16,7 @@ URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0:        kdebindings-4.1.71-disable-nepomuk.patch
+Patch1:		qyoto-4.1.73-map-shared-lib.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -457,7 +458,7 @@ Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-qt4 = %version-%release
 Requires: mono
-Conflicts: qyoto-devel < 1:4.0.98-2
+Conflicts: qyoto-devel < 1:4.1.73
 
 %description -n qyoto
 C# Mono Qt 4 bindings
@@ -465,6 +466,7 @@ C# Mono Qt 4 bindings
 %files -n qyoto
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/qt-dotnet.dll
+%_prefix/lib/mono/2.0/qt-dotnet.dll.config
 %_prefix/lib/mono/2.0/qscintilla.dll
 %_prefix/lib/mono/2.0/qtscript.dll
 %_prefix/lib/mono/2.0/qtuitools.dll
@@ -475,7 +477,6 @@ C# Mono Qt 4 bindings
 %_prefix/lib/mono/gac/qtwebkit
 %_prefix/lib/mono/gac/qtuitools
 %_kde_libdir/libqyoto.so
-%_kde_libdir/libqyotoshared.so
 %_kde_libdir/libqscintilla-sharp.so
 %_kde_libdir/libqtscript-sharp.so
 %_kde_libdir/libqtuitools-sharp.so
@@ -564,7 +565,7 @@ Summary: Header files for qyoto
 Group: Development/KDE and Qt
 Requires: qyoto = %epoch:%version-%release
 Requires:  %{libqyotoshared} = %epoch:%version-%release
-Conflicts: qyoto < 1:4.0.80-1
+Conflicts: qyoto < 1:4.1.73
 
 %description -n qyoto-devel
 qyoto devel files.
@@ -574,6 +575,7 @@ qyoto devel files.
 %_kde_bindir/csrcc
 %_kde_bindir/uics
 %_kde_includedir/qyoto
+%_kde_libdir/libqyotoshared.so
 
 #------------------------------------------------------------
 
@@ -732,6 +734,7 @@ ruby-qt4 devel files.
 %prep
 %setup -q -n kdebindings-%version
 %patch0 -p0
+%patch1 -p0
 
 %build
 %define _disable_ld_as_needed 1
