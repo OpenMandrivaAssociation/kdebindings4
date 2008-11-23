@@ -76,7 +76,7 @@ Python KDE 4 documentation
 
 %files -n python-kde4-doc
 %defattr(-,root,root)
-%_kde_docdir/*/*/pykde4
+#%_kde_docdir/*/*/pykde4
 
 #-----------------------------------------------------------------------------
 
@@ -466,7 +466,7 @@ C# Mono Qt 4 bindings
 %files -n qyoto
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/qt-dotnet.dll
-%_prefix/lib/mono/2.0/qt-dotnet.dll.config
+%_kde_libdir/qt-dotnet.dll.config
 %_prefix/lib/mono/2.0/qscintilla.dll
 %_prefix/lib/mono/2.0/qtscript.dll
 %_prefix/lib/mono/2.0/qtuitools.dll
@@ -484,6 +484,8 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libakonadi-sharp.so
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
+%_kde_libdir/libnepomuk-sharp.so
+%_kde_libdir/libqttest-sharp.so
 
 #------------------------------------------------------------
 
@@ -497,7 +499,7 @@ PHP KDE 4 bindings
 
 %files -n phpqt
 %defattr(-,root,root)
-%_kde_bindir/uicp
+%_kde_bindir/phpuic
 %_kde_libdir/php/extensions/php_qt.so
 #------------------------------------------------------------
 
@@ -514,19 +516,22 @@ C# Mono KDE 4 bindings
 %files -n kimono
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/kde-dotnet.dll
-%_prefix/lib/mono/2.0/khtml.dll
+%_prefix/lib/mono/2.0/khtml-dll.dll
 %_prefix/lib/mono/2.0/soprano.dll
-#%_prefix/lib/mono/2.0/nepomuk.dll
+#%_prefix/lib/mono/2.0/nepomuk-dll.dll
 %_prefix/lib/mono/2.0/akonadi.dll
 %_prefix/lib/mono/2.0/ktexteditor-dotnet.dll
-%_prefix/lib/mono/2.0/plasma.dll
+%_prefix/lib/mono/2.0/plasma-dll.dll
+%_prefix/lib/mono/2.0/nepomuk-dll.dll
+%_prefix/lib/mono/2.0/qttest.dll
+%_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/kde-dotnet
-%_prefix/lib/mono/gac/khtml
+%_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
 %_prefix/lib/mono/gac/akonadi
 %_prefix/lib/mono/gac/ktexteditor-dotnet
-%_prefix/lib/mono/gac/plasma
-#%_prefix/lib/mono/gac/nepomuk
+%_prefix/lib/mono/gac/plasma-dll
+%_prefix/lib/mono/gac/nepomuk-dll
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
 #%_kde_libdir/libnepomuk-sharp.so
@@ -557,6 +562,52 @@ Qt generic bindings library.
 %files -n %{libqyotoshared}
 %defattr(-,root,root)
 %_kde_libdir/libqyotoshared.so.%{libqyotoshared_major}*
+
+#------------------------------------------------------------
+
+%define libsmokenepomuk_major 2
+%define libsmokenepomuk %mklibname smokenepomuk %{libsmokenepomuk_major}
+
+%package -n %{libsmokenepomuk}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokenepomuk}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokenepomuk} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokenepomuk} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokenepomuk}
+%defattr(-,root,root)
+%_kde_libdir/libsmokenepomuk.so.%{libsmokenepomuk_major}*
+
+#------------------------------------------------------------
+
+%define libsmokeqttest_major 2
+%define libsmokeqttest %mklibname smokeqttest %{libsmokeqttest_major}
+
+%package -n %{libsmokeqttest}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeqttest}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokeqttest} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokeqttest} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokeqttest}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqttest.so.%{libsmokeqttest_major}*
 
 #------------------------------------------------------------
 
@@ -619,6 +670,9 @@ A qt4 bindings for Ruby language.
 %ruby_sitearchdir/qtuitools.so
 %ruby_sitearchdir/qtwebkit.so
 %ruby_sitearchdir/qtscript.so
+%ruby_sitearchdir/qttest.so
+%ruby_sitearchdir/akonadi.so
+%ruby_sitearchdir/plasma_applet.so
 %ruby_sitelibdir/Qt.rb
 %ruby_sitelibdir/Qt3.rb
 %ruby_sitelibdir/Qt4.rb
@@ -628,16 +682,10 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/qtwebkit
 %ruby_sitelibdir/qtscript
 %ruby_sitelibdir/akonadi
-%ruby_sitearchdir/akonadi.so
-%ruby_sitearchdir/plasma_applet.so
-%_kde_appsdir/plasma_ruby_web_applet/web_applet.rb
-%_kde_appsdir/plasma_scriptengine_ruby
-%_kde_datadir/kde4/services/plasma-ruby-applet-web.desktop
+%ruby_sitelibdir/qttest
+
 %_kde_datadir/kde4/services/plasma-scriptengine-kimono-applet.desktop
 %_kde_datadir/kde4/services/plasma-scriptengine-kimono-dataengine.desktop
-%_kde_datadir/kde4/services/plasma-scriptengine-ruby-applet.desktop
-%_kde_datadir/kde4/services/plasma-scriptengine-ruby-dataengine.desktop
-%_kde_datadir/kde4/services/plasma-scriptengine-ruby-package.desktop
 
 #------------------------------------------------------------
 
@@ -747,6 +795,7 @@ ruby-qt4 devel files.
 	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
+    -DENABLE_PHONON_SMOKE=FALSE \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF
 
 # Do not enale %make, this is broken for the moment
