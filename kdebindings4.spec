@@ -23,7 +23,7 @@ BuildRequires: kdelibs4-devel
 BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: soprano-devel
-BuildRequires: plasma-devel
+BuildRequires: kdebase4-workspace-devel
 %if %{with_java}
 BuildRequires: java-devel
 %endif # with_java
