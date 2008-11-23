@@ -36,7 +36,7 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 %endif # with_php
-
+BuildRequires: falcon-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -500,6 +500,21 @@ PHP KDE 4 bindings
 %defattr(-,root,root)
 %_kde_bindir/phpuic
 %_kde_libdir/php/extensions/php_qt.so
+
+#------------------------------------------------------------
+
+%package -n falcon-kde4
+Summary: Falcon KDE 4 bindings
+Group: Development/KDE and Qt
+Requires: falcon
+
+%description -n falcon-kde4
+Falcon KDE 4 bindings
+
+%files -n falcon-kde4
+%defattr(-,root,root)
+%_kde_libdir/kde4/krossfalcon.so
+
 #------------------------------------------------------------
 
 %package -n kimono
@@ -796,7 +811,8 @@ ruby-qt4 devel files.
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_PHONON_SMOKE=FALSE \
 	-DCMAKE_MODULE_LINKER_FLAGS='-module %{?!_disable_ld_as_needed: -Wl,--as-needed}' \
-	-DENABLE_SMOKEKDEVPLATFORM=OFF
+	-DENABLE_SMOKEKDEVPLATFORM=OFF \
+    -DENABLE_KROSSFALCON=ON
 
 %make
 
