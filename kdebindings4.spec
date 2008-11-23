@@ -15,8 +15,9 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch1:		qyoto-4.1.73-map-shared-lib.patch
-Patch2:     kdebindings-4.1.80-fix-build.patch
+Patch1: qyoto-4.1.73-map-shared-lib.patch
+Patch2: kdebindings-4.1.80-fix-build.patch
+Patch3: kdebindings-4.1.80-parallel-build.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -783,9 +784,9 @@ ruby-qt4 devel files.
 %setup -q -n kdebindings-%version
 %patch1 -p0
 %patch2 -p1
+%patch3 -p0 -b .orig
 
 %build
-%define _disable_ld_as_needed 1
 %cmake_kde4 \
 	%if %{with_java}
 	-DENABLE_KROSSJAVA=TRUE \
@@ -795,17 +796,15 @@ ruby-qt4 devel files.
 	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
-    -DENABLE_PHONON_SMOKE=FALSE \
+	-DENABLE_PHONON_SMOKE=FALSE \
+	-DCMAKE_MODULE_LINKER_FLAGS='-module %{?!_disable_ld_as_needed: -Wl,--as-needed}' \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF
 
-# Do not enale %make, this is broken for the moment
-make
-
+%make
 
 %install
 rm -fr %buildroot
-
-make -C build DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean
 rm -fr %buildroot
