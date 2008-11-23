@@ -36,7 +36,6 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 %endif # with_php
-%py_requires -d
 
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
@@ -51,6 +50,7 @@ Group: Development/KDE and Qt
 Provides: PyKDE4 = %version-%release
 Requires: python-qt4
 Requires: python-sip
+%py_requires -d
 
 %description -n python-kde4
 Python KDE 4
