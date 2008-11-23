@@ -1,5 +1,3 @@
-%define _disable_ld_as_needed 1
-
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
