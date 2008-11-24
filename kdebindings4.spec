@@ -800,6 +800,9 @@ ruby-qt4 devel files.
 %patch3 -p0 -b .orig
 
 %build
+%if %{with_java}
+export JAVA_HOME=%{java_home}
+%endif
 %cmake_kde4 \
 	%if %{with_java}
 	-DENABLE_KROSSJAVA=TRUE \
