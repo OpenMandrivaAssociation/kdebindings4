@@ -522,7 +522,7 @@ Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-kde4 = %version-%release
 Requires: qyoto = %epoch:%version-%release
-Requires: mono
+Conflicts: ruby-qt4 < 1:4.1.81 
 
 %description -n kimono
 C# Mono KDE 4 bindings
@@ -552,7 +552,8 @@ C# Mono KDE 4 bindings
 %_kde_libdir/libsoprano-sharp.so
 %_kde_libdir/libkimono.so
 %_kde_appsdir/plasma_scriptengine_kimono
-
+%_kde_services/plasma-scriptengine-kimono-applet.desktop
+%_kde_services/plasma-scriptengine-kimono-dataengine.desktop
 
 #------------------------------------------------------------
 
@@ -697,9 +698,6 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/qtscript
 %ruby_sitelibdir/akonadi
 %ruby_sitelibdir/qttest
-
-%_kde_datadir/kde4/services/plasma-scriptengine-kimono-applet.desktop
-%_kde_datadir/kde4/services/plasma-scriptengine-kimono-dataengine.desktop
 
 #------------------------------------------------------------
 
