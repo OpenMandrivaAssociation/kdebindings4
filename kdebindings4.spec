@@ -819,7 +819,9 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_PHONON_SMOKE=FALSE \
 	-DCMAKE_MODULE_LINKER_FLAGS='-module %{?!_disable_ld_as_needed: -Wl,--as-needed}' \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF \
-    -DENABLE_KROSSFALCON=ON
+%if %with-falcon
+	-DENABLE_KROSSFALCON=ON
+%endif
 
 %make
 
