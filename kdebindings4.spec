@@ -456,8 +456,8 @@ Smoke devel files.
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-qt4 = %version-%release
-Requires: mono
 Conflicts: qyoto-devel < 1:4.1.73
+Conflicts: kimono < 1:4.1.81
 
 %description -n qyoto
 C# Mono Qt 4 bindings
@@ -465,11 +465,13 @@ C# Mono Qt 4 bindings
 %files -n qyoto
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/qt-dotnet.dll
-%_kde_libdir/qt-dotnet.dll.config
+%_prefix/lib/mono/2.0/qt-dotnet.dll.config
 %_prefix/lib/mono/2.0/qscintilla.dll
 %_prefix/lib/mono/2.0/qtscript.dll
 %_prefix/lib/mono/2.0/qtuitools.dll
 %_prefix/lib/mono/2.0/qtwebkit.dll
+%_prefix/lib/mono/2.0/qttest.dll
+%_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
 %_prefix/lib/mono/gac/qtscript
@@ -480,10 +482,6 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtscript-sharp.so
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
-%_kde_libdir/libakonadi-sharp.so
-%_kde_libdir/libktexteditor-sharp.so
-%_kde_libdir/libplasma-sharp.so
-%_kde_libdir/libnepomuk-sharp.so
 %_kde_libdir/libqttest-sharp.so
 
 #------------------------------------------------------------
@@ -522,7 +520,8 @@ Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-kde4 = %version-%release
 Requires: qyoto = %epoch:%version-%release
-Conflicts: ruby-qt4 < 1:4.1.81 
+Conflicts: ruby-qt4 < 1:4.1.81
+Conflicts: qyoto < 1:4.1.81 
 
 %description -n kimono
 C# Mono KDE 4 bindings
@@ -532,13 +531,10 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/2.0/kde-dotnet.dll
 %_prefix/lib/mono/2.0/khtml-dll.dll
 %_prefix/lib/mono/2.0/soprano.dll
-#%_prefix/lib/mono/2.0/nepomuk-dll.dll
 %_prefix/lib/mono/2.0/akonadi.dll
 %_prefix/lib/mono/2.0/ktexteditor-dotnet.dll
 %_prefix/lib/mono/2.0/plasma-dll.dll
 %_prefix/lib/mono/2.0/nepomuk-dll.dll
-%_prefix/lib/mono/2.0/qttest.dll
-%_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -548,9 +544,12 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/nepomuk-dll
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
-#%_kde_libdir/libnepomuk-sharp.so
+%_kde_libdir/libnepomuk-sharp.so
 %_kde_libdir/libsoprano-sharp.so
 %_kde_libdir/libkimono.so
+%_kde_libdir/libakonadi-sharp.so
+%_kde_libdir/libktexteditor-sharp.so
+%_kde_libdir/libplasma-sharp.so
 %_kde_appsdir/plasma_scriptengine_kimono
 %_kde_services/plasma-scriptengine-kimono-applet.desktop
 %_kde_services/plasma-scriptengine-kimono-dataengine.desktop
