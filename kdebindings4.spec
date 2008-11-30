@@ -19,6 +19,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.b
 Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.80-fix-build.patch
 Patch3: kdebindings-4.1.81-r890757.patch
+Patch4: kdebindings-4.1.81-smoke-phonon.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -108,27 +109,27 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-#define smokephonon_major 2
-#define libsmokephonon %mklibname smokephonon %{smokephonon_major}
-#
-#%package -n   %{libsmokephonon}
-#Summary:      KDE generic bindings library
-#Group:        Development/KDE and Qt
-#
-#%description -n %{libsmokephonon}
-#KDE generic bindings library.
-#
-#%if %mdkversion < 200900
-#%post -n %{libsmokephonon} -p /sbin/ldconfig
-#%endif
-#%if %mdkversion < 200900
-#%postun -n %{libsmokephonon} -p /sbin/ldconfig
-#%endif
-#
-#%files -n %{libsmokephonon}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
-#
+%define smokephonon_major 2
+%define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+
+%package -n   %{libsmokephonon}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokephonon}
+KDE generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokephonon} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokephonon} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokephonon}
+%defattr(-,root,root)
+%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+
 #-----------------------------------------------------------------------------
 
 #define #smokesoprano_major 2
@@ -439,6 +440,7 @@ Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
+Requires: %{libsmokephonon} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtuitools} = %epoch:%version-%release
@@ -802,6 +804,7 @@ ruby-qt4 devel files.
 %patch1 -p0
 %patch2 -p1
 %patch3 -p2 -b .orig
+%patch4 -p0
 
 %build
 %if %{with_java}
@@ -816,8 +819,6 @@ export JAVA_HOME=%{java_home}
 	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
-	-DENABLE_PHONON_SMOKE=FALSE \
-	-DCMAKE_MODULE_LINKER_FLAGS='-module %{?!_disable_ld_as_needed: -Wl,--as-needed}' \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF \
 %if %with_falcon
 	-DENABLE_KROSSFALCON=ON
