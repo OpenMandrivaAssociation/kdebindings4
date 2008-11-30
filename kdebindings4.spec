@@ -1,12 +1,6 @@
 %define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%define with_php 1
-%{?_with_php: %{expand: %%global with_php 1}}
-
-%define with_falcon 0
-%{?_with_falcon: %{expand: %%global with_falcon 1}}
-
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.1.81
@@ -36,13 +30,9 @@ BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
-%if %{with_php}
 BuildRequires: php-devel
 BuildRequires: php-cli
-%endif # with_php
-%if %{with_falcon}
 BuildRequires: falcon-devel
-%endif # with_falcon
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -508,7 +498,6 @@ PHP KDE 4 bindings
 
 #------------------------------------------------------------
 
-%if %{with_falcon}
 %package -n falcon-kde4
 Summary: Falcon KDE 4 bindings
 Group: Development/KDE and Qt
@@ -520,7 +509,6 @@ Falcon KDE 4 bindings
 %files -n falcon-kde4
 %defattr(-,root,root)
 %_kde_libdir/kde4/krossfalcon.so
-%endif #with_falcon
 
 #------------------------------------------------------------
 
