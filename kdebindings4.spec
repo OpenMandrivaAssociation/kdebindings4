@@ -14,6 +14,7 @@ Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.80-fix-build.patch
 Patch3: kdebindings-4.1.81-r890757.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
+Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -793,6 +794,7 @@ ruby-qt4 devel files.
 %patch2 -p1
 %patch3 -p2 -b .orig
 %patch4 -p0
+%patch5 -p0
 
 %build
 %if %{with_java}
@@ -802,15 +804,11 @@ export JAVA_HOME=%{java_home}
 	%if %{with_java}
 	-DENABLE_KROSSJAVA=TRUE \
 	%endif
-	%if %{with_php}
 	-DENABLE_PHP-QT=TRUE \
-	%endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF \
-%if %with_falcon
 	-DENABLE_KROSSFALCON=ON
-%endif
 
 %make
 
