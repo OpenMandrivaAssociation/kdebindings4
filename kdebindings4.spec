@@ -14,6 +14,7 @@ Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.82-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
 Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
+Patch6: kdebindings-4.1.85-fix-cmake.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -793,6 +794,7 @@ ruby-qt4 devel files.
 %patch2 -p1
 %patch4 -p0
 %patch5 -p0
+%patch6 -p1
 
 %build
 %if %{with_java}
