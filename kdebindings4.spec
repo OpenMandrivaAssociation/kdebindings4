@@ -3,7 +3,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.1.81
+Version: 4.1.82
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -11,8 +11,7 @@ URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch1: qyoto-4.1.73-map-shared-lib.patch
-Patch2: kdebindings-4.1.80-fix-build.patch
-Patch3: kdebindings-4.1.81-r890757.patch
+Patch2: kdebindings-4.1.82-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
 Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
 BuildRequires: kde4-macros
@@ -792,7 +791,6 @@ ruby-qt4 devel files.
 %setup -q -n kdebindings-%version
 %patch1 -p0
 %patch2 -p1
-%patch3 -p2 -b .orig
 %patch4 -p0
 %patch5 -p0
 
