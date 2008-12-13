@@ -740,7 +740,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/ktexteditor.so
 %ruby_sitearchdir/solid.so
 %ruby_sitearchdir/soprano.so
-%ruby_sitearchdir/okular.so
+#%ruby_sitearchdir/okular.so
 #%ruby_sitearchdir/nepomuk.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
@@ -748,7 +748,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitelibdir/soprano
 #%ruby_sitelibdir/nepomuk
 %ruby_sitelibdir/solid
-%ruby_sitelibdir/okular
+#%ruby_sitelibdir/okular
 
 #------------------------------------------------------------
 
