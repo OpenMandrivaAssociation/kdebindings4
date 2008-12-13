@@ -98,30 +98,52 @@ KDE generic bindings library.
 %_kde_libdir/libsmokekde.so.%{lib_smoke_kde_major}*
 
 #-----------------------------------------------------------------------------
+#
+#define smokephonon_major 2
+#define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+#
+#%package -n   %{libsmokephonon}
+#Summary:      KDE generic bindings library
+#Group:        Development/KDE and Qt
+#
+#%description -n %{libsmokephonon}
+#KDE generic bindings library.
+#
+#%if %mdkversion < 200900
+#%post -n %{libsmokephonon} -p /sbin/ldconfig
+#%endif
+#%if %mdkversion < 200900
+#%postun -n %{libsmokephonon} -p /sbin/ldconfig
+#%endif
+#
+#%files -n %{libsmokephonon}
+#%defattr(-,root,root)
+#%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+#
+#-----------------------------------------------------------------------------
 
-%define smokephonon_major 2
-%define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+%define smokeokular_major 2
+%define libsmokeokular %mklibname smokeokular %{smokeokular_major}
 
-%package -n   %{libsmokephonon}
+%package -n   %{libsmokeokular}
 Summary:      KDE generic bindings library
 Group:        Development/KDE and Qt
 
-%description -n %{libsmokephonon}
+%description -n %{libsmokeokular}
 KDE generic bindings library.
 
 %if %mdkversion < 200900
-%post -n %{libsmokephonon} -p /sbin/ldconfig
+%post -n %{libsmokeokular} -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
-%postun -n %{libsmokephonon} -p /sbin/ldconfig
+%postun -n %{libsmokeokular} -p /sbin/ldconfig
 %endif
 
-%files -n %{libsmokephonon}
+%files -n %{libsmokeokular}
 %defattr(-,root,root)
-%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+%_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
 
 #-----------------------------------------------------------------------------
-
 #define #smokesoprano_major 2
 #define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
 #
@@ -430,7 +452,8 @@ Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
-Requires: %{libsmokephonon} = %epoch:%version-%release
+#Requires: %{libsmokephonon} = %epoch:%version-%release
+Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtuitools} = %epoch:%version-%release
@@ -717,6 +740,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/ktexteditor.so
 %ruby_sitearchdir/solid.so
 %ruby_sitearchdir/soprano.so
+%ruby_sitearchdir/okular.so
 #%ruby_sitearchdir/nepomuk.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
@@ -724,7 +748,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitelibdir/soprano
 #%ruby_sitelibdir/nepomuk
 %ruby_sitelibdir/solid
-
+%ruby_sitelibdir/okular
 
 #------------------------------------------------------------
 
