@@ -11,7 +11,7 @@ URL: http://www.kde.org
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch1: qyoto-4.1.73-map-shared-lib.patch
-Patch2: kdebindings-4.1.82-fix-build.patch
+Patch2: kdebindings-4.1.85-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
 Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
 BuildRequires: kde4-macros
