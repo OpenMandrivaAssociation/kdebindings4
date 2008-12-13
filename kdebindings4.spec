@@ -122,27 +122,27 @@ KDE generic bindings library.
 #
 #-----------------------------------------------------------------------------
 
-%define smokeokular_major 2
-%define libsmokeokular %mklibname smokeokular %{smokeokular_major}
-
-%package -n   %{libsmokeokular}
-Summary:      KDE generic bindings library
-Group:        Development/KDE and Qt
-
-%description -n %{libsmokeokular}
-KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeokular} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeokular} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokeokular}
-%defattr(-,root,root)
-%_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
-
+#define smokeokular_major 2
+#define libsmokeokular %mklibname smokeokular %{smokeokular_major}
+#
+#%package -n   %{libsmokeokular}
+#Summary:      KDE generic bindings library
+#Group:        Development/KDE and Qt
+#
+#%description -n %{libsmokeokular}
+#KDE generic bindings library.
+#
+#%if %mdkversion < 200900
+#%post -n %{libsmokeokular} -p /sbin/ldconfig
+#%endif
+#%if %mdkversion < 200900
+#%postun -n %{libsmokeokular} -p /sbin/ldconfig
+#%endif
+#
+#%files -n %{libsmokeokular}
+#%defattr(-,root,root)
+#%_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
+#
 #-----------------------------------------------------------------------------
 #define #smokesoprano_major 2
 #define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
@@ -453,7 +453,7 @@ Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
 #Requires: %{libsmokephonon} = %epoch:%version-%release
-Requires: %{libsmokeokular} = %epoch:%version-%release
+#Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtuitools} = %epoch:%version-%release
