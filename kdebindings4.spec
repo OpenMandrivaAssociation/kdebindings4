@@ -3,12 +3,12 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.1.85
+Version: 4.1.96
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.85-fix-build.patch
