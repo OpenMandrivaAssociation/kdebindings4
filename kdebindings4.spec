@@ -14,6 +14,7 @@ Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.85-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
 Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
+Patch6: kdebindings-4.1.96-linkage.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -421,6 +422,75 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
+%define libsmokenepomuk_major 2
+%define libsmokenepomuk %mklibname smokenepomuk %{libsmokenepomuk_major}
+
+%package -n %{libsmokenepomuk}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokenepomuk}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokenepomuk} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokenepomuk} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokenepomuk}
+%defattr(-,root,root)
+%_kde_libdir/libsmokenepomuk.so.%{libsmokenepomuk_major}*
+
+#------------------------------------------------------------
+
+%define libsmokeqttest_major 2
+%define libsmokeqttest %mklibname smokeqttest %{libsmokeqttest_major}
+
+%package -n %{libsmokeqttest}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeqttest}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokeqttest} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokeqttest} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokeqttest}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqttest.so.%{libsmokeqttest_major}*
+
+#------------------------------------------------------------
+
+%define libsmokeakonadi_major 2
+%define libsmokeakonadi %mklibname smokeakonadi %{libsmokeakonadi_major}
+
+%package -n %{libsmokeakonadi}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeakonadi}
+Qt generic bindings library.
+
+%if %mdkversion < 200900
+%post -n %{libsmokeakonadi} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %{libsmokeakonadi} -p /sbin/ldconfig
+%endif
+
+%files -n %{libsmokeakonadi}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeakonadi.so.%{libsmokeakonadi_major}*
+
+#------------------------------------------------------------
+
 %package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
@@ -435,6 +505,9 @@ Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtuitools} = %epoch:%version-%release
 Requires: %{libsmokektexteditor} = %epoch:%version-%release
 Requires: %{libsmokekhtml} = %epoch:%version-%release
+Requires: %{libsmokeakonadi} = %epoch:%version-%release
+Requires: %{libsmokenepomuk} = %epoch:%version-%release
+Requires: %{libsmokeqttest} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 
 %description -n smoke4-devel
@@ -572,52 +645,6 @@ Qt generic bindings library.
 %files -n %{libqyotoshared}
 %defattr(-,root,root)
 %_kde_libdir/libqyotoshared.so.%{libqyotoshared_major}*
-
-#------------------------------------------------------------
-
-%define libsmokenepomuk_major 2
-%define libsmokenepomuk %mklibname smokenepomuk %{libsmokenepomuk_major}
-
-%package -n %{libsmokenepomuk}
-Summary: Qt generic bindings library
-Group: Development/KDE and Qt
-
-%description -n %{libsmokenepomuk}
-Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokenepomuk} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokenepomuk} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokenepomuk}
-%defattr(-,root,root)
-%_kde_libdir/libsmokenepomuk.so.%{libsmokenepomuk_major}*
-
-#------------------------------------------------------------
-
-%define libsmokeqttest_major 2
-%define libsmokeqttest %mklibname smokeqttest %{libsmokeqttest_major}
-
-%package -n %{libsmokeqttest}
-Summary: Qt generic bindings library
-Group: Development/KDE and Qt
-
-%description -n %{libsmokeqttest}
-Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeqttest} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeqttest} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokeqttest}
-%defattr(-,root,root)
-%_kde_libdir/libsmokeqttest.so.%{libsmokeqttest_major}*
 
 #------------------------------------------------------------
 
@@ -793,6 +820,7 @@ ruby-qt4 devel files.
 %patch2 -p1
 %patch4 -p0
 %patch5 -p0
+%patch6 -p0
 
 %build
 %if %{with_java}
