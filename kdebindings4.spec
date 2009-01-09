@@ -398,29 +398,6 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define libsmokeakonadi_major 2
-%define libsmokeakonadi %mklibname smokeakonadi %{libsmokeakonadi_major}
-
-%package -n %{libsmokeakonadi}
-Summary: Qt generic bindings library
-Group: Development/KDE and Qt
-
-%description -n %{libsmokeakonadi}
-Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeakonadi} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeakonadi} -p /sbin/ldconfig
-%endif
-
-%files -n %{libsmokeakonadi}
-%defattr(-,root,root)
-%_kde_libdir/libsmokeakonadi.so.%{libsmokeakonadi_major}*
-
-#------------------------------------------------------------
-
 %define libsmokeplasma_major 2
 %define libsmokeplasma %mklibname smokeplasma %{libsmokeplasma_major}
 
@@ -448,7 +425,6 @@ Qt generic bindings library.
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
 Requires: %{libsmokeplasma} = %epoch:%version-%release
-Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
