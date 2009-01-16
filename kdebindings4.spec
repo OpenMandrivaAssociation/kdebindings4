@@ -8,7 +8,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.85-fix-build.patch
@@ -534,7 +534,6 @@ C# Mono Qt 4 bindings
 %files -n qyoto
 %defattr(-,root,root)
 %_prefix/lib/mono/2.0/qt-dotnet.dll
-%_prefix/lib/mono/2.0/qt-dotnet.dll.config
 %_prefix/lib/mono/2.0/qscintilla.dll
 %_prefix/lib/mono/2.0/qtscript.dll
 %_prefix/lib/mono/2.0/qtuitools.dll
