@@ -3,18 +3,15 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.1.96
+Version: 4.2.0
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch1: qyoto-4.1.73-map-shared-lib.patch
 Patch2: kdebindings-4.1.85-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
-Patch5: kdebindings-4.1.81-fix-falcon-64bit.patch
-Patch6: kdebindings-4.1.96-linkage.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -743,12 +740,12 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/solid.so
 %ruby_sitearchdir/soprano.so
 #%ruby_sitearchdir/okular.so
-#%ruby_sitearchdir/nepomuk.so
+%ruby_sitearchdir/nepomuk.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
 %ruby_sitelibdir/ktexteditor
 %ruby_sitelibdir/soprano
-#%ruby_sitelibdir/nepomuk
+%ruby_sitelibdir/nepomuk
 %ruby_sitelibdir/solid
 #%ruby_sitelibdir/okular
 
@@ -815,11 +812,8 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch1 -p0
 %patch2 -p1
 %patch4 -p0
-%patch5 -p0
-%patch6 -p0
 
 %build
 %if %{with_java}
