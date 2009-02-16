@@ -8,7 +8,7 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch2: kdebindings-4.1.85-fix-build.patch
 Patch4: kdebindings-4.1.81-smoke-phonon.patch
