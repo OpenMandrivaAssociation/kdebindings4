@@ -10,16 +10,16 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 2
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-Patch2: kdebindings-4.1.85-fix-build.patch
-Patch4: kdebindings-4.1.81-smoke-phonon.patch
+Patch0: kdebindings-4.2.0-branch.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
-#BuildRequires: phonon-devel
+BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: soprano-devel
-BuildRequires: kdebase4-workspace-devel
+BuildRequires: doxygen
+#BuildRequires: kdebase4-workspace-devel
 %if %{with_java}
 BuildRequires: java-devel
 %endif # with_java
@@ -812,8 +812,7 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch2 -p1
-%patch4 -p0
+%patch0 -p1
 
 %build
 %if %{with_java}
