@@ -1,5 +1,4 @@
-%define with_java 0
-%{?_with_java: %{expand: %%global with_java 1}}
+%bcond_witho java
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
@@ -8,9 +7,10 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 3
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0: kdebindings-4.2.0-branch.patch
+Patch1: kdebindings-4.2.0-nepomk-allresources.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -69,7 +69,6 @@ Python KDE 4 documentation
 
 %files -n python-kde4-doc
 %defattr(-,root,root)
-#%_kde_docdir/*/*/pykde4
 
 #-----------------------------------------------------------------------------
 
@@ -84,85 +83,10 @@ Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 %description -n %{lib_smoke_kde}
 KDE generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{lib_smoke_kde} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{lib_smoke_kde} -p /sbin/ldconfig
-%endif
-
 %files -n %{lib_smoke_kde}
 %defattr(-,root,root)
 %_kde_libdir/libsmokekde.so.%{lib_smoke_kde_major}*
 
-#-----------------------------------------------------------------------------
-#
-#define smokephonon_major 2
-#define libsmokephonon %mklibname smokephonon %{smokephonon_major}
-#
-#%package -n   %{libsmokephonon}
-#Summary:      KDE generic bindings library
-#Group:        Development/KDE and Qt
-#
-#%description -n %{libsmokephonon}
-#KDE generic bindings library.
-#
-#%if %mdkversion < 200900
-#%post -n %{libsmokephonon} -p /sbin/ldconfig
-#%endif
-#%if %mdkversion < 200900
-#%postun -n %{libsmokephonon} -p /sbin/ldconfig
-#%endif
-#
-#%files -n %{libsmokephonon}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
-#
-#-----------------------------------------------------------------------------
-
-#define smokeokular_major 2
-#define libsmokeokular %mklibname smokeokular %{smokeokular_major}
-#
-#%package -n   %{libsmokeokular}
-#Summary:      KDE generic bindings library
-#Group:        Development/KDE and Qt
-#
-#%description -n %{libsmokeokular}
-#KDE generic bindings library.
-#
-#%if %mdkversion < 200900
-#%post -n %{libsmokeokular} -p /sbin/ldconfig
-#%endif
-#%if %mdkversion < 200900
-#%postun -n %{libsmokeokular} -p /sbin/ldconfig
-#%endif
-#
-#%files -n %{libsmokeokular}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
-#
-#-----------------------------------------------------------------------------
-#define #smokesoprano_major 2
-#define libsmokesoprano %mklibname smokesoprano %{smokesoprano_major}
-#
-#%package -n   %{libsmokesoprano}
-#Summary:      KDE generic bindings library
-#Group:        Development/KDE and Qt
-#
-#%description -n %{libsmokesoprano}
-#KDE generic bindings library.
-#
-#%if %mdkversion < 200900
-#%post -n %{libsmokesoprano} -p /sbin/ldconfig
-#%endif
-#%if %mdkversion < 200900
-#%postun -n %{libsmokesoprano} -p /sbin/ldconfig
-#%endif
-#
-#%files -n %{libsmokesoprano}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokesoprano.so.%{smokesoprano_major}*
-#
 #-----------------------------------------------------------------------------
 
 %define smokekhtml_major 2
@@ -174,13 +98,6 @@ Group:        Development/KDE and Qt
 
 %description -n %{libsmokekhtml}
 KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokekhtml} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokekhtml} -p /sbin/ldconfig
-%endif
 
 %files -n %{libsmokekhtml}
 %defattr(-,root,root)
@@ -198,13 +115,6 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokektexteditor}
 KDE generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libsmokektexteditor} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokektexteditor} -p /sbin/ldconfig
-%endif
-
 %files -n %{libsmokektexteditor}
 %defattr(-,root,root)
 %_kde_libdir/libsmokektexteditor.so.%{smokektexteditor_major}*
@@ -220,13 +130,6 @@ Group:        Development/KDE and Qt
 
 %description -n %{libsmokeqtuitools}
 KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeqtuitools} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeqtuitools} -p /sbin/ldconfig
-%endif
 
 %files -n %{libsmokeqtuitools}
 %defattr(-,root,root)
@@ -244,13 +147,6 @@ Group:        Development/KDE and Qt
 %description -n %{libsmokeqtwebkit}
 KDE generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libsmokeqtwebkit} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeqtwebkit} -p /sbin/ldconfig
-%endif
-
 %files -n %{libsmokeqtwebkit}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqtwebkit.so.%{smokeqtwebkit_major}*
@@ -266,13 +162,6 @@ Group:        Development/KDE and Qt
 
 %description -n %{libsmokesolid}
 KDE generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokesolid} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokesolid} -p /sbin/ldconfig
-%endif
 
 %files -n %{libsmokesolid}
 %defattr(-,root,root)
@@ -291,13 +180,6 @@ Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
 %description -n %{libsmokeqsci}
 KDE generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libsmokeqsci} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeqsci} -p /sbin/ldconfig
-%endif
-
 %files -n %{libsmokeqsci}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqsci.so.%{smokeqsci_major}*
@@ -313,13 +195,6 @@ Group: Development/KDE and Qt
 
 %description -n %{lib_smokesoprano}
 Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{lib_smokesoprano} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{lib_smokesoprano} -p /sbin/ldconfig
-%endif
 
 %files -n %{lib_smokesoprano}
 %defattr(-,root,root)
@@ -337,13 +212,6 @@ Group: Development/KDE and Qt
 %description -n %{lib_smokeqtscript}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{lib_smokeqtscript} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{lib_smokeqtscript} -p /sbin/ldconfig
-%endif
-
 %files -n %{lib_smokeqtscript}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqtscript.so.%{lib_smokeqtscript_major}*
@@ -359,13 +227,6 @@ Qt generic bindings library.
 #
 #%description -n %{lib_smokenepomuk}
 #Qt generic bindings library.
-#
-#%if %mdkversion < 200900
-#%post -n %{lib_smokenepomuk} -p /sbin/ldconfig
-#%endif
-#%if %mdkversion < 200900
-#%postun -n %{lib_smokenepomuk} -p /sbin/ldconfig
-#%endif
 #
 #%files -n %{lib_smokenepomuk}
 #%defattr(-,root,root)
@@ -383,13 +244,6 @@ Group: Development/KDE and Qt
 %description -n %{lib_smoke_qt}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{lib_smoke_qt} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{lib_smoke_qt} -p /sbin/ldconfig
-%endif
-
 %files -n %{lib_smoke_qt}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqt.so.%{lib_smoke_qt_major}*
@@ -405,13 +259,6 @@ Group: Development/KDE and Qt
 
 %description -n %{libsmokeplasma}
 Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeplasma} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeplasma} -p /sbin/ldconfig
-%endif
 
 %files -n %{libsmokeplasma}
 %defattr(-,root,root)
@@ -429,13 +276,6 @@ Group: Development/KDE and Qt
 %description -n %{libsmokenepomuk}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libsmokenepomuk} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokenepomuk} -p /sbin/ldconfig
-%endif
-
 %files -n %{libsmokenepomuk}
 %defattr(-,root,root)
 %_kde_libdir/libsmokenepomuk.so.%{libsmokenepomuk_major}*
@@ -452,13 +292,6 @@ Group: Development/KDE and Qt
 %description -n %{libsmokeqttest}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libsmokeqttest} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeqttest} -p /sbin/ldconfig
-%endif
-
 %files -n %{libsmokeqttest}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqttest.so.%{libsmokeqttest_major}*
@@ -474,13 +307,6 @@ Group: Development/KDE and Qt
 
 %description -n %{libsmokeakonadi}
 Qt generic bindings library.
-
-%if %mdkversion < 200900
-%post -n %{libsmokeakonadi} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libsmokeakonadi} -p /sbin/ldconfig
-%endif
 
 %files -n %{libsmokeakonadi}
 %defattr(-,root,root)
@@ -631,13 +457,6 @@ Group: Development/KDE and Qt
 %description -n %{libqyotoshared}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libqyotoshared} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libqyotoshared} -p /sbin/ldconfig
-%endif
-
 %files -n %{libqyotoshared}
 %defattr(-,root,root)
 %_kde_libdir/libqyotoshared.so.%{libqyotoshared_major}*
@@ -761,13 +580,6 @@ Group: Development/KDE and Qt
 %description -n %{libqtruby4shared}
 Qt generic bindings library.
 
-%if %mdkversion < 200900
-%post -n %{libqtruby4shared} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libqtruby4shared} -p /sbin/ldconfig
-%endif
-
 %files -n %{libqtruby4shared}
 %defattr(-,root,root)
 %_kde_libdir/libqtruby4shared.so.%{libqtruby4shared_major}*
@@ -812,9 +624,13 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch0 -p1
+%patch0 -p1 -b .branch
+%patch1 -p0 -b .akonadi 
 
 %build
+# Remove invalid install dir
+rm -f csharp/plasma/examples/CMakeLists.txt
+
 %if %{with_java}
 export JAVA_HOME=%{java_home}
 %endif
