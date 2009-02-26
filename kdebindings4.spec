@@ -1,4 +1,4 @@
-%bcond_witho java
+%bcond_with java
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
@@ -19,8 +19,7 @@ BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: soprano-devel
 BuildRequires: doxygen
-#BuildRequires: kdebase4-workspace-devel
-%if %{with_java}
+%if %with java
 BuildRequires: java-devel
 %endif # with_java
 BuildRequires: ruby-devel
@@ -631,11 +630,11 @@ ruby-qt4 devel files.
 # Remove invalid install dir
 rm -f csharp/plasma/examples/CMakeLists.txt
 
-%if %{with_java}
+%if %with java
 export JAVA_HOME=%{java_home}
 %endif
 %cmake_kde4 \
-	%if %{with_java}
+	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%endif
 	-DENABLE_PHP-QT=TRUE \
