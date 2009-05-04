@@ -1,15 +1,17 @@
 %bcond_with java
-
+%define kderevision svn961800
+ 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.2
+Version: 4.2.71
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Release: %mkrel 0.%kderevision.1
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.%kderevision.tar.bz2
 Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
+Patch1: kdebindings-4.2.71-rev962166.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -621,8 +623,9 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n kdebindings-%version
+%setup -q -n kdebindings-%version.%kderevision
 %patch0 -p0 -b .akonadi 
+%patch1 -p1
 
 %build
 # Remove invalid install dir
