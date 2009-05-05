@@ -31,6 +31,7 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 BuildRequires: falcon-devel
+BuildRequires: qimageblitz-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
