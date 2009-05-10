@@ -3,15 +3,16 @@
  
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.71
+Version: 4.2.85
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 0.%kderevision.1
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.%kderevision.tar.bz2
+Release: %mkrel 1
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
-Patch1: kdebindings-4.2.71-rev962166.patch
+Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
+Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -624,9 +625,10 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n kdebindings-%version.%kderevision
+%setup -q -n kdebindings-%version
 %patch0 -p0 -b .akonadi 
-%patch1 -p1
+%patch1 -p0
+%patch2 -p0
 
 %build
 # Remove invalid install dir
