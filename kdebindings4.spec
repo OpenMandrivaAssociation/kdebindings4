@@ -14,6 +14,7 @@ Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
 Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
 Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
+Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -631,6 +632,7 @@ ruby-qt4 devel files.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
+%patch4 -p0
 
 %build
 # Remove invalid install dir
