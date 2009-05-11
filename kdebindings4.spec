@@ -15,7 +15,6 @@ Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
 Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
 Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
-Patch5: kdebindings-4.2.85-disable-csharp-soprano.patch
 Patch6: kdebindings-4.2.85-t966386-fix-phonon-link.patch
 Patch7: kdebindings-4.2.85-t966386-add-BackendSetting-class.patch
 BuildRequires: kde4-macros
@@ -367,7 +366,6 @@ Smoke devel files.
 %_kde_libdir/libsmoke*.so
 
 #------------------------------------------------------------
-%if 0
 %package -n qyoto
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
@@ -398,7 +396,6 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
-%endif
 #------------------------------------------------------------
 
 %package -n phpqt
@@ -429,7 +426,6 @@ Falcon KDE 4 bindings
 %_kde_libdir/kde4/krossfalcon.so
 
 #------------------------------------------------------------
-%if 0
 %package -n kimono
 Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
@@ -450,6 +446,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/2.0/ktexteditor-dotnet.dll
 %_prefix/lib/mono/2.0/plasma-dll.dll
 %_prefix/lib/mono/2.0/nepomuk-dll.dll
+%_prefix/lib/mono/2.0/qimageblitz.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -457,6 +454,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/ktexteditor-dotnet
 %_prefix/lib/mono/gac/plasma-dll
 %_prefix/lib/mono/gac/nepomuk-dll
+%_prefix/lib/mono/gac/qimageblitz
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
 %_kde_libdir/libnepomuk-sharp.so
@@ -465,6 +463,7 @@ C# Mono KDE 4 bindings
 %_kde_libdir/libakonadi-sharp.so
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
+%_kde_libdir/libqimageblitz-sharp.so
 %_kde_appsdir/plasma_scriptengine_kimono
 %_kde_services/plasma-scriptengine-kimono-applet.desktop
 %_kde_services/plasma-scriptengine-kimono-dataengine.desktop
@@ -503,7 +502,12 @@ qyoto devel files.
 %_kde_bindir/uics
 %_kde_includedir/qyoto
 %_kde_libdir/libqyotoshared.so
-%endif
+%_kde_libdir/pkgconfig/qyoto.pc
+%_kde_libdir/pkgconfig/qtscript-sharp.pc
+%_kde_libdir/pkgconfig/qttest-sharp.pc
+%_kde_libdir/pkgconfig/qtuitools-sharp.pc
+%_kde_libdir/pkgconfig/qtwebkit-sharp.pc
+
 #------------------------------------------------------------
 
 %package -n kimono-devel
@@ -584,7 +588,6 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/ktexteditor.so
 %ruby_sitearchdir/solid.so
 %ruby_sitearchdir/soprano.so
-#%ruby_sitearchdir/okular.so
 %ruby_sitearchdir/nepomuk.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
@@ -592,7 +595,6 @@ A kde4 bindings for Ruby language.
 %ruby_sitelibdir/soprano
 %ruby_sitelibdir/nepomuk
 %ruby_sitelibdir/solid
-#%ruby_sitelibdir/okular
 
 #------------------------------------------------------------
 
@@ -655,7 +657,6 @@ ruby-qt4 devel files.
 %patch2 -p0
 %patch3 -p0
 %patch4 -p0
-%patch5 -p0
 %patch6 -p0
 %patch7 -p0
 
