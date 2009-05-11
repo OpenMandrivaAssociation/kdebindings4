@@ -15,6 +15,7 @@ Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
 Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
 Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
+Patch5: kdebindings-4.2.85-disable-csharp-soprano.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -35,6 +36,7 @@ BuildRequires: php-devel
 BuildRequires: php-cli
 BuildRequires: falcon-devel
 BuildRequires: qimageblitz-devel
+BuildRequires: okular
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -170,6 +172,38 @@ KDE generic bindings library.
 %files -n %{libsmokesolid}
 %defattr(-,root,root)
 %_kde_libdir/libsmokesolid.so.%{smokesolid_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeokular_major 2
+%define libsmokeokular %mklibname smokeokular %{smokeokular_major}
+
+%package -n   %{libsmokeokular}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeokular}
+KDE generic bindings library.
+
+%files -n %{libsmokeokular}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqimageblitz_major 2
+%define libsmokeqimageblitz %mklibname smokeqimageblitz %{smokeqimageblitz_major}
+
+%package -n   %{libsmokeqimageblitz}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqimageblitz}
+KDE generic bindings library.
+
+%files -n %{libsmokeqimageblitz}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqimageblitz.so.%{smokeqimageblitz_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -325,8 +359,7 @@ Requires: %{libsmokeplasma} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
-#Requires: %{libsmokephonon} = %epoch:%version-%release
-#Requires: %{libsmokeokular} = %epoch:%version-%release
+Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtuitools} = %epoch:%version-%release
@@ -335,6 +368,7 @@ Requires: %{libsmokekhtml} = %epoch:%version-%release
 Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
+Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 
 %description -n smoke4-devel
@@ -347,7 +381,7 @@ Smoke devel files.
 %_kde_libdir/libsmoke*.so
 
 #------------------------------------------------------------
-
+%if 0
 %package -n qyoto
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
@@ -378,7 +412,7 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
-
+%endif
 #------------------------------------------------------------
 
 %package -n phpqt
@@ -409,7 +443,7 @@ Falcon KDE 4 bindings
 %_kde_libdir/kde4/krossfalcon.so
 
 #------------------------------------------------------------
-
+%if 0
 %package -n kimono
 Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
@@ -483,7 +517,7 @@ qyoto devel files.
 %_kde_bindir/uics
 %_kde_includedir/qyoto
 %_kde_libdir/libqyotoshared.so
-
+%endif
 #------------------------------------------------------------
 
 %package -n kimono-devel
@@ -529,6 +563,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitearchdir/qttest.so
 %ruby_sitearchdir/akonadi.so
 %ruby_sitearchdir/plasma_applet.so
+%ruby_sitearchdir/okular.so
 %ruby_sitelibdir/Qt.rb
 %ruby_sitelibdir/Qt3.rb
 %ruby_sitelibdir/Qt4.rb
@@ -539,7 +574,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/qtscript
 %ruby_sitelibdir/akonadi
 %ruby_sitelibdir/qttest
-
+%ruby_sitelibdir/okular
 #------------------------------------------------------------
 
 %package -n ruby-kde4
@@ -633,6 +668,7 @@ ruby-qt4 devel files.
 %patch2 -p0
 %patch3 -p0
 %patch4 -p0
+%patch5 -p0
 
 %build
 # Remove invalid install dir
@@ -649,7 +685,7 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF \
-	-DENABLE_KROSSFALCON=ON
+	-DENABLE_KROSSFALCON=ON 
 
 %make
 
