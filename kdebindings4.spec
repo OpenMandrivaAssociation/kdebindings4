@@ -16,6 +16,7 @@ Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
 Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
 Patch5: kdebindings-4.2.85-disable-csharp-soprano.patch
+Patch6: kdebindings-4.2.85-t966358-fix-phonon-link.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -36,7 +37,7 @@ BuildRequires: php-devel
 BuildRequires: php-cli
 BuildRequires: falcon-devel
 BuildRequires: qimageblitz-devel
-BuildRequires: okular
+BuildRequires: kdegraphics4-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -254,22 +255,6 @@ Qt generic bindings library.
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqtscript.so.%{lib_smokeqtscript_major}*
 
-#------------------------------------------------------------
-#
-#define lib_smokenepomuk_major 
-#define lib_smokenepomuk %mklibname smokenepomuk %{lib_smokenepomuk_major}
-#
-#%package -n %{lib_smokenepomuk}
-#Summary: Qt generic bindings library
-#Group: Development/KDE and Qt
-#
-#%description -n %{lib_smokenepomuk}
-#Qt generic bindings library.
-#
-#%files -n %{lib_smokenepomuk}
-#%defattr(-,root,root)
-#%_kde_libdir/libsmokenepomuk.so.%{lib_smokenepomuk_major}*
-#
 #------------------------------------------------------------
 
 %define lib_smoke_qt_major 2
@@ -575,6 +560,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/akonadi
 %ruby_sitelibdir/qttest
 %ruby_sitelibdir/okular
+
 #------------------------------------------------------------
 
 %package -n ruby-kde4
@@ -669,6 +655,7 @@ ruby-qt4 devel files.
 %patch3 -p0
 %patch4 -p0
 %patch5 -p0
+%patch6 -p0
 
 %build
 # Remove invalid install dir
