@@ -4,11 +4,11 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.2.85
+Release: %mkrel 2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
 Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
@@ -17,6 +17,7 @@ Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
 Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
 Patch5: kdebindings-4.2.85-disable-csharp-soprano.patch
 Patch6: kdebindings-4.2.85-t966386-fix-phonon-link.patch
+Patch7: kdebindings-4.2.85-t966386-add-BackendSetting-class.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -656,6 +657,7 @@ ruby-qt4 devel files.
 %patch4 -p0
 %patch5 -p0
 %patch6 -p0
+%patch7 -p0
 
 %build
 # Remove invalid install dir
