@@ -16,7 +16,7 @@ Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
 Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
 Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
 Patch5: kdebindings-4.2.85-disable-csharp-soprano.patch
-Patch6: kdebindings-4.2.85-t966358-fix-phonon-link.patch
+Patch6: kdebindings-4.2.85-t966386-fix-phonon-link.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
