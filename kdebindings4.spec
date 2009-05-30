@@ -1,22 +1,26 @@
 %bcond_with java
-%define kderevision svn961800
+
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
+%if %branch
+%define kde_snapshot svn973768
+%endif
  
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.85
-Release: %mkrel 2
+Version: 4.2.88
+Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
+%if %branch
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
+%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+%endif
 Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
-Patch1: kdebindings-4.2.85-t965327-remove-akonadi-private-API.patch
-Patch2: kdebindings-4.2.85-t965859-remove-KSystemTimeZones_Simulated.patch
-Patch3: kdebindings-4.2.85-t966090-fix-soprano-header-list.patch
-Patch4: kdebindings-4.2.85-t966176-add-missing-file.patch
-Patch6: kdebindings-4.2.85-t966386-fix-phonon-link.patch
-Patch7: kdebindings-4.2.85-t966386-add-BackendSetting-class.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -651,14 +655,12 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
+%if %branch
+%setup -q -n kdebindings-%version%kde_snapshot
+%else
 %setup -q -n kdebindings-%version
+%endif
 %patch0 -p0 -b .akonadi 
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
-%patch6 -p0
-%patch7 -p0
 
 %build
 # Remove invalid install dir
