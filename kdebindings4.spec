@@ -6,6 +6,9 @@
 %if %branch
 %define kde_snapshot svn973768
 %endif
+
+%define with_php 0
+%{?_with_php: %{expand: %%global with_php 1}}
  
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
@@ -37,8 +40,10 @@ BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel
 BuildRequires: qscintilla-qt4-devel
+%if %with_php
 BuildRequires: php-devel
 BuildRequires: php-cli
+%endif
 BuildRequires: falcon-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: kdegraphics4-devel
@@ -401,7 +406,7 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
 #------------------------------------------------------------
-
+%if %with_php
 %package -n phpqt
 Summary: PHP KDE 4 bindings
 Group: Development/KDE and Qt
@@ -414,7 +419,7 @@ PHP KDE 4 bindings
 %defattr(-,root,root)
 %_kde_bindir/phpuic
 %_kde_libdir/php/extensions/php_qt.so
-
+%endif
 #------------------------------------------------------------
 
 %package -n falcon-kde4
