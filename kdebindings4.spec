@@ -12,7 +12,7 @@
  
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.90
+Version: 4.2.95
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -678,7 +678,11 @@ export JAVA_HOME=%{java_home}
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%endif
+    %if %with_php
 	-DENABLE_PHP-QT=TRUE \
+    %else
+    -DENABLE_PHP-QT=FALSE \
+    %endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=OFF \
