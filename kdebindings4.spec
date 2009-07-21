@@ -44,7 +44,9 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 %endif
+%if %mdkversion > 200910
 BuildRequires: falcon-devel
+%endif
 BuildRequires: qimageblitz-devel
 BuildRequires: kdegraphics4-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
@@ -422,6 +424,8 @@ PHP KDE 4 bindings
 %endif
 #------------------------------------------------------------
 
+%if %mdkversion > 200910
+
 %package -n falcon-kde4
 Summary: Falcon KDE 4 bindings
 Group: Development/KDE and Qt
@@ -433,6 +437,8 @@ Falcon KDE 4 bindings
 %files -n falcon-kde4
 %defattr(-,root,root)
 %_kde_libdir/kde4/krossfalcon.so
+
+%endif
 
 #------------------------------------------------------------
 %package -n kimono
