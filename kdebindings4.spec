@@ -1,54 +1,37 @@
-%bcond_with java
+%bcond_with java 0
 
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define kde_snapshot svn973768
-%endif
-
-%define with_php 0
-%{?_with_php: %{expand: %%global with_php 1}}
- 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.96
+Version: 4.2.98
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-%if %branch
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
-%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-%endif
-Patch0: kdebindings-4.2.0-nepomuk-allresources.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
+BuildRequires: kdelibs4-experimental-devel
 BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
+BuildRequires: kdegraphics4-devel
+BuildRequires: qimageblitz-devel
 BuildRequires: soprano-devel
 BuildRequires: doxygen
-%if %with java
 BuildRequires: java-devel
-%endif # with_java
 BuildRequires: ruby-devel
 BuildRequires: mono-devel
 BuildRequires: python-sip >= 4.7.6
-BuildRequires: python-qt4-devel
+BuildRequires: python-qt4-devel >= 4.5.1
 BuildRequires: qscintilla-qt4-devel
-%if %with_php
 BuildRequires: php-devel
 BuildRequires: php-cli
-%endif
+BuildRequires: polkit-qt-devel
 %if %mdkversion > 200910
 BuildRequires: falcon-devel
 %endif
-BuildRequires: qimageblitz-devel
-BuildRequires: kdegraphics4-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -408,20 +391,21 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
 #------------------------------------------------------------
-%if %with_php
-%package -n phpqt
+
+%package -n php-qt4
 Summary: PHP KDE 4 bindings
 Group: Development/KDE and Qt
 Requires: php-cli
+Obsoletes: phpqt
 
-%description -n phpqt
+%description -n php-qt4
 PHP KDE 4 bindings
 
-%files -n phpqt
+%files -n php-qt4
 %defattr(-,root,root)
 %_kde_bindir/phpuic
 %_kde_libdir/php/extensions/php_qt.so
-%endif
+
 #------------------------------------------------------------
 
 %if %mdkversion > 200910
@@ -666,25 +650,21 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
-%if %branch
-%setup -q -n kdebindings-%version%kde_snapshot
-%else
 %setup -q -n kdebindings-%version
-%endif
-%patch0 -p0 -b .akonadi 
 
 %build
 # Remove invalid install dir
 rm -f csharp/plasma/examples/CMakeLists.txt
 
-%if %with java
 export JAVA_HOME=%{java_home}
-%endif
+
 %cmake_kde4 \
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
+	%else
+	-DENABLE_KROSSJAVA=FALSE \
 	%endif
-    %if %with_php
+    %if 1
 	-DENABLE_PHP-QT=TRUE \
     %else
     -DENABLE_PHP-QT=FALSE \
