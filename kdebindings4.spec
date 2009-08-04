@@ -2,7 +2,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.2.98
+Version: 4.3.0
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -17,6 +17,7 @@ BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: kdegraphics4-devel
+BuildRequires: kdevplatform4-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: soprano-devel
 BuildRequires: doxygen
@@ -29,7 +30,7 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 BuildRequires: polkit-qt-devel
-%if %mdkversion > 200910
+%if %mdkversion > 200900
 BuildRequires: falcon-devel
 %endif
 BuildRoot:     %_tmppath/%name-%version-%release-root
@@ -53,11 +54,13 @@ Python KDE 4
 %files -n python-kde4
 %defattr(-,root,root)
 %dir %py_platsitedir/PyKDE4
+%py_platsitedir/PyQt4/*
 %py_platsitedir/PyKDE4/*
 %_datadir/sip/PyKDE4/*
-%_kde_appsdir/pykde4
+%_kde_bindir/pykdeuic4
 %_kde_libdir/kde4/krosspython.so
 %_kde_libdir/kde4/kpythonpluginfactory.so
+%_kde_appsdir/pykde4
 
 #-----------------------------------------------------------------------------
 
@@ -408,7 +411,7 @@ PHP KDE 4 bindings
 
 #------------------------------------------------------------
 
-%if %mdkversion > 200910
+%if %mdkversion > 200900
 
 %package -n falcon-kde4
 Summary: Falcon KDE 4 bindings
@@ -671,7 +674,7 @@ export JAVA_HOME=%{java_home}
     %endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
-	-DENABLE_SMOKEKDEVPLATFORM=OFF \
+	-DENABLE_SMOKEKDEVPLATFORM=ON \
 	-DENABLE_KROSSFALCON=ON 
 
 %make
