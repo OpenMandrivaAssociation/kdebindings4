@@ -2,7 +2,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.0
+Version: 4.3.1
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -61,6 +61,9 @@ Python KDE 4
 %_kde_libdir/kde4/krosspython.so
 %_kde_libdir/kde4/kpythonpluginfactory.so
 %_kde_appsdir/pykde4
+
+%pre -n python-kde4
+rm -rf %_bindir/pykdeuic4
 
 #-----------------------------------------------------------------------------
 
@@ -363,6 +366,7 @@ Smoke devel files.
 %_kde_libdir/libsmoke*.so
 
 #------------------------------------------------------------
+
 %package -n qyoto
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
@@ -393,6 +397,7 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
+
 #------------------------------------------------------------
 
 %package -n php-qt4
