@@ -355,6 +355,7 @@ Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
 Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
+Obsoletes: smoke-devel <= 1:3.5.10-3
 
 %description -n smoke4-devel
 Smoke devel files.
@@ -542,6 +543,7 @@ Obsoletes: %{lib_ruby} < 3.5.1
 Obsoletes: %{lib_ruby}1 < 3.5.1
 Obsoletes: %{lib_ruby}1-devel < 3.5.1
 Obsoletes: qtruby < 3.5.5
+Obsoletes: ruby-qt < 1:3.5.10-3
 
 %description -n ruby-qt4
 A qt4 bindings for Ruby language.
