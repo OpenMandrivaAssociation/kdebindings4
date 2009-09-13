@@ -3,7 +3,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.3.1
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
