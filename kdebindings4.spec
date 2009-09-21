@@ -3,7 +3,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.3.1
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -76,6 +76,7 @@ Python KDE 4 documentation
 
 %files -n python-kde4-doc
 %defattr(-,root,root)
+%_datadir/doc/python-kde4
 
 #-----------------------------------------------------------------------------
 
@@ -689,6 +690,10 @@ export JAVA_HOME=%{java_home}
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
+
+# Copy Python Doc
+%{__mkdir_p} %{buildroot}%_datadir/doc/python-kde4
+%{__cp} -a python/pykde4/docs/html/*  %{buildroot}%_datadir/doc/python-kde4/
 
 %clean
 rm -fr %buildroot
