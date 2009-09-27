@@ -3,7 +3,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.3.1
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -23,7 +23,9 @@ BuildRequires: soprano-devel
 BuildRequires: doxygen
 BuildRequires: java-devel
 BuildRequires: ruby-devel
+%ifnarch %arm %mips
 BuildRequires: mono-devel
+%endif
 BuildRequires: python-sip >= 4.7.6
 BuildRequires: python-qt4-devel >= 4.5.1
 BuildRequires: qscintilla-qt4-devel
@@ -369,6 +371,7 @@ Smoke devel files.
 
 #------------------------------------------------------------
 
+%ifnarch %arm %mips
 %package -n qyoto
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
@@ -399,6 +402,7 @@ C# Mono Qt 4 bindings
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
+%endif
 
 #------------------------------------------------------------
 
@@ -435,6 +439,7 @@ Falcon KDE 4 bindings
 %endif
 
 #------------------------------------------------------------
+%ifnarch %arm %mips
 %package -n kimono
 Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
@@ -531,6 +536,7 @@ kimono devel files.
 
 %files -n kimono-devel
 %defattr(-,root,root)
+%endif
 
 #------------------------------------------------------------
 
