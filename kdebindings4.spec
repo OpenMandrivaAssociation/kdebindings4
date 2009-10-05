@@ -2,7 +2,6 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-<<<<<<< .mine
 Version: 4.3.2
 Release: %mkrel 1
 Epoch: 1
