@@ -2,15 +2,14 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.1
-Release: %mkrel 6
+<<<<<<< .mine
+Version: 4.3.2
+Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
-# fwang: upstream patch to build with sip 4.9
-Patch0: kdebindings-4.3.1-r1025833.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -670,7 +669,6 @@ ruby-qt4 devel files.
 
 %prep
 %setup -q -n kdebindings-%version
-%patch0 -p1
 
 %build
 # Remove invalid install dir
