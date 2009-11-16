@@ -1,14 +1,16 @@
 %bcond_with java 0
 
+%define kde_snapshot svn1048496
+
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.2
+Version: 4.3.75
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -667,7 +669,7 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n kdebindings-%version
+%setup -q -n kdebindings-%version%kde_snapshot
 
 %build
 # Remove invalid install dir
