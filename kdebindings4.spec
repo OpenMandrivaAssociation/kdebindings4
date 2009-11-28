@@ -1,7 +1,13 @@
 %bcond_with java 0
 %bcond_with falcon 0
 
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
+
+%if %branch
 %define kde_snapshot svn1053190
+%endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
@@ -11,7 +17,11 @@ Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
+%if %branch
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
+%else
+Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
+%endif
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -670,8 +680,11 @@ ruby-qt4 devel files.
 #------------------------------------------------------------
 
 %prep
+%if %branch
 %setup -q -n kdebindings-%version%kde_snapshot
-
+%else
+%setup -q -n kdebindings-%version
+%endif
 %build
 # Remove invalid install dir
 rm -f csharp/plasma/examples/CMakeLists.txt
