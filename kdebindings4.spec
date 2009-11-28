@@ -1,16 +1,17 @@
 %bcond_with java 0
+%bcond_with falcon 0
 
-%define kde_snapshot svn1048496
+%define kde_snapshot svn1053190
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.75
+Version: 4.3.77
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -34,7 +35,7 @@ BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
 BuildRequires: polkit-qt-devel
-%if %mdkversion > 200900
+%if %with falcon
 BuildRequires: falcon-devel
 %endif
 BuildRoot:     %_tmppath/%name-%version-%release-root
@@ -424,7 +425,7 @@ PHP KDE 4 bindings
 
 #------------------------------------------------------------
 
-%if %mdkversion > 200900
+%if %with falcon
 
 %package -n falcon-kde4
 Summary: Falcon KDE 4 bindings
@@ -691,9 +692,11 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=ON \
-	-DENABLE_KROSSFALCON=ON 
+	%if %with falcon
+	-DENABLE_KROSSFALCON=ON
+	%endif
 
-%make
+LD_LIBRARY_PATH=`pwd`/generator/bin %make
 
 %install
 rm -fr %buildroot
