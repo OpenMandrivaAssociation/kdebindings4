@@ -25,12 +25,10 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
-BuildRequires: kdelibs4-experimental-devel
 BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: kdegraphics4-devel
-BuildRequires: kdevplatform4-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: soprano-devel
 BuildRequires: doxygen
