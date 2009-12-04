@@ -683,6 +683,7 @@ ruby-qt4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch0 -p0
 
 %build
 # Remove invalid install dir
@@ -690,7 +691,7 @@ rm -f csharp/plasma/examples/CMakeLists.txt
 
 export JAVA_HOME=%{java_home}
 
-%cmake_kde4 \
+%cmake_kde4 -DKDE4_USE_ALWAYS_FULL_RPATH=ON \
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%else
