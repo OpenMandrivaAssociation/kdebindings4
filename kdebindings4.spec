@@ -683,7 +683,6 @@ ruby-qt4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch0 -p0
 
 %build
 # Remove invalid install dir
