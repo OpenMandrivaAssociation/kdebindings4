@@ -1,7 +1,7 @@
 %bcond_with java 0
 %bcond_with falcon 0
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 
@@ -11,7 +11,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.77
+Version: 4.3.80
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
