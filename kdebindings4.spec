@@ -25,10 +25,10 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar
 Patch101: kdebindings-4.3.85-r1065110.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
-BuildRequires: kdelibs4-devel
+BuildRequires: kdelibs4-devel >= 2:4.3.85
 BuildRequires: phonon-devel
 BuildRequires: akonadi-devel
-BuildRequires: kdepimlibs4-devel
+BuildRequires: kdepimlibs4-devel >= 2:4.3.85
 BuildRequires: kdegraphics4-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: soprano-devel
