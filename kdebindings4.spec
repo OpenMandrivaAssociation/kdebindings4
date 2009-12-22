@@ -22,6 +22,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch101: kdebindings-4.3.85-r1065110.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel
@@ -93,7 +94,199 @@ Python KDE 4 documentation
 
 #-----------------------------------------------------------------------------
 
-%define lib_smoke_kde_major 2
+%define smokeqtcore_major 3
+%define libsmokeqtcore %mklibname smokeqtcore %{smokeqtcore_major}
+
+%package -n   %{libsmokeqtcore}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtcore}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtcore}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtcore.so.%{smokeqtcore_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtdbus_major 3
+%define libsmokeqtdbus %mklibname smokeqtdbus %{smokeqtdbus_major}
+
+%package -n   %{libsmokeqtdbus}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtdbus}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtdbus}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtdbus.so.%{smokeqtdbus_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtgui_major 3
+%define libsmokeqtgui %mklibname smokeqtgui %{smokeqtgui_major}
+
+%package -n   %{libsmokeqtgui}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtgui}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtgui}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtgui.so.%{smokeqtgui_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtmultimedia_major 3
+%define libsmokeqtmultimedia %mklibname smokeqtmultimedia %{smokeqtmultimedia_major}
+
+%package -n   %{libsmokeqtmultimedia}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtmultimedia}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtmultimedia}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtmultimedia.so.%{smokeqtmultimedia_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtnetwork_major 3
+%define libsmokeqtnetwork %mklibname smokeqtnetwork %{smokeqtnetwork_major}
+
+%package -n   %{libsmokeqtnetwork}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtnetwork}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtnetwork}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtnetwork.so.%{smokeqtnetwork_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtopengl_major 3
+%define libsmokeqtopengl %mklibname smokeqtopengl %{smokeqtopengl_major}
+
+%package -n   %{libsmokeqtopengl}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtopengl}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtopengl}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtopengl.so.%{smokeqtopengl_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtsql_major 3
+%define libsmokeqtsql %mklibname smokeqtsql %{smokeqtsql_major}
+
+%package -n   %{libsmokeqtsql}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtsql}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtsql}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtsql.so.%{smokeqtsql_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtsvg_major 3
+%define libsmokeqtsvg %mklibname smokeqtsvg %{smokeqtsvg_major}
+
+%package -n   %{libsmokeqtsvg}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtsvg}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtsvg}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtsvg.so.%{smokeqtsvg_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtxml_major 3
+%define libsmokeqtxml %mklibname smokeqtxml %{smokeqtxml_major}
+
+%package -n   %{libsmokeqtxml}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtxml}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtxml}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtxml.so.%{smokeqtxml_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtxmlpatterns_major 3
+%define libsmokeqtxmlpatterns %mklibname smokeqtxmlpatterns %{smokeqtxmlpatterns_major}
+
+%package -n   %{libsmokeqtxmlpatterns}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtxmlpatterns}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtxmlpatterns}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtxmlpatterns.so.%{smokeqtxmlpatterns_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokesopranoclient_major 3
+%define libsmokesopranoclient %mklibname smokesopranoclient %{smokesopranoclient_major}
+
+%package -n   %{libsmokesopranoclient}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokesopranoclient}
+KDE generic bindings library.
+
+%files -n %{libsmokesopranoclient}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesopranoclient.so.%{smokesopranoclient_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokesopranoserver_major 3
+%define libsmokesopranoserver %mklibname smokesopranoserver %{smokesopranoserver_major}
+
+%package -n   %{libsmokesopranoserver}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokesopranoserver}
+KDE generic bindings library.
+
+%files -n %{libsmokesopranoserver}
+%defattr(-,root,root)
+%_kde_libdir/libsmokesopranoserver.so.%{smokesopranoserver_major}*
+
+#-----------------------------------------------------------------------------
+
+%define lib_smoke_kde_major 3
 %define lib_smoke_kde %mklibname smokekde %{lib_smoke_kde_major}
 
 %package -n   %{lib_smoke_kde}
@@ -110,7 +303,103 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokekhtml_major 2
+%define smokekdecore_major 3
+%define libsmokekdecore %mklibname smokekdecore %{smokekdecore_major}
+
+%package -n   %{libsmokekdecore}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekdecore}
+KDE generic bindings library.
+
+%files -n %{libsmokekdecore}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekdecore.so.%{smokekdecore_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokekdeui_major 3
+%define libsmokekdeui %mklibname smokekdeui %{smokekdeui_major}
+
+%package -n   %{libsmokekdeui}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekdeui}
+KDE generic bindings library.
+
+%files -n %{libsmokekdeui}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekdeui.so.%{smokekdeui_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokekfile_major 3
+%define libsmokekfile %mklibname smokekfile %{smokekfile_major}
+
+%package -n   %{libsmokekfile}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekfile}
+KDE generic bindings library.
+
+%files -n %{libsmokekfile}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekfile.so.%{smokekfile_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokekio_major 3
+%define libsmokekio %mklibname smokekio %{smokekio_major}
+
+%package -n   %{libsmokekio}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekio}
+KDE generic bindings library.
+
+%files -n %{libsmokekio}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekio.so.%{smokekio_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeknewstuff2_major 3
+%define libsmokeknewstuff2 %mklibname smokeknewstuff2_ %{smokeknewstuff2_major}
+
+%package -n   %{libsmokeknewstuff2}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeknewstuff2}
+KDE generic bindings library.
+
+%files -n %{libsmokeknewstuff2}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeknewstuff2.so.%{smokeknewstuff2_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeknewstuff3_major 3
+%define libsmokeknewstuff3 %mklibname smokeknewstuff3_ %{smokeknewstuff3_major}
+
+%package -n   %{libsmokeknewstuff3}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeknewstuff3}
+KDE generic bindings library.
+
+%files -n %{libsmokeknewstuff3}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeknewstuff3.so.%{smokeknewstuff3_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokekhtml_major 3
 %define libsmokekhtml %mklibname smokekhtml %{smokekhtml_major}
 
 %package -n   %{libsmokekhtml}
@@ -126,7 +415,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokektexteditor_major 2
+%define smokektexteditor_major 3
 %define libsmokektexteditor %mklibname smoketexteditor %{smokektexteditor_major}
 
 %package -n   %{libsmokektexteditor}
@@ -142,7 +431,55 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokeqtuitools_major 2
+%define smokekparts_major 3
+%define libsmokekparts %mklibname smokekparts %{smokekparts_major}
+
+%package -n   %{libsmokekparts}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekparts}
+KDE generic bindings library.
+
+%files -n %{libsmokekparts}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekparts.so.%{smokekparts_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokekutils_major 3
+%define libsmokekutils %mklibname smokekutils %{smokekutils_major}
+
+%package -n   %{libsmokekutils}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokekutils}
+KDE generic bindings library.
+
+%files -n %{libsmokekutils}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekutils.so.%{smokekutils_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokephonon_major 3
+%define libsmokephonon %mklibname smokephonon %{smokephonon_major}
+
+%package -n   %{libsmokephonon}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokephonon}
+KDE generic bindings library.
+
+%files -n %{libsmokephonon}
+%defattr(-,root,root)
+%_kde_libdir/libsmokephonon.so.%{smokephonon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define smokeqtuitools_major 3
 %define libsmokeqtuitools %mklibname smokeqtuitools %{smokeqtuitools_major}
 
 %package -n   %{libsmokeqtuitools}
@@ -158,7 +495,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokeqtwebkit_major 2
+%define smokeqtwebkit_major 3
 %define libsmokeqtwebkit %mklibname smokeqtwebkit %{smokeqtwebkit_major}
 
 %package -n   %{libsmokeqtwebkit}
@@ -174,7 +511,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokesolid_major 2
+%define smokesolid_major 3
 %define libsmokesolid %mklibname smokesolid %{smokesolid_major}
 
 %package -n   %{libsmokesolid}
@@ -190,7 +527,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokeokular_major 2
+%define smokeokular_major 3
 %define libsmokeokular %mklibname smokeokular %{smokeokular_major}
 
 %package -n   %{libsmokeokular}
@@ -206,7 +543,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokeqimageblitz_major 2
+%define smokeqimageblitz_major 3
 %define libsmokeqimageblitz %mklibname smokeqimageblitz %{smokeqimageblitz_major}
 
 %package -n   %{libsmokeqimageblitz}
@@ -222,7 +559,7 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define smokeqsci_major 2
+%define smokeqsci_major 3
 %define libsmokeqsci %mklibname smokeqsci %{smokeqsci_major}
 
 %package -n   %{libsmokeqsci}
@@ -239,7 +576,7 @@ KDE generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smokesoprano_major 2
+%define lib_smokesoprano_major 3
 %define lib_smokesoprano %mklibname smokesoprano %{lib_smokesoprano_major}
 
 %package -n %{lib_smokesoprano}
@@ -255,7 +592,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smokeqtscript_major 2
+%define lib_smokeqtscript_major 3
 %define lib_smokeqtscript %mklibname smokeqtscript %{lib_smokeqtscript_major}
 
 %package -n %{lib_smokeqtscript}
@@ -271,7 +608,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smoke_qt_major 2
+%define lib_smoke_qt_major 3
 %define lib_smoke_qt %mklibname smokeqt %{lib_smoke_qt_major}
 
 %package -n %{lib_smoke_qt}
@@ -287,7 +624,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define libsmokeplasma_major 2
+%define libsmokeplasma_major 3
 %define libsmokeplasma %mklibname smokeplasma %{libsmokeplasma_major}
 
 %package -n %{libsmokeplasma}
@@ -303,7 +640,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define libsmokenepomuk_major 2
+%define libsmokenepomuk_major 3
 %define libsmokenepomuk %mklibname smokenepomuk %{libsmokenepomuk_major}
 
 %package -n %{libsmokenepomuk}
@@ -319,7 +656,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define libsmokeqttest_major 2
+%define libsmokeqttest_major 3
 %define libsmokeqttest %mklibname smokeqttest %{libsmokeqttest_major}
 
 %package -n %{libsmokeqttest}
@@ -335,7 +672,7 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define libsmokeakonadi_major 2
+%define libsmokeakonadi_major 3
 %define libsmokeakonadi %mklibname smokeakonadi %{libsmokeakonadi_major}
 
 %package -n %{libsmokeakonadi}
@@ -368,6 +705,25 @@ Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
 Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+Requires: %{libsmokekdecore} = %epoch:%version-%release
+Requires: %{libsmokekdeui} = %epoch:%version-%release
+Requires: %{libsmokekfile} = %epoch:%version-%release
+Requires: %{libsmokekio} = %epoch:%version-%release
+Requires: %{libsmokeknewstuff2} = %epoch:%version-%release
+Requires: %{libsmokeknewstuff3} = %epoch:%version-%release
+Requires: %{libsmokekparts} = %epoch:%version-%release
+Requires: %{libsmokekutils} = %epoch:%version-%release
+Requires: %{libsmokephonon} = %epoch:%version-%release
+Requires: %{libsmokeqtgui} = %epoch:%version-%release
+Requires: %{libsmokeqtmultimedia} = %epoch:%version-%release
+Requires: %{libsmokeqtnetwork} = %epoch:%version-%release
+Requires: %{libsmokeqtopengl} = %epoch:%version-%release
+Requires: %{libsmokeqtsql} = %epoch:%version-%release
+Requires: %{libsmokeqtsvg} = %epoch:%version-%release
+Requires: %{libsmokeqtxml} = %epoch:%version-%release
+Requires: %{libsmokeqtxmlpatterns} = %epoch:%version-%release
+Requires: %{libsmokesopranoclient} = %epoch:%version-%release
+Requires: %{libsmokesopranoserver} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 Obsoletes: smoke-devel <= 1:3.5.10-3
 
@@ -395,12 +751,12 @@ C# Mono Qt 4 bindings
 
 %files -n qyoto
 %defattr(-,root,root)
-%_prefix/lib/mono/2.0/qt-dotnet.dll
-%_prefix/lib/mono/2.0/qscintilla.dll
-%_prefix/lib/mono/2.0/qtscript.dll
-%_prefix/lib/mono/2.0/qtuitools.dll
-%_prefix/lib/mono/2.0/qtwebkit.dll
-%_prefix/lib/mono/2.0/qttest.dll
+%_prefix/lib/mono/qyoto/qt-dotnet.dll
+%_prefix/lib/mono/qyoto/qscintilla.dll
+%_prefix/lib/mono/qyoto/qtscript.dll
+%_prefix/lib/mono/qyoto/qtuitools.dll
+%_prefix/lib/mono/qyoto/qtwebkit.dll
+%_prefix/lib/mono/qyoto/qttest.dll
 %_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
@@ -464,14 +820,14 @@ C# Mono KDE 4 bindings
 
 %files -n kimono
 %defattr(-,root,root)
-%_prefix/lib/mono/2.0/kde-dotnet.dll
-%_prefix/lib/mono/2.0/khtml-dll.dll
-%_prefix/lib/mono/2.0/soprano.dll
-%_prefix/lib/mono/2.0/akonadi.dll
-%_prefix/lib/mono/2.0/ktexteditor-dotnet.dll
-%_prefix/lib/mono/2.0/plasma-dll.dll
-%_prefix/lib/mono/2.0/nepomuk-dll.dll
-%_prefix/lib/mono/2.0/qimageblitz.dll
+%_prefix/lib/mono/qyoto/kde-dotnet.dll
+%_prefix/lib/mono/qyoto/khtml-dll.dll
+%_prefix/lib/mono/qyoto/soprano.dll
+%_prefix/lib/mono/qyoto/akonadi.dll
+%_prefix/lib/mono/qyoto/ktexteditor-dotnet.dll
+%_prefix/lib/mono/qyoto/plasma-dll.dll
+%_prefix/lib/mono/qyoto/nepomuk-dll.dll
+%_prefix/lib/mono/qyoto/qimageblitz.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -683,6 +1039,7 @@ ruby-qt4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch101 -p1 -b .build
 
 %build
 # Remove invalid install dir
@@ -690,16 +1047,7 @@ rm -f csharp/plasma/examples/CMakeLists.txt
 
 export JAVA_HOME=%{java_home}
 
-mkdir build
-cd build
-cmake .. -DKDE4_USE_ALWAYS_FULL_RPATH=OFF \
-        -DCMAKE_INSTALL_PREFIX:PATH=%_kde_prefix \
-        -DCMAKE_INSTALL_LIBDIR:PATH=%_kde_libdir \
-        -DINCLUDE_INSTALL_DIR:PATH=%_kde_includedir \
-        -DLIB_INSTALL_DIR:PATH=%_kde_libdir \
-        -DSYSCONF_INSTALL_DIR:PATH=%_kde_sysconfdir \
-        -DSHARE_INSTALL_PREFIX:PATH=%_kde_datadir \
-        -DCMAKE_BUILD_TYPE=release \
+%cmake_kde4 \
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%else
@@ -718,7 +1066,7 @@ cmake .. -DKDE4_USE_ALWAYS_FULL_RPATH=OFF \
 	-DENABLE_KROSSFALCON=ON
 	%endif
 
-LD_LIBRARY_PATH=`pwd`/generator/bin make
+LD_LIBRARY_PATH=`pwd`/generator/bin %make
 
 %install
 rm -fr %buildroot
