@@ -718,7 +718,7 @@ cmake .. -DKDE4_USE_ALWAYS_FULL_RPATH=OFF \
 	-DENABLE_KROSSFALCON=ON
 	%endif
 
-LD_LIBRARY_PATH=`pwd`/generator/bin %make
+LD_LIBRARY_PATH=`pwd`/generator/bin make
 
 %install
 rm -fr %buildroot
