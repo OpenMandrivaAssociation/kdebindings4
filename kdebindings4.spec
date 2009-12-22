@@ -693,6 +693,13 @@ export JAVA_HOME=%{java_home}
 mkdir build
 cd build
 cmake .. -DKDE4_USE_ALWAYS_FULL_RPATH=OFF \
+        -DCMAKE_INSTALL_PREFIX:PATH=%_kde_prefix \
+        -DCMAKE_INSTALL_LIBDIR:PATH=%_kde_libdir \
+        -DINCLUDE_INSTALL_DIR:PATH=%_kde_includedir \
+        -DLIB_INSTALL_DIR:PATH=%_kde_libdir \
+        -DSYSCONF_INSTALL_DIR:PATH=%_kde_sysconfdir \
+        -DSHARE_INSTALL_PREFIX:PATH=%_kde_datadir \
+        -DCMAKE_BUILD_TYPE=release \
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%else
