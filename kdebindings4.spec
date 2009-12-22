@@ -690,7 +690,9 @@ rm -f csharp/plasma/examples/CMakeLists.txt
 
 export JAVA_HOME=%{java_home}
 
-%cmake_kde4 -DKDE4_USE_ALWAYS_FULL_RPATH=ON \
+mkdir build
+cd build
+cmake .. -DKDE4_USE_ALWAYS_FULL_RPATH=OFF \
 	%if %with java
 	-DENABLE_KROSSJAVA=TRUE \
 	%else
@@ -704,6 +706,7 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=ON \
+    -DENABLE_SMOKE=ON \
 	%if %with falcon
 	-DENABLE_KROSSFALCON=ON
 	%endif
