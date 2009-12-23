@@ -12,7 +12,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.3.85
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -695,6 +695,7 @@ Requires: %{libsmokeplasma} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
 Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
+Requires: %{lib_smokeqtscript} = %epoch:%version-%release
 Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
