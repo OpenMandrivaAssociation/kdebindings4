@@ -12,7 +12,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.3.90
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -687,6 +687,38 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
+%define libsmokeattica_major 3
+%define libsmokeattica %mklibname smokeattica %{libsmokeattica_major}
+
+%package -n %{libsmokeattica}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeattica}
+Qt generic bindings library.
+
+%files -n %{libsmokeattica}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeattica.so.%{libsmokeattica_major}*
+
+#------------------------------------------------------------
+
+%define libsmokenepomukquery_major 3
+%define libsmokenepomukquery %mklibname smokenepomukquery %{libsmokenepomukquery_major}
+
+%package -n %{libsmokenepomukquery}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokenepomukquery}
+Qt generic bindings library.
+
+%files -n %{libsmokenepomukquery}
+%defattr(-,root,root)
+%_kde_libdir/libsmokenepomukquery.so.%{libsmokenepomukquery_major}*
+
+#------------------------------------------------------------
+
 %package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
@@ -724,6 +756,8 @@ Requires: %{libsmokeqtxml} = %epoch:%version-%release
 Requires: %{libsmokeqtxmlpatterns} = %epoch:%version-%release
 Requires: %{libsmokesopranoclient} = %epoch:%version-%release
 Requires: %{libsmokesopranoserver} = %epoch:%version-%release
+Requires: %{libsmokeattica} = %epoch:%version-%release
+Requires: %{libsmokenepomukquery} = %epoch:%version-%release
 Provides: libsmoke2-devel = %epoch:%version-%release
 Obsoletes: smoke-devel <= 1:3.5.10-3
 
