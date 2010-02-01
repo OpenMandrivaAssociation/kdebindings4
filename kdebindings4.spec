@@ -285,23 +285,6 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
-%define lib_smoke_kde_major 3
-%define lib_smoke_kde %mklibname smokekde %{lib_smoke_kde_major}
-
-%package -n   %{lib_smoke_kde}
-Summary:      KDE generic bindings library
-Group:        Development/KDE and Qt
-Obsoletes:    %{_lib}smokeplasma2 < 4.0.73-1
-
-%description -n %{lib_smoke_kde}
-KDE generic bindings library.
-
-%files -n %{lib_smoke_kde}
-%defattr(-,root,root)
-%_kde_libdir/libsmokekde.so.%{lib_smoke_kde_major}*
-
-#-----------------------------------------------------------------------------
-
 %define smokekdecore_major 3
 %define libsmokekdecore %mklibname smokekdecore %{smokekdecore_major}
 
@@ -724,7 +707,6 @@ Summary: Header files for libsmoke
 Group: Development/KDE and Qt
 Requires: %{libsmokeplasma} = %epoch:%version-%release
 Requires: %{lib_smoke_qt} = %epoch:%version-%release
-Requires: %{lib_smoke_kde} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
 Requires: %{lib_smokeqtscript} = %epoch:%version-%release
 Requires: %{libsmokeokular} = %epoch:%version-%release
@@ -766,6 +748,7 @@ Smoke devel files.
 
 %files -n smoke4-devel
 %defattr(-,root,root)
+%_kde_bindir/smokeapi
 %_kde_includedir/smoke.h
 %_kde_includedir/smoke
 %_kde_libdir/libsmoke*.so
