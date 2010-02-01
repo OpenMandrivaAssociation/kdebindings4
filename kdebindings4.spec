@@ -11,7 +11,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.3.95
+Version: 4.3.98
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
