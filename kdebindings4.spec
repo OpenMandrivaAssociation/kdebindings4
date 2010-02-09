@@ -749,9 +749,12 @@ Smoke devel files.
 %files -n smoke4-devel
 %defattr(-,root,root)
 %_kde_bindir/smokeapi
+%_kde_bindir/smokegen
 %_kde_includedir/smoke.h
 %_kde_includedir/smoke
 %_kde_libdir/libsmoke*.so
+%_kde_libdir/libcppparser.so
+%_kde_libdir/smokegen
 
 #------------------------------------------------------------
 
