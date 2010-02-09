@@ -755,6 +755,7 @@ Smoke devel files.
 %_kde_libdir/libsmoke*.so
 %_kde_libdir/libcppparser.so
 %_kde_libdir/smokegen
+%_kde_datadir/smokegen
 
 #------------------------------------------------------------
 
