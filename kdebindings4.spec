@@ -12,7 +12,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.4.3
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -946,18 +946,12 @@ A qt4 bindings for Ruby language.
 %files -n ruby-qt4
 %defattr(-,root,root)
 %_kde_bindir/rbqtapi
-%_kde_libdir/libqtruby4shared.so
-%_kde_datadir/applications/kde4/dbpedia_references.desktop
-%_kde_appsdir/dbpedia_references
 %ruby_sitearchdir/qscintilla.so
 %ruby_sitearchdir/qtruby4.so
 %ruby_sitearchdir/qtuitools.so
 %ruby_sitearchdir/qtwebkit.so
 %ruby_sitearchdir/qtscript.so
 %ruby_sitearchdir/qttest.so
-%ruby_sitearchdir/akonadi.so
-%ruby_sitearchdir/plasma_applet.so
-%ruby_sitearchdir/okular.so
 %ruby_sitelibdir/Qt.rb
 %ruby_sitelibdir/Qt3.rb
 %ruby_sitelibdir/Qt4.rb
@@ -966,9 +960,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/qtuitools
 %ruby_sitelibdir/qtwebkit
 %ruby_sitelibdir/qtscript
-%ruby_sitelibdir/akonadi
 %ruby_sitelibdir/qttest
-%ruby_sitelibdir/okular
 
 #------------------------------------------------------------
 
@@ -977,7 +969,7 @@ Summary: KDE bindings for Ruby
 Group: Development/KDE and Qt
 Provides: kderuby = %{epoch}:%{version}-%{release}
 Obsoletes: qtruby < 3.5.5
-Conflicts: ruby-qt4 < 1:4.0.98-2
+Conflicts: ruby-qt4 < 1:4.4.3-2
 
 %description -n ruby-kde4
 A kde4 bindings for Ruby language.
@@ -993,12 +985,17 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/solid.so
 %ruby_sitearchdir/soprano.so
 %ruby_sitearchdir/nepomuk.so
+%ruby_sitearchdir/akonadi.so
+%ruby_sitearchdir/plasma_applet.so
+%ruby_sitearchdir/okular.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
 %ruby_sitelibdir/ktexteditor
 %ruby_sitelibdir/soprano
 %ruby_sitelibdir/nepomuk
 %ruby_sitelibdir/solid
+%ruby_sitelibdir/akonadi
+%ruby_sitelibdir/okular
 
 #------------------------------------------------------------
 
@@ -1024,6 +1021,7 @@ Group: Development/KDE and Qt
 Requires: ruby-qt4 = %epoch:%version-%release
 Requires: %{libqtruby4shared} = %epoch:%version-%release
 Conflicts: ruby-qt4 < 1:4.0.98-2
+Conflicts: ruby-kde4-devel < 1:4.4.3-2
 
 %description -n ruby-qt4-devel
 ruby-qt4 devel files.
@@ -1032,25 +1030,27 @@ ruby-qt4 devel files.
 %defattr(-,root,root)
 %_kde_bindir/rbrcc
 %_kde_bindir/rbuic4
-%_kde_bindir/rbkconfig_compiler4
+%_kde_libdir/libqtruby4shared.so
 %_kde_includedir/qtruby
 
 #------------------------------------------------------------
 
 %package -n ruby-kde4-devel
-Summary: Header files for ruby-qt4
+Summary: Tools for ruby-kde4
 Group: Development/KDE and Qt
 Requires: ruby-qt4-devel = %epoch:%version-%release
+Requires: ruby-kde4 = %epoch:%version-%release
+Conflicts: ruby-qt4 < 1:4.4.3-2
+Conflicts: ruby-qt4-devel < 1:4.4.3-2
 
 %description -n ruby-kde4-devel
-ruby-qt4 devel files.
+ruby-kde4 devel files.
 
 %files -n ruby-kde4-devel
 %defattr(-,root,root)
-%_kde_bindir/rbrcc
-%_kde_bindir/rbuic4
 %_kde_bindir/rbkconfig_compiler4
-%_kde_includedir/qtruby
+%_kde_datadir/applications/kde4/dbpedia_references.desktop
+%_kde_appsdir/dbpedia_references
 
 #------------------------------------------------------------
 
