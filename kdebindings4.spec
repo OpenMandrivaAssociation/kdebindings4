@@ -12,7 +12,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.4.3
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -22,6 +22,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch0:        kdebindings-4.4.3-fix-build-against-trunk.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -1060,6 +1061,8 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch0 -p0
+
 %build
 # Remove invalid install dir
 rm -f csharp/plasma/examples/CMakeLists.txt
