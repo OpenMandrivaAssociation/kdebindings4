@@ -12,7 +12,7 @@
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.4.3
-Release: %mkrel 3
+Release: %mkrel 5
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -23,6 +23,9 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
 Patch0:        kdebindings-4.4.3-fix-build-against-trunk.patch
+Patch1:        kdebindings-4.4.3-t1125668-add-macro.patch
+Patch2:        kdebindings-4.4.3-t1127157-fix-MacroOptionalAddBindings.patch
+Patch3:        kdebindings-4.4.3-trunk-perl.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -47,6 +50,7 @@ BuildRequires: polkit-qt-devel
 %if %with falcon
 BuildRequires: falcon-devel
 %endif
+BuildRequires: perl-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -1000,6 +1004,51 @@ A kde4 bindings for Ruby language.
 
 #------------------------------------------------------------
 
+%package -n perl-qt4
+Summary: Qt bindings for Perl
+Group: Development/KDE and Qt
+
+%description -n perl-qt4
+A Qt4 bindings for perl language.
+
+%files -n perl-qt4
+%defattr(-,root,root)
+%perl_sitearch/QtCore4.pm
+%perl_sitearch/QtCore4/classinfo.pm
+%perl_sitearch/QtCore4/debug.pm
+%perl_sitearch/QtCore4/isa.pm
+%perl_sitearch/QtCore4/signals.pm
+%perl_sitearch/QtCore4/slots.pm
+%perl_sitearch/QtGui4.pm
+%perl_sitearch/QtTest4.pm
+%perl_sitearch/auto/QtCore4
+%perl_sitearch/auto/QtGui4
+%perl_sitearch/auto/QtTest4
+
+#------------------------------------------------------------
+
+%package -n perl-kde4
+Summary: KDE bindings for Perl
+Group: Development/KDE and Qt
+
+%description -n perl-kde4
+A kde4 bindings for perl language.
+
+%files -n perl-kde4
+%defattr(-,root,root)
+%_kde_bindir/puic4
+%_kde_libdir/kde4/kperlpluginfactory.so
+%perl_sitearch/KDECore4.pm
+%perl_sitearch/KDEUi4.pm
+%perl_sitearch/KIO4.pm
+%perl_sitearch/Plasma4.pm
+%perl_sitearch/auto/KDECore4
+%perl_sitearch/auto/KDEUi4
+%perl_sitearch/auto/KIO4
+%perl_sitearch/auto/Plasma4
+
+#------------------------------------------------------------
+
 %define libqtruby4shared_major 2
 %define libqtruby4shared %mklibname qtruby4shared %{libqtruby4shared_major}
 
@@ -1062,6 +1111,9 @@ ruby-kde4 devel files.
 %setup -q -n kdebindings-%version
 %endif
 %patch0 -p0
+%patch1 -p0
+%patch2 -p0
+%patch3 -p0
 
 %build
 # Remove invalid install dir
