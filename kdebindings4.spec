@@ -22,10 +22,11 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0:        kdebindings-4.4.3-fix-build-against-trunk.patch
-Patch1:        kdebindings-4.4.3-t1125668-add-macro.patch
-Patch2:        kdebindings-4.4.3-t1127157-fix-MacroOptionalAddBindings.patch
-Patch3:        kdebindings-4.4.3-trunk-perl.patch
+Patch200:        kdebindings-4.4.3-fix-build-against-trunk.patch
+Patch201:        kdebindings-4.4.3-t1125668-add-macro.patch
+Patch202:        kdebindings-4.4.3-t1127157-fix-MacroOptionalAddBindings.patch
+Patch203:        kdebindings-4.4.3-t1129337-add-perl-binding.patch
+Patch204:        kdebindings-4.4.3-t1129638-perl-cmake-fixes.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -1110,10 +1111,11 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
+%patch200 -p0
+%patch201 -p0
+%patch202 -p0
+%patch203 -p0
+%patch204 -p0
 
 %build
 # Remove invalid install dir
