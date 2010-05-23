@@ -26,7 +26,6 @@ Patch200:        kdebindings-4.4.3-fix-build-against-trunk.patch
 Patch201:        kdebindings-4.4.3-t1125668-add-macro.patch
 Patch202:        kdebindings-4.4.3-t1127157-fix-MacroOptionalAddBindings.patch
 Patch203:        kdebindings-4.4.3-t1129337-add-perl-binding.patch
-Patch204:        kdebindings-4.4.3-t1129638-perl-cmake-fixes.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -1115,7 +1114,6 @@ ruby-kde4 devel files.
 %patch201 -p0
 %patch202 -p0
 %patch203 -p0
-%patch204 -p0
 
 %build
 # Remove invalid install dir
