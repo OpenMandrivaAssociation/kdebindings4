@@ -51,6 +51,7 @@ BuildRequires: polkit-qt-devel
 BuildRequires: falcon-devel
 %endif
 BuildRequires: perl-devel
+BuildRequires: libdb4.6-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
