@@ -975,6 +975,9 @@ A qt4 bindings for Ruby language.
 Summary: KDE bindings for Ruby
 Group: Development/KDE and Qt
 Provides: kderuby = %{epoch}:%{version}-%{release}
+Provides: korundum = %{epoch}:%{version}-%{release}
+Provides: korundum4 = %{epoch}:%{version}-%{release}
+Requires: ruby-qt4 = %{epoch}:%{version}-%{release}
 Obsoletes: qtruby < 3.5.5
 Conflicts: ruby-qt4 < 1:4.4.3-2
 
