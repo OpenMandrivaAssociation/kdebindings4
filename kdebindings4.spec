@@ -11,8 +11,8 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.4.3
-Release: %mkrel 8
+Version: 4.4.95
+Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -22,10 +22,6 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch200:        kdebindings-4.4.3-fix-build-against-trunk.patch
-Patch201:        kdebindings-4.4.3-t1125668-add-macro.patch
-Patch202:        kdebindings-4.4.3-t1127157-fix-MacroOptionalAddBindings.patch
-Patch203:        kdebindings-4.4.3-t1129337-add-perl-binding.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -51,7 +47,7 @@ BuildRequires: polkit-qt-devel
 BuildRequires: falcon-devel
 %endif
 BuildRequires: perl-devel
-BuildRequires: libdb4.6-devel
+BuildRequires: db4-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
@@ -596,19 +592,19 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smoke_qt_major 3
-%define lib_smoke_qt %mklibname smokeqt %{lib_smoke_qt_major}
+%define libsmokebase_major 3
+%define libsmokebase %mklibname smokebase %{libsmokebase_major}
 
-%package -n %{lib_smoke_qt}
+%package -n %{libsmokebase}
 Summary: Qt generic bindings library
 Group: Development/KDE and Qt
 
-%description -n %{lib_smoke_qt}
+%description -n %{libsmokebase}
 Qt generic bindings library.
 
-%files -n %{lib_smoke_qt}
+%files -n %{libsmokebase}
 %defattr(-,root,root)
-%_kde_libdir/libsmokeqt.so.%{lib_smoke_qt_major}*
+%_kde_libdir/libsmokebase.so.%{libsmokebase_major}*
 
 #------------------------------------------------------------
 
@@ -712,7 +708,7 @@ Qt generic bindings library.
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
 Requires: %{libsmokeplasma} = %epoch:%version-%release
-Requires: %{lib_smoke_qt} = %epoch:%version-%release
+Requires: %{libsmokebase} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
 Requires: %{lib_smokeqtscript} = %epoch:%version-%release
 Requires: %{libsmokeokular} = %epoch:%version-%release
@@ -758,6 +754,7 @@ Smoke devel files.
 %_kde_bindir/smokegen
 %_kde_includedir/smoke.h
 %_kde_includedir/smoke
+%_kde_includedir/smokegen
 %_kde_libdir/libsmoke*.so
 %_kde_libdir/libcppparser.so
 %_kde_libdir/smokegen
@@ -784,18 +781,20 @@ C# Mono Qt 4 bindings
 %_prefix/lib/mono/qyoto/qtuitools.dll
 %_prefix/lib/mono/qyoto/qtwebkit.dll
 %_prefix/lib/mono/qyoto/qttest.dll
+%_prefix/lib/mono/qyoto/phonon.dll
 %_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
 %_prefix/lib/mono/gac/qtscript
 %_prefix/lib/mono/gac/qtwebkit
 %_prefix/lib/mono/gac/qtuitools
-%_kde_libdir/libqyoto.so
+%_prefix/lib/mono/gac/phonon
 %_kde_libdir/libqscintilla-sharp.so
 %_kde_libdir/libqtscript-sharp.so
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
+%_kde_libdir/libphonon-sharp.so
 %endif
 
 #------------------------------------------------------------
@@ -878,19 +877,19 @@ C# Mono KDE 4 bindings
 
 #------------------------------------------------------------
 
-%define libqyotoshared_major 1
-%define libqyotoshared %mklibname qyotoshared %{libqyotoshared_major}
+%define libqyoto_major 2
+%define libqyoto %mklibname qyoto %{libqyoto_major}
 
-%package -n %{libqyotoshared}
+%package -n %{libqyoto}
 Summary: Qt generic bindings library
 Group: Development/KDE and Qt
 
-%description -n %{libqyotoshared}
+%description -n %{libqyoto}
 Qt generic bindings library.
 
-%files -n %{libqyotoshared}
+%files -n %{libqyoto}
 %defattr(-,root,root)
-%_kde_libdir/libqyotoshared.so.%{libqyotoshared_major}*
+%_kde_libdir/libqyoto.so.%{libqyoto_major}*
 
 #------------------------------------------------------------
 
@@ -898,8 +897,8 @@ Qt generic bindings library.
 Summary: Header files for qyoto
 Group: Development/KDE and Qt
 Requires: qyoto = %epoch:%version-%release
-Requires:  %{libqyotoshared} = %epoch:%version-%release
-Conflicts: qyoto < 1:4.1.73
+Requires:  %{libqyoto} = %epoch:%version-%release
+Conflicts: qyoto < 1:4.4.95
 
 %description -n qyoto-devel
 qyoto devel files.
@@ -909,7 +908,7 @@ qyoto devel files.
 %_kde_bindir/csrcc
 %_kde_bindir/uics
 %_kde_includedir/qyoto
-%_kde_libdir/libqyotoshared.so
+%_kde_libdir/libqyoto.so
 %_kde_libdir/pkgconfig/qyoto.pc
 %_kde_libdir/pkgconfig/qtscript-sharp.pc
 %_kde_libdir/pkgconfig/qttest-sharp.pc
@@ -958,6 +957,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitearchdir/qtwebkit.so
 %ruby_sitearchdir/qtscript.so
 %ruby_sitearchdir/qttest.so
+%ruby_sitearchdir/phonon.so
 %ruby_sitelibdir/Qt.rb
 %ruby_sitelibdir/Qt3.rb
 %ruby_sitelibdir/Qt4.rb
@@ -967,6 +967,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/qtwebkit
 %ruby_sitelibdir/qtscript
 %ruby_sitelibdir/qttest
+%ruby_sitelibdir/phonon
 
 #------------------------------------------------------------
 
@@ -986,6 +987,7 @@ A kde4 bindings for Ruby language.
 %_kde_libdir/kde4/krossruby.so
 %_kde_libdir/kde4/krubypluginfactory.so
 %ruby_sitearchdir/khtml.so
+%ruby_sitearchdir/kio.so
 %ruby_sitearchdir/korundum4.so
 %ruby_sitearchdir/ktexteditor.so
 %ruby_sitearchdir/solid.so
@@ -1002,6 +1004,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitelibdir/solid
 %ruby_sitelibdir/akonadi
 %ruby_sitelibdir/okular
+%ruby_sitelibdir/kio
 
 #------------------------------------------------------------
 
@@ -1022,9 +1025,13 @@ A Qt4 bindings for perl language.
 %perl_sitearch/QtCore4/slots.pm
 %perl_sitearch/QtGui4.pm
 %perl_sitearch/QtTest4.pm
+%perl_sitearch/QtNetwork4.pm
+%perl_sitearch/QtXml4.pm
 %perl_sitearch/auto/QtCore4
 %perl_sitearch/auto/QtGui4
 %perl_sitearch/auto/QtTest4
+%perl_sitearch/auto/QtNetwork4
+%perl_sitearch/auto/QtXml4
 
 #------------------------------------------------------------
 
@@ -1111,10 +1118,6 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch200 -p0
-%patch201 -p0
-%patch202 -p0
-%patch203 -p0
 
 %build
 # Remove invalid install dir
@@ -1153,4 +1156,3 @@ rm -fr %buildroot
 
 %clean
 rm -fr %buildroot
-
