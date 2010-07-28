@@ -768,7 +768,7 @@ Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
 Provides: mono-qt4 = %version-%release
 Conflicts: qyoto-devel < 1:4.1.73
-Conflicts: kimono < 1:4.4.95
+Conflicts: kimono < 1:4.1.81
 
 %description -n qyoto
 C# Mono Qt 4 bindings
@@ -782,7 +782,6 @@ C# Mono Qt 4 bindings
 %_prefix/lib/mono/qyoto/qtwebkit.dll
 %_prefix/lib/mono/qyoto/qttest.dll
 %_prefix/lib/mono/qyoto/phonon.dll
-%_prefix/lib/mono/qyoto/qimageblitz.dll
 %_prefix/lib/mono/gac/qttest
 %_prefix/lib/mono/gac/qt-dotnet
 %_prefix/lib/mono/gac/qscintilla
@@ -790,14 +789,12 @@ C# Mono Qt 4 bindings
 %_prefix/lib/mono/gac/qtwebkit
 %_prefix/lib/mono/gac/qtuitools
 %_prefix/lib/mono/gac/phonon
-%_prefix/lib/mono/gac/qimageblitz
 %_kde_libdir/libqscintilla-sharp.so
 %_kde_libdir/libqtscript-sharp.so
 %_kde_libdir/libqtuitools-sharp.so
 %_kde_libdir/libqtwebkit-sharp.so
 %_kde_libdir/libqttest-sharp.so
 %_kde_libdir/libphonon-sharp.so
-%_kde_libdir/libqimageblitz-sharp.so
 %endif
 
 #------------------------------------------------------------
@@ -842,7 +839,7 @@ Group: Development/KDE and Qt
 Provides: mono-kde4 = %version-%release
 Requires: qyoto = %epoch:%version-%release
 Conflicts: ruby-qt4 < 1:4.1.81
-Conflicts: qyoto < 1:4.4.95 
+Conflicts: qyoto < 1:4.1.81 
 
 %description -n kimono
 C# Mono KDE 4 bindings
@@ -856,6 +853,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/qyoto/ktexteditor-dotnet.dll
 %_prefix/lib/mono/qyoto/plasma-dll.dll
 %_prefix/lib/mono/qyoto/nepomuk-dll.dll
+%_prefix/lib/mono/qyoto/qimageblitz.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -863,6 +861,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/ktexteditor-dotnet
 %_prefix/lib/mono/gac/plasma-dll
 %_prefix/lib/mono/gac/nepomuk-dll
+%_prefix/lib/mono/gac/qimageblitz
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
 %_kde_libdir/libnepomuk-sharp.so
@@ -871,6 +870,7 @@ C# Mono KDE 4 bindings
 %_kde_libdir/libakonadi-sharp.so
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
+%_kde_libdir/libqimageblitz-sharp.so
 %_kde_appsdir/plasma_scriptengine_kimono
 %_kde_services/plasma-scriptengine-kimono-applet.desktop
 %_kde_services/plasma-scriptengine-kimono-dataengine.desktop
