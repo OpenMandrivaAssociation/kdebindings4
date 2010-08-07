@@ -1030,11 +1030,13 @@ A Qt4 bindings for perl language.
 %perl_sitearch/QtTest4.pm
 %perl_sitearch/QtNetwork4.pm
 %perl_sitearch/QtXml4.pm
+%perl_sitearch/QtDBus4.pm
 %perl_sitearch/auto/QtCore4
 %perl_sitearch/auto/QtGui4
 %perl_sitearch/auto/QtTest4
 %perl_sitearch/auto/QtNetwork4
 %perl_sitearch/auto/QtXml4
+%perl_sitearch/auto/QtDBus4
 
 #------------------------------------------------------------
 
