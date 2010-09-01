@@ -1,17 +1,17 @@
 %bcond_with java 0
 %bcond_with falcon 0
 
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
 
 %if %branch
-%define kde_snapshot svn1053190
+%define kde_snapshot svn1165394
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.0
+Version: 4.5.65
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
