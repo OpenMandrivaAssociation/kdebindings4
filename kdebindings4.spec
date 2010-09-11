@@ -22,6 +22,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch0: kdebindings-4.5.67-fix-build.patch
 Patch101: kdebindings-4.5.67-r1170602.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
@@ -1125,6 +1126,7 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch0 -p0 -b .pykde4
 %patch101 -p1
 
 %build
