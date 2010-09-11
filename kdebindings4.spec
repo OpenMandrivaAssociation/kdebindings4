@@ -22,6 +22,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch101: kdebindings-4.5.67-r1170602.patch
 BuildRequires: kde4-macros
 BuildRequires: cmake
 BuildRequires: kdelibs4-devel >= 2:4.3.85
@@ -1123,6 +1124,7 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch101 -p1
 
 %build
 # Remove invalid install dir
