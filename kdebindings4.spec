@@ -32,6 +32,7 @@ BuildRequires: kdepimlibs4-devel >= 2:4.3.85
 BuildRequires: kdegraphics4-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: soprano-devel
+BuildRequires: boost-devel
 BuildRequires: doxygen
 BuildRequires: java-devel
 BuildRequires: ruby-devel
