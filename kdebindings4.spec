@@ -114,6 +114,22 @@ KDE generic bindings library.
 
 #-----------------------------------------------------------------------------
 
+%define smokeqtdeclarative_major 3
+%define libsmokeqtdeclarative %mklibname smokeqtdeclarative %{smokeqtdeclarative_major}
+
+%package -n   %{libsmokeqtdeclarative}
+Summary:      KDE generic bindings library
+Group:        Development/KDE and Qt
+
+%description -n %{libsmokeqtdeclarative}
+KDE generic bindings library.
+
+%files -n %{libsmokeqtdeclarative}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqtdeclarative.so.%{smokeqtdeclarative_major}*
+
+#-----------------------------------------------------------------------------
+
 %define smokeqtdbus_major 3
 %define libsmokeqtdbus %mklibname smokeqtdbus %{smokeqtdbus_major}
 
@@ -722,6 +738,7 @@ Requires: %{libsmokektexteditor} = %epoch:%version-%release
 Requires: %{libsmokekhtml} = %epoch:%version-%release
 Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{libsmokenepomuk} = %epoch:%version-%release
+Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
 Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
 Requires: %{libsmokekdecore} = %epoch:%version-%release
@@ -955,6 +972,7 @@ A qt4 bindings for Ruby language.
 %defattr(-,root,root)
 %_kde_bindir/rbqtapi
 %ruby_sitearchdir/qscintilla.so
+%ruby_sitearchdir/qtdeclarative.so
 %ruby_sitearchdir/qtruby4.so
 %ruby_sitearchdir/qtuitools.so
 %ruby_sitearchdir/qtwebkit.so
@@ -966,6 +984,7 @@ A qt4 bindings for Ruby language.
 %ruby_sitelibdir/Qt4.rb
 %ruby_sitelibdir/Qt
 %ruby_sitelibdir/qscintilla
+%ruby_sitelibdir/qtdeclarative
 %ruby_sitelibdir/qtuitools
 %ruby_sitelibdir/qtwebkit
 %ruby_sitelibdir/qtscript
@@ -1023,23 +1042,9 @@ A Qt4 bindings for perl language.
 
 %files -n perl-qt4
 %defattr(-,root,root)
-%perl_sitearch/QtCore4.pm
-%perl_sitearch/QtCore4/classinfo.pm
-%perl_sitearch/QtCore4/debug.pm
-%perl_sitearch/QtCore4/isa.pm
-%perl_sitearch/QtCore4/signals.pm
-%perl_sitearch/QtCore4/slots.pm
-%perl_sitearch/QtGui4.pm
-%perl_sitearch/QtTest4.pm
-%perl_sitearch/QtNetwork4.pm
-%perl_sitearch/QtXml4.pm
-%perl_sitearch/QtDBus4.pm
-%perl_sitearch/auto/QtCore4
-%perl_sitearch/auto/QtGui4
-%perl_sitearch/auto/QtTest4
-%perl_sitearch/auto/QtNetwork4
-%perl_sitearch/auto/QtXml4
-%perl_sitearch/auto/QtDBus4
+%perl_sitearch/Qt*.pm
+%perl_sitearch/QtCore4
+%perl_sitearch/auto/Qt*
 
 #------------------------------------------------------------
 
