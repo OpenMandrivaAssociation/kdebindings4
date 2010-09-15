@@ -4,14 +4,13 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
-
 %if %branch
-%define kde_snapshot svn1170578
+%define kde_snapshot svn1174542
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.67
+Version: 4.5.68
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -20,19 +19,12 @@ URL: http://www.kde.org
 %if %branch
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
 %else
-Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0: kdebindings-4.5.67-fix-build.patch
-Patch101: kdebindings-4.5.67-r1170602.patch
-BuildRequires: kde4-macros
-BuildRequires: cmake
-BuildRequires: kdelibs4-devel >= 2:4.3.85
-BuildRequires: phonon-devel
-BuildRequires: akonadi-devel
+Patch0: kdebindings-4.5.68-fix-build.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.3.85
 BuildRequires: kdegraphics4-devel
 BuildRequires: qimageblitz-devel
-BuildRequires: soprano-devel
 BuildRequires: boost-devel
 BuildRequires: doxygen
 BuildRequires: java-devel
@@ -40,8 +32,8 @@ BuildRequires: ruby-devel
 %ifnarch %arm %mips
 BuildRequires: mono-devel
 %endif
-BuildRequires: python-sip >= 4.7.6
-BuildRequires: python-qt4-devel >= 4.5.1
+BuildRequires: python-sip >= 4.11
+BuildRequires: python-qt4-devel >= 4.7.5
 BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
@@ -1132,7 +1124,6 @@ ruby-kde4 devel files.
 %setup -q -n kdebindings-%version
 %endif
 %patch0 -p0 -b .pykde4
-%patch101 -p1
 
 %build
 # Remove invalid install dir
