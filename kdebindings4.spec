@@ -1125,6 +1125,8 @@ ruby-kde4 devel files.
 %endif
 %patch0 -p0 -b .pykde4
 
+mv python/pykde4/sip/nepomuk/krating*.sip python/pykde4/sip/kdeui/
+
 %build
 # Remove invalid install dir
 rm -f csharp/plasma/examples/CMakeLists.txt
