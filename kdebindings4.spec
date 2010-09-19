@@ -1043,6 +1043,7 @@ A Qt4 bindings for perl language.
 %package -n perl-kde4
 Summary: KDE bindings for Perl
 Group: Development/KDE and Qt
+Requires: perl-qt4 = %epoch:%version-%release
 
 %description -n perl-kde4
 A kde4 bindings for perl language.
