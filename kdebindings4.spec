@@ -5,13 +5,17 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1174542
+%define kde_snapshot svn1183905
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.68
+Version: 4.5.71
+%if %branch
+Release: %mkrel -c %kde_snapshot 1
+%else
 Release: %mkrel 1
+%endif
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
@@ -22,6 +26,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
 Patch0: kdebindings-4.5.68-fix-build.patch
+Patch1: kdebindings-4.5.71-mono2.8.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.3.85
 BuildRequires: kdegraphics4-devel
 BuildRequires: qimageblitz-devel
@@ -1124,9 +1129,7 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch0 -p0 -b .pykde4
-
-mv python/pykde4/sip/nepomuk/krating*.sip python/pykde4/sip/kdeui/
+%patch1 -p0
 
 %build
 # Remove invalid install dir
@@ -1153,7 +1156,8 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_KROSSFALCON=ON
 	%endif
 
-LD_LIBRARY_PATH=`pwd`/generator/bin %make
+#LD_LIBRARY_PATH=`pwd`/generator/bin %make
+%make
 
 %install
 rm -fr %buildroot
