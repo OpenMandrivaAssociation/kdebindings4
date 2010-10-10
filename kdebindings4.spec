@@ -29,6 +29,7 @@ Patch0: kdebindings-4.5.68-fix-build.patch
 Patch1: kdebindings-4.5.71-mono2.8.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.3.85
 BuildRequires: kdegraphics4-devel
+BuildRequires: kdesdk4-devel
 BuildRequires: qimageblitz-devel
 BuildRequires: boost-devel
 BuildRequires: doxygen
