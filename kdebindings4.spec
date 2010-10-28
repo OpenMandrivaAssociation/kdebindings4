@@ -5,12 +5,12 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1183905
+%define kde_snapshot svn1190490
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.71
+Version: 4.5.74
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
@@ -25,9 +25,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0: kdebindings-4.5.68-fix-build.patch
-Patch1: kdebindings-4.5.71-mono2.8.patch
-BuildRequires: kdepimlibs4-devel >= 2:4.3.85
+BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
 BuildRequires: qimageblitz-devel
@@ -43,7 +41,6 @@ BuildRequires: python-qt4-devel >= 4.7.5
 BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
-BuildRequires: polkit-qt-devel
 %if %with falcon
 BuildRequires: falcon-devel
 %endif
@@ -1130,7 +1127,6 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch1 -p0
 
 %build
 # Remove invalid install dir
