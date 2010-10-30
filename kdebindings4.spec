@@ -25,10 +25,11 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch0: kdebindings-4.5.74-fix-build.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
-BuildRequires: qimageblitz-devel
+#BuildRequires: qimageblitz-devel
 BuildRequires: boost-devel
 BuildRequires: doxygen
 BuildRequires: java-devel
@@ -59,7 +60,6 @@ Group: Development/KDE and Qt
 Provides: PyKDE4 = %version-%release
 Requires: python-qt4
 Requires: python-sip
-%py_requires -d
 
 %description -n python-kde4
 Python KDE 4
@@ -540,7 +540,7 @@ KDE generic bindings library.
 %_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
 
 #-----------------------------------------------------------------------------
-
+%if 0
 %define smokeqimageblitz_major 3
 %define libsmokeqimageblitz %mklibname smokeqimageblitz %{smokeqimageblitz_major}
 
@@ -554,7 +554,7 @@ KDE generic bindings library.
 %files -n %{libsmokeqimageblitz}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqimageblitz.so.%{smokeqimageblitz_major}*
-
+%endif
 #-----------------------------------------------------------------------------
 
 %define smokeqsci_major 3
@@ -735,7 +735,7 @@ Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
-Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+#Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
 Requires: %{libsmokekdecore} = %epoch:%version-%release
 Requires: %{libsmokekdeui} = %epoch:%version-%release
 Requires: %{libsmokekfile} = %epoch:%version-%release
@@ -868,7 +868,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/qyoto/ktexteditor-dotnet.dll
 %_prefix/lib/mono/qyoto/plasma-dll.dll
 %_prefix/lib/mono/qyoto/nepomuk-dll.dll
-%_prefix/lib/mono/qyoto/qimageblitz.dll
+#%_prefix/lib/mono/qyoto/qimageblitz.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -876,7 +876,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/ktexteditor-dotnet
 %_prefix/lib/mono/gac/plasma-dll
 %_prefix/lib/mono/gac/nepomuk-dll
-%_prefix/lib/mono/gac/qimageblitz
+#%_prefix/lib/mono/gac/qimageblitz
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
 %_kde_libdir/libnepomuk-sharp.so
@@ -885,7 +885,7 @@ C# Mono KDE 4 bindings
 %_kde_libdir/libakonadi-sharp.so
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
-%_kde_libdir/libqimageblitz-sharp.so
+#%_kde_libdir/libqimageblitz-sharp.so
 %_kde_appsdir/plasma_scriptengine_kimono
 %_kde_services/plasma-scriptengine-kimono-applet.desktop
 %_kde_services/plasma-scriptengine-kimono-dataengine.desktop
@@ -1127,11 +1127,9 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch0 -p0
 
 %build
-# Remove invalid install dir
-rm -f csharp/plasma/examples/CMakeLists.txt
-
 export JAVA_HOME=%{java_home}
 
 %cmake_kde4 \
