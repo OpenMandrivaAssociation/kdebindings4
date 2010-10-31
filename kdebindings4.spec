@@ -139,6 +139,22 @@ KDE generic bindings library.
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqtdbus.so.%{smokeqtdbus_major}*
 
+#------------------------------------------------------------
+
+%define smokeqthelp_major 3
+%define libsmokeqthelp %mklibname smokeqthelp %{smokeqthelp_major}
+
+%package -n %{libsmokeqthelp}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeqthelp}
+Qt generic bindings library.
+
+%files -n %{libsmokeqthelp}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqthelp.so.%{smokeqthelp_major}*
+
 #-----------------------------------------------------------------------------
 
 %define smokeqtgui_major 3
@@ -298,6 +314,22 @@ KDE generic bindings library.
 %files -n %{libsmokesopranoserver}
 %defattr(-,root,root)
 %_kde_libdir/libsmokesopranoserver.so.%{smokesopranoserver_major}*
+
+#------------------------------------------------------------
+
+%define smokekate_major 3
+%define libsmokekate %mklibname smokekate %{smokekate_major}
+
+%package -n %{libsmokekate}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokekate}
+Qt generic bindings library.
+
+%files -n %{libsmokekate}
+%defattr(-,root,root)
+%_kde_libdir/libsmokekate.so.%{smokekate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -736,6 +768,7 @@ Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
 #Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+Requires: %{libsmokekate} = %epoch:%version-%release
 Requires: %{libsmokekdecore} = %epoch:%version-%release
 Requires: %{libsmokekdeui} = %epoch:%version-%release
 Requires: %{libsmokekfile} = %epoch:%version-%release
@@ -746,6 +779,7 @@ Requires: %{libsmokekparts} = %epoch:%version-%release
 Requires: %{libsmokekutils} = %epoch:%version-%release
 Requires: %{libsmokephonon} = %epoch:%version-%release
 Requires: %{libsmokeqtgui} = %epoch:%version-%release
+Requires: %{libsmokeqthelp} = %epoch:%version-%release
 Requires: %{libsmokeqtmultimedia} = %epoch:%version-%release
 Requires: %{libsmokeqtnetwork} = %epoch:%version-%release
 Requires: %{libsmokeqtopengl} = %epoch:%version-%release
@@ -1016,6 +1050,7 @@ A kde4 bindings for Ruby language.
 %ruby_sitearchdir/akonadi.so
 %ruby_sitearchdir/plasma_applet.so
 %ruby_sitearchdir/okular.so
+%ruby_sitearchdir/kate.so
 %ruby_sitelibdir/KDE
 %ruby_sitelibdir/khtml
 %ruby_sitelibdir/ktexteditor
@@ -1037,6 +1072,8 @@ A Qt4 bindings for perl language.
 
 %files -n perl-qt4
 %defattr(-,root,root)
+%_bindir/prcc4_bin
+%_bindir/qdbusxml2perl
 %perl_sitearch/Qt*.pm
 %perl_sitearch/QtCore4
 %perl_sitearch/auto/Qt*
@@ -1151,7 +1188,6 @@ export JAVA_HOME=%{java_home}
 	-DENABLE_KROSSFALCON=ON
 	%endif
 
-#LD_LIBRARY_PATH=`pwd`/generator/bin %make
 %make
 
 %install
