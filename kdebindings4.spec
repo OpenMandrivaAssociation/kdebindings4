@@ -5,14 +5,14 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1190490
+%define kde_snapshot svn1197962
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.74
+Version: 4.5.76
 %if %branch
-Release: %mkrel -c %kde_snapshot 2
+Release: %mkrel -c %kde_snapshot 1
 %else
 Release: %mkrel 1
 %endif
@@ -25,7 +25,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0: kdebindings-4.5.74-fix-build.patch
+Patch0: kdebindings-4.5.76-fix-build.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -750,6 +750,22 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
+%define libsmokeqt3support_major 3
+%define libsmokeqt3support %mklibname smokeqt3support %{libsmokeqt3support_major}
+
+%package -n %{libsmokeqt3support}
+Summary: Qt generic bindings library
+Group: Development/KDE and Qt
+
+%description -n %{libsmokeqt3support}
+Qt generic bindings library.
+
+%files -n %{libsmokeqt3support}
+%defattr(-,root,root)
+%_kde_libdir/libsmokeqt3support.so.%{libsmokeqt3support_major}*
+
+#------------------------------------------------------------
+
 %package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
@@ -765,6 +781,7 @@ Requires: %{libsmokektexteditor} = %epoch:%version-%release
 Requires: %{libsmokekhtml} = %epoch:%version-%release
 Requires: %{libsmokeakonadi} = %epoch:%version-%release
 Requires: %{libsmokenepomuk} = %epoch:%version-%release
+Requires: %{libsmokeqt3support} = %epoch:%version-%release
 Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
 #Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
@@ -1092,14 +1109,52 @@ A kde4 bindings for perl language.
 %defattr(-,root,root)
 %_kde_bindir/puic4
 %_kde_libdir/kde4/kperlpluginfactory.so
+%perl_sitearch/Akonadi.pm
+%perl_sitearch/Attica.pm
 %perl_sitearch/KDECore4.pm
 %perl_sitearch/KDEUi4.pm
+%perl_sitearch/KFile.pm
+%perl_sitearch/KHTML.pm
 %perl_sitearch/KIO4.pm
+%perl_sitearch/KNewStuff2.pm
+%perl_sitearch/KNewStuff3.pm
+%perl_sitearch/KParts.pm
+%perl_sitearch/KTextEditor.pm
+%perl_sitearch/KUtils.pm
+%perl_sitearch/Kate.pm
+%perl_sitearch/Nepomuk.pm
+%perl_sitearch/NepomukQuery.pm
+%perl_sitearch/Okular.pm
+%perl_sitearch/Phonon.pm
 %perl_sitearch/Plasma4.pm
+%perl_sitearch/Qsci.pm
+%perl_sitearch/Solid.pm
+%perl_sitearch/Soprano.pm
+%perl_sitearch/SopranoClient.pm
+%perl_sitearch/SopranoServer.pm
+%perl_sitearch/auto/Akonadi
+%perl_sitearch/auto/Attica
 %perl_sitearch/auto/KDECore4
 %perl_sitearch/auto/KDEUi4
+%perl_sitearch/auto/KFile
+%perl_sitearch/auto/KHTML
 %perl_sitearch/auto/KIO4
+%perl_sitearch/auto/KNewStuff2
+%perl_sitearch/auto/KNewStuff3
+%perl_sitearch/auto/KParts
+%perl_sitearch/auto/KTextEditor
+%perl_sitearch/auto/KUtils
+%perl_sitearch/auto/Kate
+%perl_sitearch/auto/Nepomuk
+%perl_sitearch/auto/NepomukQuery
+%perl_sitearch/auto/Okular
+%perl_sitearch/auto/Phonon
 %perl_sitearch/auto/Plasma4
+%perl_sitearch/auto/Qsci
+%perl_sitearch/auto/Solid
+%perl_sitearch/auto/Soprano
+%perl_sitearch/auto/SopranoClient
+%perl_sitearch/auto/SopranoServer
 
 #------------------------------------------------------------
 
