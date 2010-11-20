@@ -74,9 +74,6 @@ Python KDE 4
 %_kde_libdir/kde4/kpythonpluginfactory.so
 %_kde_appsdir/pykde4
 
-%pre -n python-kde4
-rm -rf %_bindir/pykdeuic4
-
 #-----------------------------------------------------------------------------
 
 %package -n python-kde4-doc
