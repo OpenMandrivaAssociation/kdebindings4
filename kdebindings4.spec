@@ -5,12 +5,12 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1197962
+%define kde_snapshot svn1198704
 %endif
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.5.76
+Version: 4.5.77
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
@@ -25,7 +25,6 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0: kdebindings-4.5.76-fix-build.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -1219,7 +1218,6 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch0 -p0
 
 %build
 export JAVA_HOME=%{java_home}
