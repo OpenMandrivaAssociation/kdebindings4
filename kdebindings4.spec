@@ -65,14 +65,29 @@ Python KDE 4
 
 %files -n python-kde4
 %defattr(-,root,root)
-%dir %py_platsitedir/PyKDE4
 %py_platsitedir/PyQt4/*
-%py_platsitedir/PyKDE4/*
-%_datadir/sip/PyKDE4/*
+%py_platsitedir/PyKDE4
 %_kde_bindir/pykdeuic4
 %_kde_libdir/kde4/krosspython.so
 %_kde_libdir/kde4/kpythonpluginfactory.so
-%_kde_appsdir/pykde4
+%dir %_kde_appsdir/pykde4
+
+#-----------------------------------------------------------------------------
+
+%package -n python-kde4-devel
+Summary: PyKDE4 sip files and examples
+Group: Development/KDE and Qt
+Conflicts: python-kde4 < 1:4.5.77-0.svn1198704.2
+Requires: python-kde4 = %epoch:%version-%release
+Requires: python-qt4-devel
+
+%description -n python-kde4-devel
+Python KDE 4 sip files and examples.
+
+%files -n python-kde4-devel
+%defattr(-,root,root)
+%_datadir/sip/PyKDE4/*
+%_kde_appsdir/pykde4/examples
 
 #-----------------------------------------------------------------------------
 
