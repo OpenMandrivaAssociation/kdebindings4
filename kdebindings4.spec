@@ -655,6 +655,7 @@ Qt generic bindings library.
 %package -n %{libsmokebase}
 Summary: Qt generic bindings library
 Group: Development/KDE and Qt
+Conflicts: %{_lib}smokeqt3 <= 1:4.5.80-1 
 
 %description -n %{libsmokebase}
 Qt generic bindings library.
