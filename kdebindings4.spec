@@ -14,7 +14,7 @@ Version: 4.5.85
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 %endif
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -25,10 +25,11 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch101: kdebindings-r1204501.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
-#BuildRequires: qimageblitz-devel
+BuildRequires: qimageblitz-devel
 BuildRequires: boost-devel
 BuildRequires: doxygen
 BuildRequires: java-devel
@@ -583,7 +584,7 @@ KDE generic bindings library.
 %_kde_libdir/libsmokeokular.so.%{smokeokular_major}*
 
 #-----------------------------------------------------------------------------
-%if 0
+
 %define smokeqimageblitz_major 3
 %define libsmokeqimageblitz %mklibname smokeqimageblitz %{smokeqimageblitz_major}
 
@@ -597,7 +598,7 @@ KDE generic bindings library.
 %files -n %{libsmokeqimageblitz}
 %defattr(-,root,root)
 %_kde_libdir/libsmokeqimageblitz.so.%{smokeqimageblitz_major}*
-%endif
+
 #-----------------------------------------------------------------------------
 
 %define smokeqsci_major 3
@@ -931,7 +932,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/qyoto/ktexteditor-dotnet.dll
 %_prefix/lib/mono/qyoto/plasma-dll.dll
 %_prefix/lib/mono/qyoto/nepomuk-dll.dll
-#%_prefix/lib/mono/qyoto/qimageblitz.dll
+%_prefix/lib/mono/qyoto/qimageblitz.dll
 %_prefix/lib/mono/gac/kde-dotnet
 %_prefix/lib/mono/gac/khtml-dll
 %_prefix/lib/mono/gac/soprano
@@ -939,7 +940,7 @@ C# Mono KDE 4 bindings
 %_prefix/lib/mono/gac/ktexteditor-dotnet
 %_prefix/lib/mono/gac/plasma-dll
 %_prefix/lib/mono/gac/nepomuk-dll
-#%_prefix/lib/mono/gac/qimageblitz
+%_prefix/lib/mono/gac/qimageblitz
 %{_kde_libdir}/kde4/kimonopluginfactory.so
 %_kde_libdir/libkhtml-sharp.so
 %_kde_libdir/libnepomuk-sharp.so
@@ -948,7 +949,7 @@ C# Mono KDE 4 bindings
 %_kde_libdir/libakonadi-sharp.so
 %_kde_libdir/libktexteditor-sharp.so
 %_kde_libdir/libplasma-sharp.so
-#%_kde_libdir/libqimageblitz-sharp.so
+%_kde_libdir/libqimageblitz-sharp.so
 %_kde_appsdir/plasma_scriptengine_kimono
 %_kde_services/plasma-scriptengine-kimono-applet.desktop
 %_kde_services/plasma-scriptengine-kimono-dataengine.desktop
@@ -1139,6 +1140,7 @@ A kde4 bindings for perl language.
 %perl_sitearch/Okular.pm
 %perl_sitearch/Phonon.pm
 %perl_sitearch/Plasma4.pm
+%perl_sitearch/QImageBlitz.pm
 %perl_sitearch/Qsci.pm
 %perl_sitearch/Solid.pm
 %perl_sitearch/Soprano.pm
@@ -1162,6 +1164,7 @@ A kde4 bindings for perl language.
 %perl_sitearch/auto/Okular
 %perl_sitearch/auto/Phonon
 %perl_sitearch/auto/Plasma4
+%perl_sitearch/auto/QImageBlitz
 %perl_sitearch/auto/Qsci
 %perl_sitearch/auto/Solid
 %perl_sitearch/auto/Soprano
@@ -1231,6 +1234,7 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch101 -p3
 
 %build
 export JAVA_HOME=%{java_home}
@@ -1241,11 +1245,7 @@ export JAVA_HOME=%{java_home}
 	%else
 	-DENABLE_KROSSJAVA=FALSE \
 	%endif
-    %if 1
 	-DENABLE_PHP-QT=TRUE \
-    %else
-    -DENABLE_PHP-QT=FALSE \
-    %endif
 	-DENABLE_QSCINTILLA_SHARP=ON \
 	-DENABLE_QSCINTILLA_RUBY=ON \
 	-DENABLE_SMOKEKDEVPLATFORM=ON \
