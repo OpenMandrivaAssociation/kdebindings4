@@ -25,7 +25,6 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch101: kdebindings-r1204501.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -1234,7 +1233,6 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch101 -p3
 
 %build
 export JAVA_HOME=%{java_home}
