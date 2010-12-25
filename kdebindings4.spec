@@ -25,6 +25,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
+Patch0: kdebindings-4.5.90-pyqt4.8.2.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -1238,6 +1239,7 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch0 -p0
 
 %build
 export JAVA_HOME=%{java_home}
