@@ -14,7 +14,7 @@ Version: 4.5.90
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
-Release: %mkrel 2
+Release: %mkrel 3
 %endif
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -796,7 +796,7 @@ Requires: %{libsmokenepomuk} = %epoch:%version-%release
 Requires: %{libsmokeqt3support} = %epoch:%version-%release
 Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqttest} = %epoch:%version-%release
-#Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
 Requires: %{libsmokekate} = %epoch:%version-%release
 Requires: %{libsmokekdecore} = %epoch:%version-%release
 Requires: %{libsmokekdeui} = %epoch:%version-%release
