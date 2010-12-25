@@ -617,19 +617,19 @@ KDE generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smokesoprano_major 3
-%define lib_smokesoprano %mklibname smokesoprano %{lib_smokesoprano_major}
+%define libsmokesoprano_major 3
+%define libsmokesoprano %mklibname smokesoprano %{libsmokesoprano_major}
 
-%package -n %{lib_smokesoprano}
+%package -n %{libsmokesoprano}
 Summary: Qt generic bindings library
 Group: Development/KDE and Qt
 
-%description -n %{lib_smokesoprano}
+%description -n %{libsmokesoprano}
 Qt generic bindings library.
 
-%files -n %{lib_smokesoprano}
+%files -n %{libsmokesoprano}
 %defattr(-,root,root)
-%_kde_libdir/libsmokesoprano.so.%{lib_smokesoprano_major}*
+%_kde_libdir/libsmokesoprano.so.%{libsmokesoprano_major}*
 
 #------------------------------------------------------------
 
@@ -781,45 +781,48 @@ Qt generic bindings library.
 %package -n smoke4-devel
 Summary: Header files for libsmoke
 Group: Development/KDE and Qt
-Requires: %{libsmokeplasma} = %epoch:%version-%release
-Requires: %{libsmokebase} = %epoch:%version-%release
-Requires: %{libsmokeqsci} = %epoch:%version-%release
-Requires: %{libsmokeqtscript} = %epoch:%version-%release
-Requires: %{libsmokeokular} = %epoch:%version-%release
-Requires: %{libsmokesolid} = %epoch:%version-%release
-Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
-Requires: %{libsmokeqtuitools} = %epoch:%version-%release
-Requires: %{libsmokektexteditor} = %epoch:%version-%release
-Requires: %{libsmokekhtml} = %epoch:%version-%release
 Requires: %{libsmokeakonadi} = %epoch:%version-%release
-Requires: %{libsmokenepomuk} = %epoch:%version-%release
-Requires: %{libsmokeqt3support} = %epoch:%version-%release
-Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
-Requires: %{libsmokeqttest} = %epoch:%version-%release
-Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+Requires: %{libsmokeattica} = %epoch:%version-%release
+Requires: %{libsmokebase} = %epoch:%version-%release
 Requires: %{libsmokekate} = %epoch:%version-%release
 Requires: %{libsmokekdecore} = %epoch:%version-%release
 Requires: %{libsmokekdeui} = %epoch:%version-%release
 Requires: %{libsmokekfile} = %epoch:%version-%release
+Requires: %{libsmokekhtml} = %epoch:%version-%release
 Requires: %{libsmokekio} = %epoch:%version-%release
 Requires: %{libsmokeknewstuff2} = %epoch:%version-%release
 Requires: %{libsmokeknewstuff3} = %epoch:%version-%release
 Requires: %{libsmokekparts} = %epoch:%version-%release
+Requires: %{libsmokektexteditor} = %epoch:%version-%release
 Requires: %{libsmokekutils} = %epoch:%version-%release
+Requires: %{libsmokenepomuk} = %epoch:%version-%release
+Requires: %{libsmokenepomukquery} = %epoch:%version-%release
+Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokephonon} = %epoch:%version-%release
+Requires: %{libsmokeplasma} = %epoch:%version-%release
+Requires: %{libsmokeqimageblitz} = %epoch:%version-%release
+Requires: %{libsmokeqsci} = %epoch:%version-%release
+Requires: %{libsmokeqt3support} = %epoch:%version-%release
+Requires: %{libsmokeqtcore} = %epoch:%version-%release
+Requires: %{libsmokeqtdbus} = %epoch:%version-%release
+Requires: %{libsmokeqtdeclarative} = %epoch:%version-%release
 Requires: %{libsmokeqtgui} = %epoch:%version-%release
 Requires: %{libsmokeqthelp} = %epoch:%version-%release
 Requires: %{libsmokeqtmultimedia} = %epoch:%version-%release
 Requires: %{libsmokeqtnetwork} = %epoch:%version-%release
 Requires: %{libsmokeqtopengl} = %epoch:%version-%release
+Requires: %{libsmokeqtscript} = %epoch:%version-%release
 Requires: %{libsmokeqtsql} = %epoch:%version-%release
 Requires: %{libsmokeqtsvg} = %epoch:%version-%release
-Requires: %{libsmokeqtxml} = %epoch:%version-%release
+Requires: %{libsmokeqttest} = %epoch:%version-%release
+Requires: %{libsmokeqtuitools} = %epoch:%version-%release
+Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
 Requires: %{libsmokeqtxmlpatterns} = %epoch:%version-%release
+Requires: %{libsmokeqtxml} = %epoch:%version-%release
+Requires: %{libsmokesolid} = %epoch:%version-%release
+Requires: %{libsmokesoprano} = %epoch:%version-%release
 Requires: %{libsmokesopranoclient} = %epoch:%version-%release
 Requires: %{libsmokesopranoserver} = %epoch:%version-%release
-Requires: %{libsmokeattica} = %epoch:%version-%release
-Requires: %{libsmokenepomukquery} = %epoch:%version-%release
 Provides: libsmoke3-devel = %epoch:%version-%release
 Obsoletes: smoke-devel <= 1:3.5.10-3
 
