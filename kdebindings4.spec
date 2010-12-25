@@ -633,19 +633,19 @@ Qt generic bindings library.
 
 #------------------------------------------------------------
 
-%define lib_smokeqtscript_major 3
-%define lib_smokeqtscript %mklibname smokeqtscript %{lib_smokeqtscript_major}
+%define libsmokeqtscript_major 3
+%define libsmokeqtscript %mklibname smokeqtscript %{libsmokeqtscript_major}
 
-%package -n %{lib_smokeqtscript}
+%package -n %{libsmokeqtscript}
 Summary: Qt generic bindings library
 Group: Development/KDE and Qt
 
-%description -n %{lib_smokeqtscript}
+%description -n %{libsmokeqtscript}
 Qt generic bindings library.
 
-%files -n %{lib_smokeqtscript}
+%files -n %{libsmokeqtscript}
 %defattr(-,root,root)
-%_kde_libdir/libsmokeqtscript.so.%{lib_smokeqtscript_major}*
+%_kde_libdir/libsmokeqtscript.so.%{libsmokeqtscript_major}*
 
 #------------------------------------------------------------
 
@@ -784,7 +784,7 @@ Group: Development/KDE and Qt
 Requires: %{libsmokeplasma} = %epoch:%version-%release
 Requires: %{libsmokebase} = %epoch:%version-%release
 Requires: %{libsmokeqsci} = %epoch:%version-%release
-Requires: %{lib_smokeqtscript} = %epoch:%version-%release
+Requires: %{libsmokeqtscript} = %epoch:%version-%release
 Requires: %{libsmokeokular} = %epoch:%version-%release
 Requires: %{libsmokesolid} = %epoch:%version-%release
 Requires: %{libsmokeqtwebkit} = %epoch:%version-%release
