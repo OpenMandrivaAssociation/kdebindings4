@@ -820,7 +820,7 @@ Requires: %{libsmokesopranoclient} = %epoch:%version-%release
 Requires: %{libsmokesopranoserver} = %epoch:%version-%release
 Requires: %{libsmokeattica} = %epoch:%version-%release
 Requires: %{libsmokenepomukquery} = %epoch:%version-%release
-Provides: libsmoke2-devel = %epoch:%version-%release
+Provides: libsmoke3-devel = %epoch:%version-%release
 Obsoletes: smoke-devel <= 1:3.5.10-3
 
 %description -n smoke4-devel
