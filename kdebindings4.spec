@@ -844,7 +844,7 @@ Smoke devel files.
 %package -n qyoto
 Summary: C# Mono Qt 4 bindings
 Group: Development/KDE and Qt
-Provides: mono-qt4 = %version-%release
+Provides: mono-qt4 = %epoch:%version-%release
 Conflicts: qyoto-devel < 1:4.1.73
 Conflicts: kimono < 1:4.1.81
 
@@ -914,7 +914,7 @@ Falcon KDE 4 bindings
 %package -n kimono
 Summary: C# Mono KDE 4 bindings
 Group: Development/KDE and Qt
-Provides: mono-kde4 = %version-%release
+Provides: mono-kde4 = %epoch:%version-%release
 Requires: qyoto = %epoch:%version-%release
 Conflicts: ruby-qt4 < 1:4.1.81
 Conflicts: qyoto < 1:4.1.81 
@@ -974,6 +974,7 @@ Qt generic bindings library.
 %package -n qyoto-devel
 Summary: Header files for qyoto
 Group: Development/KDE and Qt
+Provides: mono-qt4-devel = %epoch:%version-%release
 Requires: qyoto = %epoch:%version-%release
 Requires:  %{libqyoto} = %epoch:%version-%release
 Conflicts: qyoto < 1:4.4.95
@@ -998,6 +999,7 @@ qyoto devel files.
 %package -n kimono-devel
 Summary: Devel files for kimono
 Group: Development/KDE and Qt
+Provides: mono-kde4-devel = %epoch:%version-%release
 Requires: qyoto-devel = %epoch:%version-%release
 Requires: kimono = %epoch:%version-%release
 Conflicts: qyoto < 1:4.0.80-1
