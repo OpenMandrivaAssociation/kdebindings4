@@ -14,7 +14,7 @@ Version: 4.5.95
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
-Release: %mkrel 3
+Release: %mkrel 1
 %endif
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -25,7 +25,6 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
-Patch0: kdebindings-4.5.90-pyqt4.8.2.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -37,8 +36,8 @@ BuildRequires: ruby-devel
 %ifnarch %arm %mips
 BuildRequires: mono-devel
 %endif
-BuildRequires: python-sip >= 4.11
-BuildRequires: python-qt4-devel >= 4.7.5
+BuildRequires: python-sip >= 1:4.12
+BuildRequires: python-qt4-devel >= 4.8.2
 BuildRequires: qscintilla-qt4-devel
 BuildRequires: php-devel
 BuildRequires: php-cli
@@ -58,8 +57,8 @@ KDE4 bindings to non-C++ languages
 Summary: PyKDE4 
 Group: Development/KDE and Qt
 Provides: PyKDE4 = %version-%release
-Requires: python-qt4
-Requires: python-sip
+Requires: python-qt4 >= 4.8.2
+Requires: python-sip >= 1:4.12
 
 %description -n python-kde4
 Python KDE 4
@@ -1239,7 +1238,6 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
-%patch0 -p0
 
 %build
 export JAVA_HOME=%{java_home}
