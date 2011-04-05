@@ -12,9 +12,9 @@ Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
 Version: 4.6.2
 %if %branch
-Release: %mkrel -c %kde_snapshot 1
+Release: 0.%kde_snapshot.1
 %else
-Release: %mkrel 1
+Release: 1
 %endif
 Epoch: 1
 Group: Graphical desktop/KDE
