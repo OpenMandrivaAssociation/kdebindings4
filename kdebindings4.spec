@@ -10,7 +10,7 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.6.1
+Version: 4.6.2
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
