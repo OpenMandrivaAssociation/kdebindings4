@@ -25,6 +25,9 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.bz2
 %endif
+## fedora patches
+Patch50: kdebindings-4.5.95-valgrind.patch
+Patch51: kdebindings-4.6.1-python-bz684419.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -1238,6 +1241,8 @@ ruby-kde4 devel files.
 %else
 %setup -q -n kdebindings-%version
 %endif
+%patch50 -p1 -b .valgrind
+%patch51 -p0 -b .python-bz684419
 
 %build
 export JAVA_HOME=%{java_home}
