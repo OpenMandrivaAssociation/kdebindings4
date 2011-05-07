@@ -48,7 +48,7 @@ BuildRequires: php-cli
 BuildRequires: falcon-devel
 %endif
 BuildRequires: perl-devel
-BuildRequires: db4-devel
+BuildRequires: db-devel
 BuildRoot:     %_tmppath/%name-%version-%release-root
 
 %description
