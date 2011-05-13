@@ -10,11 +10,11 @@
 
 Name:kdebindings4
 Summary: KDE bindings to non-C++ languages
-Version: 4.6.2
+Version: 4.6.3
 %if %branch
 Release: 0.%kde_snapshot.1
 %else
-Release: 3
+Release: 1
 %endif
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -27,7 +27,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.b
 %endif
 ## fedora patches
 Patch50: kdebindings-4.5.95-valgrind.patch
-Patch51: kdebindings-4.6.1-python-bz684419.patch
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
@@ -1242,7 +1241,6 @@ ruby-kde4 devel files.
 %setup -q -n kdebindings-%version
 %endif
 %patch50 -p1 -b .valgrind
-%patch51 -p0 -b .python-bz684419
 
 %build
 export JAVA_HOME=%{java_home}
