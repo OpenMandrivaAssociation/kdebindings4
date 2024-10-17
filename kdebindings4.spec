@@ -19,7 +19,7 @@ Release:	2
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPL
-URL: http://www.kde.org
+URL: https://www.kde.org
 %if %branch
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdebindings-%version%kde_snapshot.tar.bz2
 %else
