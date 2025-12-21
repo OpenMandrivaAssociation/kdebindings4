@@ -27,6 +27,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdebindings-%version.tar.b
 %endif
 ## fedora patches
 Patch50: kdebindings-4.5.95-valgrind.patch
+BuildRequires:	make
 BuildRequires: kdepimlibs4-devel >= 2:4.5.71
 BuildRequires: kdegraphics4-devel
 BuildRequires: kdesdk4-devel
